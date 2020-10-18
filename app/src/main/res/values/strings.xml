@@ -12,4 +12,6 @@
     <string name="invalid_username">无效的用户名</string>
     <string name="invalid_password">密码至少5位</string>
     <string name="login_failed">"登录失败"</string>
+    <string name="remember_name">"记住账号"</string>
+    <string name="remember_pwd">"记住密码"</string>
 </resources>

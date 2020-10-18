@@ -19,6 +19,8 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -32,6 +34,8 @@ import com.software.ustc.superspy.ui.login.LoginViewModelFactory;
 public class LoginActivity extends AppCompatActivity {
 
     private LoginViewModel loginViewModel;
+    private boolean remNameFlag = false;
+    private boolean remPwdFlag = false;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -44,6 +48,9 @@ public class LoginActivity extends AppCompatActivity {
         final EditText passwordEditText = findViewById(R.id.txt_password);
         final Button loginButton = findViewById(R.id.btn_login);
         final ProgressBar loadingProgressBar = findViewById(R.id.loading);
+        final CheckBox ckboxRemName = (CheckBox) findViewById(R.id.cb_remember_name);
+        final CheckBox ckboxRemPwd = (CheckBox) findViewById(R.id.cb_remember_pwd);
+
 
         loginViewModel.getLoginFormState().observe(this, new Observer<LoginFormState>() {
             @Override
@@ -112,6 +119,25 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
+        ckboxRemName.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(isChecked){
+                    remNameFlag = !remNameFlag;
+                }
+            }
+        });
+
+        ckboxRemPwd.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(isChecked){
+                    remPwdFlag = !remPwdFlag;
+                }
+            }
+        });
+
+
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -120,9 +146,21 @@ public class LoginActivity extends AppCompatActivity {
 //                        passwordEditText.getText().toString());
                 Intent it=new Intent(getApplicationContext(), MainActivity.class);//启动MainActivity
                 if(usernameEditText.getText().toString().equals("q") && passwordEditText.getText().toString().equals("123456"))
+                {
                     startActivity(it);
-                else
-                    Toast.makeText(LoginActivity.this,"账号密码错误,请重新输入!",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LoginActivity.this,"欢迎使用!",Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    Toast.makeText(LoginActivity.this, "账号密码错误,请重新输入!", Toast.LENGTH_SHORT).show();
+                }
+                if(remNameFlag==false)
+                {
+                    usernameEditText.setText("");
+                }
+                if(remPwdFlag==false)
+                {
+                    passwordEditText.setText("");
+                }
             }
         });
     }
