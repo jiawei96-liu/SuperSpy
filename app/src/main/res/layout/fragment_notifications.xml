@@ -1,30 +1,82 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent">
+    android:layout_height="fill_parent"
+    android:orientation="vertical">
+
     <TextView
         android:id="@+id/label"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="hello" />
-    <EditText
-        android:id="@+id/enter"
-        android:layout_width="fill_parent"
+        android:text="统计应用信息"
+        android:textSize="30sp"
+        android:background="#ffaa00"
+        android:textColor="#ffffff"
+        android:gravity="center"
+        android:padding="20dp"/>
+    <RelativeLayout
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/label" />
+        >
     <Button
         android:id="@+id/button1"
-        android:layout_width="wrap_content"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_below="@+id/enter"
-        android:text="butltext" />
+
+        android:text="名称" />
     <Button
-        android:id="@+id/ok"
-        android:layout_width="wrap_content"
+        android:id="@+id/button2"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/button1"
-        android:layout_alignParentLeft="true"
-        android:text="but2text" />
-</RelativeLayout>
+        android:layout_toRightOf="@+id/button1"
+        android:ellipsize="end"
+        android:text="启动时间" />
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/button2"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:text="最后启动时间" />
+    <Button
+        android:id="@+id/button4"
+        android:layout_width="110dp"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/button3"
+
+        android:text="总运行时间" />
+    </RelativeLayout>
+    <Button
+        android:id="@+id/button5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="耗电情况" />
+    <Button
+        android:id="@+id/button6"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="耗流情况"
+        />
+
+    <Button
+        android:id="@+id/button7"
+        android:layout_width="200dp"
+        android:layout_height="80dp"
+        android:layout_gravity="center"
+        android:background="#E44412"
+        android:text="筛选"
+        android:textColor="#ffffff"
+        android:textSize="50sp" />
+    <ImageView
+        android:id="@+id/iv_1"
+
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:background="#ff9900"
+        android:src="@drawable/timg"
+        android:scaleType="centerCrop"
+        android:layout_marginBottom="10dp"
+        />
+
+</LinearLayout>
