@@ -30,4 +30,9 @@ public class MainActivity extends BaseActivity {
         NavigationUI.setupWithNavController(navView, navController);
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+//        ActivityCollector.finishAll();
+    }
 }
