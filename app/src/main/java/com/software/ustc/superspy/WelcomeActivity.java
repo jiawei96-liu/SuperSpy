@@ -1,7 +1,5 @@
 package com.software.ustc.superspy;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.WindowManager;
@@ -20,7 +18,7 @@ public class WelcomeActivity extends BaseActivity {
             public void run() {
                 try{
                     sleep(WELCONE_DISPLAY_LENGHT);//使程序休眠五秒
-                    Intent it=new Intent(getApplicationContext(), MainActivity.class);//启动MainActivity
+                    Intent it=new Intent(getApplicationContext(), Login_Activity.class);//启动MainActivity
                     startActivity(it);
                     finish();//关闭当前活动
                 }catch (Exception e){

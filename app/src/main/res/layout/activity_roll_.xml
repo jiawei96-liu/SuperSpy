@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/background"
+    >
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="100dp"
+        android:layout_marginLeft="30dp"
+        android:padding="30dp"
+        android:layout_marginRight="30dp"
+
+        >
+        <TextView
+            android:id="@+id/roll_1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="欢迎注册"
+            android:layout_marginTop="30dp"
+            android:textSize="50sp"
+            android:gravity="center"
+            />
+        <EditText
+            android:layout_marginTop="50dp"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:textSize="30sp"
+            android:textColor="#ffad33"
+            android:id="@+id/roll_2"
+            android:background="@drawable/up2"
+            android:hint="请输入账号"
+            />
+
+        <EditText
+            android:id="@+id/roll_3"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="50dp"
+            android:background="@drawable/up2"
+            android:hint="请输入密码"
+            android:inputType="textPassword"
+            android:textColor="#ffad33"
+            android:textSize="30sp"
+
+            />
+        <EditText
+            android:id="@+id/roll_5"
+
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="50dp"
+            android:background="@drawable/up2"
+            android:hint="确认密码"
+            android:inputType="textPassword"
+            android:textColor="#ffad33"
+            android:textSize="30sp"
+
+            />
+
+        <Button
+            android:id="@+id/roll_4"
+            android:layout_width="200dp"
+            android:layout_height="80dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="60dp"
+            android:background="@drawable/selector_blue"
+            android:text="立刻注册"
+            android:textColor="#fff"
+            android:textSize="30dp" />
+    </LinearLayout>
+</LinearLayout>
