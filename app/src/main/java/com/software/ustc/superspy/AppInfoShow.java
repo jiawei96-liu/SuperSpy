@@ -9,7 +9,10 @@ import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.software.ustc.superspy.kits.AppInfo;
 import com.software.ustc.superspy.kits.AppInfoAdapter;
@@ -30,8 +33,17 @@ public class AppInfoShow extends BaseActivity {
         setContentView(R.layout.activity_app_info_show);
         getApps();
         AppInfoAdapter adapter = new AppInfoAdapter(AppInfoShow.this, R.layout.item_app_info, appInfoList);
-        ListView listView = (ListView) findViewById(R.id.lv_apps);
+        final ListView listView = (ListView) findViewById(R.id.lv_apps);
         listView.setAdapter(adapter);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                AppInfo appInfo = appInfoList.get(position);
+                Toast toast = Toast.makeText(AppInfoShow.this,null,Toast.LENGTH_SHORT);
+                toast.setText(appInfo.getAppName()+" : "+appInfo.getAppDir());
+                toast.show();
+            }
+        });
     }
 
     public void getApps() {

@@ -27,7 +27,18 @@ public class AppInfoAdapter extends ArrayAdapter<AppInfo> {
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         AppInfo appInfo = getItem(position);
-        View view=LayoutInflater.from(getContext()).inflate(resId,parent,false);
+
+        //可以将之前加载好的布局进行缓存,之后进行重用,提高加载速度
+        View view;
+        if(convertView == null)
+        {
+            view=LayoutInflater.from(getContext()).inflate(resId,parent,false);
+        }
+        else
+        {
+            view=convertView;
+        }
+
 
         ImageView appIcon = (ImageView)view.findViewById(R.id.iv_icon);
         TextView appName = (TextView)view.findViewById(R.id.txt_app_name);
