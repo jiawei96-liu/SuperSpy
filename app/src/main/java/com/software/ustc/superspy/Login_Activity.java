@@ -6,7 +6,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import com.software.ustc.superspy.kits.BaseActivity;
+import com.software.ustc.superspy.kits.Login_data;
 
 import org.litepal.LitePal;
 import org.litepal.tablemanager.Connector;
@@ -64,7 +68,8 @@ public class Login_Activity extends BaseActivity {
                         login1.updateAll("id=?", "1");
                     }
                     Toast.makeText(Login_Activity.this, "登录成功", Toast.LENGTH_SHORT).show();
-                    Intent intent1 = new Intent(Login_Activity.this, MainActivity.class);
+//                    Intent intent1 = new Intent(Login_Activity.this, MainActivity.class);
+                    Intent intent1 = new Intent(Login_Activity.this, AppInfoShow.class);
                     startActivity(intent1);
                 } else {
                     Toast.makeText(Login_Activity.this, "用户名或密码错误", Toast.LENGTH_SHORT).show();

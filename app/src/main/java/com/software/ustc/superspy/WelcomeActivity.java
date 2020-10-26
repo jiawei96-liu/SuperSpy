@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.WindowManager;
 
+import com.software.ustc.superspy.kits.BaseActivity;
+
 public class WelcomeActivity extends BaseActivity {
 
     private final int WELCONE_DISPLAY_LENGHT = 3000; // 3秒后进入系统

@@ -1,4 +1,4 @@
-package com.software.ustc.superspy;
+package com.software.ustc.superspy.kits;
 
 import org.litepal.crud.LitePalSupport;
 
