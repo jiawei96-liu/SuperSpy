@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.graphics.drawable.Drawable;
@@ -14,6 +15,7 @@ import com.software.ustc.superspy.kits.AppInfo;
 import com.software.ustc.superspy.kits.AppInfoAdapter;
 import com.software.ustc.superspy.kits.BaseActivity;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -38,13 +40,18 @@ public class AppInfoShow extends BaseActivity {
             //packageManager是应用管理者对象
             PackageManager packageManager = getPackageManager();
             //获取应用名
-            String appName =applicationInfo.loadLabel(packageManager).toString();
+            String appName = applicationInfo.loadLabel(packageManager).toString();
             //获取应用程序的 包名
             String appPackageName = applicationInfo.packageName;
-
             //获取应用图标
-            Drawable drawable = applicationInfo.loadIcon(packageManager);
-            appInfoList.add(new AppInfo(appName,appPackageName,0,drawable));
+            Drawable appIcon = applicationInfo.loadIcon(packageManager);
+            //获取应用存放数据目录
+            String appDir = applicationInfo.sourceDir;
+            //获取应用数据大小
+            long length = new File(appDir).length();
+            //转换为 M
+            int appSize = (int)(length*1f/1024/1024);
+            appInfoList.add(new AppInfo(appIcon, appName, appPackageName, appDir, appSize));
         }
     }
 
@@ -67,13 +74,7 @@ public class AppInfoShow extends BaseActivity {
         }
 
         for (ApplicationInfo app : appInfos) {
-            if((app.flags & ApplicationInfo.FLAG_SYSTEM) <= 0)//通过flag排除系统应用，会将电话、短信也排除掉
-            {
-                applicationInfos.add(app);
-            }
-//            if(app.uid > 10000){//通过uid排除系统应用，在一些手机上效果不好
-//                applicationInfos.add(app);
-//            }
+            //只列出有packageName的app
             if (allowPackages.contains(app.packageName)) {
                 applicationInfos.add(app);
             }

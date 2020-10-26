@@ -29,16 +29,20 @@ public class AppInfoAdapter extends ArrayAdapter<AppInfo> {
         AppInfo appInfo = getItem(position);
         View view=LayoutInflater.from(getContext()).inflate(resId,parent,false);
 
+        ImageView appIcon = (ImageView)view.findViewById(R.id.iv_icon);
         TextView appName = (TextView)view.findViewById(R.id.txt_app_name);
 //        TextView appVersion = (TextView)view.findViewById(R.id.txt_app_version);
         TextView appPackageName = (TextView)view.findViewById(R.id.txt_app_package_name);
-        ImageView appIcon = (ImageView)view.findViewById(R.id.iv_icon);
+//        TextView appDir = (TextView)view.findViewById(R.id.txt_app_dir);
+        TextView appSize = (TextView)view.findViewById(R.id.txt_app_size);
 
-        // 显示位图
-        appName.setText(appInfo.getAppName());
-//        appVersion.setText(appInfo.getAppVersion());
-        appPackageName.setText(appInfo.getAppPackageName());
         appIcon.setImageDrawable(appInfo.getAppIcon());
+        appName.setText(appInfo.getAppName());
+//        appVersion.setText("版本:"+appInfo.getAppVersion());
+        appPackageName.setText(appInfo.getAppPackageName());
+//        appDir.setText(appInfo.getAppDir());
+        appSize.setText(Integer.toString(appInfo.getAppSize())+"M");
+
         return view;
     }
 }

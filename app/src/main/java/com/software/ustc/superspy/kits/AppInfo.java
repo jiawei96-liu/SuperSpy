@@ -1,21 +1,30 @@
 package com.software.ustc.superspy.kits;
 
-import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
 
 public class AppInfo {
 
+    protected Drawable appIcon;
     protected String appName;
     protected String appPackageName;
-    protected int appVersion;
-    protected Drawable appIcon;
+//    protected String appVersion;
+    protected String appDir;
+    protected int appSize;
+//    protected boolean appIsSys;
 
-    public AppInfo(String appName, String appPackageName, int appVersion, Drawable appIcon)
+
+    public AppInfo(Drawable appIcon, String appName, String appPackageName, /*String appVersion, */String appDir, int appSize)
     {
+        this.appIcon=appIcon;
         this.appName=appName;
         this.appPackageName=appPackageName;
-        this.appVersion=appVersion;
-        this.appIcon=appIcon;
+//        this.appVersion=appVersion;
+        this.appDir=appDir;
+        this.appSize=appSize;
+    }
+
+    public Drawable getAppIcon() {
+        return appIcon;
     }
 
     public String getAppName() {
@@ -26,11 +35,15 @@ public class AppInfo {
         return appPackageName;
     }
 
-    public int getAppVersion() {
-        return appVersion;
+//    public String getAppVersion() {
+//        return appVersion;
+//    }
+
+    public String getAppDir() {
+        return appDir;
     }
 
-    public Drawable getAppIcon() {
-        return appIcon;
+    public int getAppSize() {
+        return appSize;
     }
 }
