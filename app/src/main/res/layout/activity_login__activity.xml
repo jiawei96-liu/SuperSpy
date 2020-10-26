@@ -7,7 +7,7 @@
     >
 
     <EditText
-        android:id="@+id/et_1"
+        android:id="@+id/eUsername"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginTop="80dp"
@@ -23,10 +23,10 @@
 
         android:textSize="16sp" />
     <EditText
-        android:layout_below="@id/et_1"
+        android:layout_below="@id/eUsername"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:id="@+id/et_2"
+        android:id="@+id/ePassward"
         android:textSize="16sp"
         android:layout_marginTop="15dp"
         android:textColor="#ffad33"
@@ -40,10 +40,10 @@
         android:maxLines="1"
         />
     <Button
-        android:id="@+id/btn_login"
+        android:id="@+id/bLogin"
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:layout_below="@id/et_2"
+        android:layout_below="@id/ePassward"
         android:layout_marginTop="40dp"
         android:background="@drawable/selector_blue"
         android:text="登录"
@@ -52,19 +52,19 @@
         />
     <Button
         android:layout_marginTop="20dp"
-        android:layout_below="@id/btn_login"
+        android:layout_below="@id/bLogin"
         android:layout_width="120dp"
         android:layout_height="wrap_content"
         android:textColor="#fff"
         android:text="注册账号"
-        android:id="@+id/et_0"
+        android:id="@+id/cRoll"
         android:background="@drawable/selector_blue"
         />
     <CheckBox
 
         android:id="@+id/cb_remember_pwd"
-        android:layout_below="@id/btn_login"
-        android:layout_alignRight="@id/btn_login"
+        android:layout_below="@id/bLogin"
+        android:layout_alignRight="@id/bLogin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="记住密码"
