@@ -57,6 +57,8 @@ public class Login_Activity extends BaseActivity {
                         break;
                     }
                 }
+
+                Toast toast = Toast.makeText(Login_Activity.this,null,Toast.LENGTH_SHORT);
                 if(account.equals("") && password.equals(""))
                     flag=0;
                 if (flag == 1) {
@@ -72,14 +74,14 @@ public class Login_Activity extends BaseActivity {
                         login1.setPassward("");
                         login1.updateAll("id=?", "1");
                     }
-                    Toast.makeText(Login_Activity.this, "登录成功", Toast.LENGTH_SHORT).show();
-//                    Intent intent1 = new Intent(Login_Activity.this, MainActivity.class);
+                    toast.setText("登录成功");
                     Intent intent1 = new Intent(Login_Activity.this, AppInfoShow.class);
                     startActivity(intent1);
                     finish();
                 } else {
-                    Toast.makeText(Login_Activity.this, "用户名或密码错误", Toast.LENGTH_SHORT).show();
+                    toast.setText("用户名或密码错误");
                 }
+                toast.show();
 
 
 
