@@ -12,30 +12,39 @@ import com.software.ustc.superspy.kits.Login_data;
 
 public class roll_Activity extends BaseActivity {
 
-    private Button button5;
+    private Button roll;
     private EditText accountRollEdit;
     private  EditText passwordRollEdit;
+    private  EditText passwordConfirm;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_roll_);
-        button5 =findViewById(R.id.roll_4);
-        accountRollEdit=findViewById(R.id.roll_2);
-        passwordRollEdit=findViewById(R.id.roll_3);
-        button5.setOnClickListener(new View.OnClickListener() {
+        accountRollEdit=findViewById(R.id.eLUsername);
+        passwordRollEdit=findViewById(R.id.eLPassward);
+        passwordConfirm=findViewById(R.id.eConfirm);
+        roll =findViewById(R.id.bRoll);
+        roll.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                Toast.makeText(roll_Activity.this,"注册成功",Toast.LENGTH_SHORT).show();
-
+                String passward = passwordRollEdit.getText().toString();
+                String passwardConfirm = passwordConfirm.getText().toString();
                 String account1 = accountRollEdit.getText().toString();
-                String password1 =passwordRollEdit.getText().toString();
-                Login_data login=new Login_data();
-                login.setUsername(account1);
-                login.setPassward(password1);
-                login.save();
-                Intent intent = new Intent(roll_Activity.this, Login_Activity.class);
-                startActivity(intent);
+                if(!(passward.equals(passwardConfirm)))
+                    Toast.makeText(roll_Activity.this,"两次输入的密码不一致",Toast.LENGTH_SHORT).show();
+                else if(passward.equals("")||account1.equals("")){
+                    Toast.makeText(roll_Activity.this,"用户名或密码为空",Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    Toast.makeText(roll_Activity.this, "注册成功", Toast.LENGTH_SHORT).show();
+                    Login_data login = new Login_data();
+                    login.setUsername(account1);
+                    login.setPassward(passward);
+                    login.save();
+                    Intent intent = new Intent(roll_Activity.this, Login_Activity.class);
+                    startActivity(intent);
+                    finish();
+                }
             }
         });
     }
