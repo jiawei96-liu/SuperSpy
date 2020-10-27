@@ -29,7 +29,7 @@ public class Login_Activity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login__activity);
+        setContentView(R.layout.activity_login_activity);
         //LitePal.initialize(this);
         login=findViewById(R.id.bLogin);
         roll=findViewById(R.id.cRoll);

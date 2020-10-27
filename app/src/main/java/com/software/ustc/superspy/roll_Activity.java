@@ -20,7 +20,7 @@ public class roll_Activity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_roll_);
+        setContentView(R.layout.activity_roll);
         accountRollEdit = findViewById(R.id.eLUsername);
         passwordRollEdit = findViewById(R.id.eLPassward);
         passwordConfirm = findViewById(R.id.eConfirm);
