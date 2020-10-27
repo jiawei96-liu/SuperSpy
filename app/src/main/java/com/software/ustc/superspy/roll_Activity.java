@@ -10,7 +10,7 @@ import android.widget.Toast;
 import com.software.ustc.superspy.kits.BaseActivity;
 import com.software.ustc.superspy.kits.Login_data;
 
-public class roll_Activity extends BaseActivity {
+public class Roll_Activity extends BaseActivity {
 
     private Button roll;
     private EditText accountRollEdit;
@@ -28,7 +28,7 @@ public class roll_Activity extends BaseActivity {
         roll.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast toast = Toast.makeText(roll_Activity.this, null, Toast.LENGTH_SHORT);
+                Toast toast = Toast.makeText(Roll_Activity.this, null, Toast.LENGTH_SHORT);
                 String passward = passwordRollEdit.getText().toString();
                 String passwardConfirm = passwordConfirm.getText().toString();
                 String account1 = accountRollEdit.getText().toString();
@@ -42,7 +42,7 @@ public class roll_Activity extends BaseActivity {
                     login.setUsername(account1);
                     login.setPassward(passward);
                     login.save();
-                    Intent intent = new Intent(roll_Activity.this, Login_Activity.class);
+                    Intent intent = new Intent(Roll_Activity.this, Login_Activity.class);
                     startActivity(intent);
                     finish();
                 }

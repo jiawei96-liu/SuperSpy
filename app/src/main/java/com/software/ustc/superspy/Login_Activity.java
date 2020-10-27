@@ -93,7 +93,7 @@ public class Login_Activity extends BaseActivity {
         roll.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Login_Activity.this,roll_Activity.class);
+                Intent intent = new Intent(Login_Activity.this,Roll_Activity.class);
                 startActivity(intent);
 
             }
