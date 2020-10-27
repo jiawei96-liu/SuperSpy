@@ -24,7 +24,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-public class AppInfoShow extends BaseActivity {
+public class AppInfoShowActivity extends BaseActivity {
     private List<AppInfo> appInfoList = new ArrayList<>();
 
     @Override
@@ -32,14 +32,14 @@ public class AppInfoShow extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_app_info_show);
         getApps();
-        AppInfoAdapter adapter = new AppInfoAdapter(AppInfoShow.this, R.layout.item_app_info, appInfoList);
+        AppInfoAdapter adapter = new AppInfoAdapter(AppInfoShowActivity.this, R.layout.item_app_info, appInfoList);
         final ListView listView = (ListView) findViewById(R.id.lv_apps);
         listView.setAdapter(adapter);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 AppInfo appInfo = appInfoList.get(position);
-                Toast toast = Toast.makeText(AppInfoShow.this,null,Toast.LENGTH_SHORT);
+                Toast toast = Toast.makeText(AppInfoShowActivity.this,null,Toast.LENGTH_SHORT);
                 toast.setText(appInfo.getAppName()+" : "+appInfo.getAppDir());
                 toast.show();
             }

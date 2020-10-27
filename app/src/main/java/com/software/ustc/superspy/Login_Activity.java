@@ -75,7 +75,7 @@ public class Login_Activity extends BaseActivity {
                         login1.updateAll("id=?", "1");
                     }
                     toast.setText("登录成功");
-                    Intent intent1 = new Intent(Login_Activity.this, AppInfoShow.class);
+                    Intent intent1 = new Intent(Login_Activity.this, AppInfoShowActivity.class);
                     startActivity(intent1);
                     finish();
                 } else {
