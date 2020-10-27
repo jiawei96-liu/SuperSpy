@@ -29,7 +29,7 @@ public class Login_Activity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login__activity);
+        setContentView(R.layout.activity_login_activity);
         //LitePal.initialize(this);
         login=findViewById(R.id.bLogin);
         roll=findViewById(R.id.cRoll);
@@ -75,7 +75,7 @@ public class Login_Activity extends BaseActivity {
                         login1.updateAll("id=?", "1");
                     }
                     toast.setText("登录成功");
-                    Intent intent1 = new Intent(Login_Activity.this, AppInfoShow.class);
+                    Intent intent1 = new Intent(Login_Activity.this, AppInfoShowActivity.class);
                     startActivity(intent1);
                     finish();
                 } else {
@@ -93,7 +93,7 @@ public class Login_Activity extends BaseActivity {
         roll.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Login_Activity.this,roll_Activity.class);
+                Intent intent = new Intent(Login_Activity.this,Roll_Activity.class);
                 startActivity(intent);
 
             }
