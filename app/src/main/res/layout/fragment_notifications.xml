@@ -88,15 +88,4 @@
         android:text="筛选"
         android:textColor="#ffffff"
         android:textSize="50sp" />
-    <ImageView
-        android:id="@+id/iv_1"
-
-        android:layout_width="match_parent"
-        android:layout_height="300dp"
-        android:background="#ff9900"
-        android:src="@drawable/timg"
-        android:scaleType="centerCrop"
-        android:layout_marginBottom="10dp"
-        />
-
 </LinearLayout>
