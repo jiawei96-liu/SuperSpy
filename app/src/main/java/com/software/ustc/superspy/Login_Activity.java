@@ -30,16 +30,25 @@ public class Login_Activity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_activity);
-        //LitePal.initialize(this);
+        LitePal.initialize(this);
+        Connector.getDatabase();
         login=findViewById(R.id.bLogin);
         roll=findViewById(R.id.cRoll);
         accountEdit=findViewById(R.id.eUsername);
         passwordEdit=findViewById(R.id.ePassward);
         rememberpass=findViewById(R.id.cb_remember_pwd);
-
-        Login_data loginId1 = LitePal.find(Login_data.class, 1);
-        accountEdit.setText(loginId1.getUsername());
-        passwordEdit.setText(loginId1.getPassward());
+        Login_data movie = LitePal.find(Login_data.class,1);
+        if(movie!=null) {
+            Login_data loginId1 = LitePal.find(Login_data.class, 1);
+            accountEdit.setText(loginId1.getUsername());
+            passwordEdit.setText(loginId1.getPassward());
+        }
+        else {
+            Login_data login1 = new Login_data();
+            login1.setUsername("");
+            login1.setPassward("");
+            login1.updateAll("id=?", "1");
+        }
 
         login.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -67,6 +76,7 @@ public class Login_Activity extends BaseActivity {
                         login1.setUsername(account);
                         login1.setPassward(password);
                         login1.updateAll("id=?", "1");
+
                     }
                     else{
                         Login_data login1 = new Login_data();
@@ -93,7 +103,7 @@ public class Login_Activity extends BaseActivity {
         roll.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Login_Activity.this,Roll_Activity.class);
+                Intent intent = new Intent(Login_Activity.this,roll_Activity.class);
                 startActivity(intent);
 
             }

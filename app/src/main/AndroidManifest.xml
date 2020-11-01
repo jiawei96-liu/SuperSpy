@@ -11,7 +11,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".AppInfoShowActivity"></activity>
-        <activity android:name=".Roll_Activity" />
+        <activity android:name=".roll_Activity" />
         <activity android:name=".Login_Activity" />
         <activity android:name=".WelcomeActivity">
             <intent-filter>
