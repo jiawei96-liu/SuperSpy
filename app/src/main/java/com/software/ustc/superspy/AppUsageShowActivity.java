@@ -24,12 +24,12 @@ public class AppUsageShowActivity extends BaseActivity {
                 bundle.getString("appPkgName",""),bundle.getString("appVersion",""),
                 bundle.getString("appDir",""),bundle.getInt("appSize",0));
 
-        ImageView appIcon = (ImageView)findViewById(R.id.iv_icon_in_usage);
-        TextView appName = (TextView)findViewById(R.id.txt_app_name_in_usage);
-        TextView appVersion = (TextView)findViewById(R.id.txt_app_version_in_usage);
-        TextView appPackageName = (TextView)findViewById(R.id.txt_app_package_name_in_usage);
-        TextView appDir = (TextView)findViewById(R.id.txt_app_dir_in_usage);
-        TextView appSize = (TextView)findViewById(R.id.txt_app_size_in_usage);
+        ImageView appIcon = (ImageView)findViewById(R.id.iv_icon_single);
+        TextView appName = (TextView)findViewById(R.id.txt_app_name_single);
+        TextView appVersion = (TextView)findViewById(R.id.txt_app_version_single);
+        TextView appPackageName = (TextView)findViewById(R.id.txt_app_package_name_single);
+        TextView appDir = (TextView)findViewById(R.id.txt_app_dir_single);
+        TextView appSize = (TextView)findViewById(R.id.txt_app_size_single);
 
         appIcon.setImageDrawable(PicUtil.BitmapToDrawable(PicUtil.CreateReflectionImageWithOrigin(appInfo.getAppIcon())));
         appName.setText(appInfo.getAppName());
@@ -37,5 +37,7 @@ public class AppUsageShowActivity extends BaseActivity {
         appPackageName.setText("包名: "+appInfo.getAppPackageName());
         appDir.setText("路径: "+appInfo.getAppDir());
         appSize.setText("大小: "+Integer.toString(appInfo.getAppSize())+" M");
+
+
     }
 }
