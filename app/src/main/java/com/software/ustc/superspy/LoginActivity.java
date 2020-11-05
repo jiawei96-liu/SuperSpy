@@ -9,7 +9,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.software.ustc.superspy.kits.BaseActivity;
-import com.software.ustc.superspy.db.litepalDB.LoginData;
+import com.software.ustc.superspy.db.litepal.LoginData;
 
 import org.litepal.LitePal;
 import org.litepal.tablemanager.Connector;

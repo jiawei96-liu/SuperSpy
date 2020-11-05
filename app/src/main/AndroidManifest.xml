@@ -10,7 +10,10 @@
         android:roundIcon="@mipmap/superspy"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".AppInfoShowActivity"></activity>
+        <activity android:name=".AppUsageAnalysisActivity"></activity>
+        <activity android:name=".SysInfoShowActivity" />
+        <activity android:name=".AppUsageActivity" />
+        <activity android:name=".AppInfoShowActivity" />
         <activity android:name=".RollActivity" />
         <activity android:name=".LoginActivity" />
         <activity android:name=".WelcomeActivity">

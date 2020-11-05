@@ -6,16 +6,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.software.ustc.superspy.AppInfoShowActivity;
 import com.software.ustc.superspy.R;
+import com.software.ustc.superspy.SysInfoShowActivity;
 
 public class DashboardFragment extends Fragment implements View.OnClickListener {
 
@@ -38,12 +36,12 @@ public class DashboardFragment extends Fragment implements View.OnClickListener 
 
     @Override
     public void onClick(View v) {
-        Intent intent;
         switch (v.getId()) {
             case R.id.btn_apps:
-                intent=new Intent(getActivity(), AppInfoShowActivity.class);
-                startActivity(intent);
+                startActivity(new Intent(getActivity(), AppInfoShowActivity.class));
                 break;
+            case R.id.btn_sys:
+                startActivity(new Intent(getActivity(), SysInfoShowActivity.class));
             default:
                 break;
         }
