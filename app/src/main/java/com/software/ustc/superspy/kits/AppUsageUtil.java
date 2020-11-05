@@ -77,7 +77,7 @@ public class AppUsageUtil {
         return topActivityPackageName;
     }
 
-    public HashMap<String, Integer> getTimeSpent( Context context,String packageName, long beginTime, long endTime) {
+    public static HashMap<String, Integer> getTimeSpent( Context context,String packageName, long beginTime, long endTime) {
         UsageEvents.Event currentEvent;
         List<UsageEvents.Event> allEvents = new ArrayList<>();
         HashMap<String, Integer> appUsageMap = new HashMap<>();
