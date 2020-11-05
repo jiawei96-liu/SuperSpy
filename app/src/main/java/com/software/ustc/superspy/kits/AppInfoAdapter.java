@@ -45,14 +45,10 @@ public class AppInfoAdapter extends ArrayAdapter<AppInfo> {
         TextView appName = (TextView)view.findViewById(R.id.txt_app_name);
         TextView appVersion = (TextView)view.findViewById(R.id.txt_app_version);
         TextView appPackageName = (TextView)view.findViewById(R.id.txt_app_package_name);
-//        TextView appDir = (TextView)view.findViewById(R.id.txt_app_dir);
-//        TextView appSize = (TextView)view.findViewById(R.id.txt_app_size);
         appIcon.setImageDrawable(PicUtil.BitmapToDrawable(PicUtil.SetRoundCornerBitmap(appInfo.getAppIcon(),90)));
         appName.setText(appInfo.getAppName());
         appVersion.setText("版本:"+appInfo.getAppVersion());
         appPackageName.setText(appInfo.getAppPackageName());
-//        appDir.setText(appInfo.getAppDir());
-//        appSize.setText(Integer.toString(appInfo.getAppSize())+"M");
 
         return view;
     }

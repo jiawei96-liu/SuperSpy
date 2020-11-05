@@ -10,11 +10,11 @@ public class AppInfo {
     protected String appPackageName;
     protected String appVersion;
     protected String appDir;
-    protected int appSize;
+    protected long appSize;
 //    protected boolean appIsSys;
 
 
-    public AppInfo(Bitmap appIcon, String appName, String appPackageName, String appVersion, String appDir, int appSize)
+    public AppInfo(Bitmap appIcon, String appName, String appPackageName, String appVersion, String appDir, long appSize)
     {
         this.appIcon=appIcon;
         this.appName=appName;
@@ -44,7 +44,7 @@ public class AppInfo {
         return appDir;
     }
 
-    public int getAppSize() {
+    public long getAppSize() {
         return appSize;
     }
 }

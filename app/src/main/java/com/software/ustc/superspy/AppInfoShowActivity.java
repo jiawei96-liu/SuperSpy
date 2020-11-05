@@ -54,7 +54,7 @@ public class AppInfoShowActivity extends BaseActivity {
                 Bundle appInfoBundle=new Bundle();
                 appInfoBundle.putString("appName",appInfo.getAppName());
                 appInfoBundle.putString("appPkgName",appInfo.getAppPackageName());
-                appInfoBundle.putInt("appSize",appInfo.getAppSize());
+                appInfoBundle.putLong("appSize",appInfo.getAppSize());
                 appInfoBundle.putString("appDir",appInfo.getAppDir());
                 appInfoBundle.putString("appVersion",appInfo.getAppVersion());
                 intent.putExtra("appInfo",appInfoBundle);
@@ -85,9 +85,7 @@ public class AppInfoShowActivity extends BaseActivity {
             //获取应用存放数据目录
             String appDir = applicationInfo.sourceDir;
             //获取应用数据大小
-            long length = new File(appDir).length();
-            //转换为 M
-            int appSize = (int)(length*1f/1024/1024);
+            long appSize = new File(appDir).length();
             appInfoList.add(new AppInfo(appIcon, appName, appPackageName, appVersion, appDir, appSize));
         }
     }

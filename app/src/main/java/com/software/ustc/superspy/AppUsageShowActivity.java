@@ -22,7 +22,7 @@ public class AppUsageShowActivity extends BaseActivity {
         Bitmap appIron=getIntent().getParcelableExtra("appIron");
         appInfo = new AppInfo(appIron,bundle.getString("appName",""),
                 bundle.getString("appPkgName",""),bundle.getString("appVersion",""),
-                bundle.getString("appDir",""),bundle.getInt("appSize",0));
+                bundle.getString("appDir",""),bundle.getLong("appSize",0));
 
         ImageView appIcon = (ImageView)findViewById(R.id.iv_icon_single);
         TextView appName = (TextView)findViewById(R.id.txt_app_name_single);
@@ -36,7 +36,9 @@ public class AppUsageShowActivity extends BaseActivity {
         appVersion.setText("版本号: "+appInfo.getAppVersion());
         appPackageName.setText("包名: "+appInfo.getAppPackageName());
         appDir.setText("路径: "+appInfo.getAppDir());
-        appSize.setText("大小: "+Integer.toString(appInfo.getAppSize())+" M");
+        java.text.DecimalFormat myformat=new java.text.DecimalFormat("0.00");
+        String appSiseMB = myformat.format(appInfo.getAppSize()/1024.0/1024.0);
+        appSize.setText("大小: "+appSiseMB+"M / "+Long.toString(appInfo.getAppSize())+"B");
 
 
     }
