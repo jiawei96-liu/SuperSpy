@@ -40,8 +40,20 @@ public class AppInfoShowActivity extends BaseActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 AppInfo appInfo = appInfoList.get(position);
                 Toast toast = Toast.makeText(AppInfoShowActivity.this,null,Toast.LENGTH_SHORT);
-                toast.setText(appInfo.getAppName()+" : "+appInfo.getAppDir());
+                toast.setText(appInfo.getAppName()+" : "+appInfo.getAppName());
                 toast.show();
+                Intent intent = new Intent();
+
+//                //传递Bundle(集装箱),将我们需要传递的数据全部放入集装箱，然后直接将集装箱传递到目标页面
+//                Bundle appInfoBundle=new Bundle();
+//                appInfoBundle.putString("appName",appInfo.getAppName());
+//                appInfoBundle.putString("appPkgName",appInfo.getAppPackageName());
+//                appInfoBundle.putInt("appSize",appInfo.getAppSize());
+//                appInfoBundle.putString("appDir",appInfo.getAppDir());
+//                appInfoBundle.putByteArray("appIcon",appInfo.getAppIcon().);
+//                intent.putExtra("appInfo",appInfoBundle);
+//                intent.setClass(AppInfoShowActivity.this,AppUsageShowActivity.class);
+//                startActivity(intent);
             }
         });
     }
