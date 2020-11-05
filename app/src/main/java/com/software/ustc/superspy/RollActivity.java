@@ -8,7 +8,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.software.ustc.superspy.kits.BaseActivity;
-import com.software.ustc.superspy.kits.Login_data;
+import com.software.ustc.superspy.db.litepalDB.LoginData;
 
 import org.litepal.LitePal;
 
@@ -37,8 +37,8 @@ public class RollActivity extends BaseActivity {
                 String passward = passwordRollEdit.getText().toString();
                 String passwardConfirm = passwordConfirm.getText().toString();
                 String account1 = accountRollEdit.getText().toString();
-                List<Login_data> logins = LitePal.findAll(Login_data.class);
-                for (Login_data data1 : logins) {
+                List<LoginData> logins = LitePal.findAll(LoginData.class);
+                for (LoginData data1 : logins) {
                     if (account1.equals(data1.getUsername()) ) {
                         flag = 1;
                         break;
@@ -53,7 +53,7 @@ public class RollActivity extends BaseActivity {
                 }
                 else {
                     toast.setText("注册成功");
-                    Login_data login = new Login_data();
+                    LoginData login = new LoginData();
                     login.setUsername(account1);
                     login.setPassward(passward);
                     login.save();

@@ -1,8 +1,8 @@
-package com.software.ustc.superspy.kits;
+package com.software.ustc.superspy.db.litepal;
 
 import org.litepal.crud.LitePalSupport;
 
-public class Login_data extends LitePalSupport {
+public class LoginData extends LitePalSupport {
     private  String username;
     private  String passward;
     private int id;

@@ -6,11 +6,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.software.ustc.superspy.kits.BaseActivity;
-import com.software.ustc.superspy.kits.Login_data;
+import com.software.ustc.superspy.db.litepalDB.LoginData;
 
 import org.litepal.LitePal;
 import org.litepal.tablemanager.Connector;
@@ -37,14 +36,14 @@ public class LoginActivity extends BaseActivity {
         accountEdit=findViewById(R.id.eUsername);
         passwordEdit=findViewById(R.id.ePassward);
         rememberpass=findViewById(R.id.cb_remember_pwd);
-        Login_data movie = LitePal.find(Login_data.class,1);
+        LoginData movie = LitePal.find(LoginData.class,1);
         if(movie!=null) {
-            Login_data loginId1 = LitePal.find(Login_data.class, 1);
+            LoginData loginId1 = LitePal.find(LoginData.class, 1);
             accountEdit.setText(loginId1.getUsername());
             passwordEdit.setText(loginId1.getPassward());
         }
         else {
-            Login_data login1 = new Login_data();
+            LoginData login1 = new LoginData();
             login1.setUsername("");
             login1.setPassward("");
             login1.updateAll("id=?", "1");
@@ -58,9 +57,9 @@ public class LoginActivity extends BaseActivity {
 
                 String account = accountEdit.getText().toString();
                 String password = passwordEdit.getText().toString();
-                List<Login_data> logins = LitePal.findAll(Login_data.class);
+                List<LoginData> logins = LitePal.findAll(LoginData.class);
 
-                for (Login_data data1 : logins) {
+                for (LoginData data1 : logins) {
                     if (account.equals(data1.getUsername()) && password.equals(data1.getPassward())) {
                         flag = 1;
                         break;
@@ -72,14 +71,14 @@ public class LoginActivity extends BaseActivity {
                     flag=0;
                 if (flag == 1) {
                     if (rememberpass.isChecked()) {
-                        Login_data login1 = new Login_data();
+                        LoginData login1 = new LoginData();
                         login1.setUsername(account);
                         login1.setPassward(password);
                         login1.updateAll("id=?", "1");
 
                     }
                     else{
-                        Login_data login1 = new Login_data();
+                        LoginData login1 = new LoginData();
                         login1.setUsername("");
                         login1.setPassward("");
                         login1.updateAll("id=?", "1");

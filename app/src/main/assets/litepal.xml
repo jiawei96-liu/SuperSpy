@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <litepal>
     <!--数据库名称-->
-    <dbname value="data" />
+    <dbname value="LoginData" />
     <!--数据库版本号-->
     <version value="1" />
     <!--用于设定所有的映射模型,即你定义数据库表的类名路径-->
     <list>
-        <mapping class="com.software.ustc.superspy.kits.Login_data" />
+        <mapping class="com.software.ustc.superspy.db.litepalDB.LoginData" />
     </list>
 </litepal>
