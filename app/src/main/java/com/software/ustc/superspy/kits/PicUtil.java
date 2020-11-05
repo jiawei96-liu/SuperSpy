@@ -122,10 +122,15 @@ public class PicUtil {
                 + reflectionGap, paint);
         return bitmapWithReflection;
     }
-    //bitmap ---Drawable
+    //bitmap -->Drawable
     public static Drawable BitmapToDrawable(Bitmap bitmap, Context context) {
         BitmapDrawable drawbale = new BitmapDrawable(context.getResources(),
                 bitmap);
+        return drawbale;
+    }
+    //bitmap -->Drawable
+    public static Drawable BitmapToDrawable(Bitmap bitmap) {
+        BitmapDrawable drawbale = new BitmapDrawable(bitmap);
         return drawbale;
     }
     //drawable进行缩放 ---> bitmap 然后比对bitmap进行缩放

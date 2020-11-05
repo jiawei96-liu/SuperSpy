@@ -7,6 +7,7 @@ import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
+import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
@@ -17,6 +18,7 @@ import android.widget.Toast;
 import com.software.ustc.superspy.kits.AppInfo;
 import com.software.ustc.superspy.kits.AppInfoAdapter;
 import com.software.ustc.superspy.kits.BaseActivity;
+import com.software.ustc.superspy.kits.PicUtil;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -31,7 +33,11 @@ public class AppInfoShowActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_app_info_show);
-        getApps();
+        try {
+            getApps();
+        } catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
+        }
         AppInfoAdapter adapter = new AppInfoAdapter(AppInfoShowActivity.this, R.layout.item_app_info, appInfoList);
         final ListView listView = (ListView) findViewById(R.id.lv_apps);
         listView.setAdapter(adapter);
@@ -39,43 +45,50 @@ public class AppInfoShowActivity extends BaseActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 AppInfo appInfo = appInfoList.get(position);
-                Toast toast = Toast.makeText(AppInfoShowActivity.this,null,Toast.LENGTH_SHORT);
-                toast.setText(appInfo.getAppName()+" : "+appInfo.getAppName());
-                toast.show();
+//                Toast toast = Toast.makeText(AppInfoShowActivity.this,null,Toast.LENGTH_SHORT);
+//                toast.setText(appInfo.getAppName()+" : "+appInfo.getAppName());
+//                toast.show();
                 Intent intent = new Intent();
 
-//                //传递Bundle(集装箱),将我们需要传递的数据全部放入集装箱，然后直接将集装箱传递到目标页面
-//                Bundle appInfoBundle=new Bundle();
-//                appInfoBundle.putString("appName",appInfo.getAppName());
-//                appInfoBundle.putString("appPkgName",appInfo.getAppPackageName());
-//                appInfoBundle.putInt("appSize",appInfo.getAppSize());
-//                appInfoBundle.putString("appDir",appInfo.getAppDir());
-//                appInfoBundle.putByteArray("appIcon",appInfo.getAppIcon().);
-//                intent.putExtra("appInfo",appInfoBundle);
-//                intent.setClass(AppInfoShowActivity.this,AppUsageShowActivity.class);
-//                startActivity(intent);
+                //传递Bundle(集装箱),将我们需要传递的数据全部放入集装箱，然后直接将集装箱传递到目标页面
+                Bundle appInfoBundle=new Bundle();
+                appInfoBundle.putString("appName",appInfo.getAppName());
+                appInfoBundle.putString("appPkgName",appInfo.getAppPackageName());
+                appInfoBundle.putInt("appSize",appInfo.getAppSize());
+                appInfoBundle.putString("appDir",appInfo.getAppDir());
+                appInfoBundle.putString("appVersion",appInfo.getAppVersion());
+                intent.putExtra("appInfo",appInfoBundle);
+                //传递bitmap
+                intent.putExtra("appIron", appInfo.getAppIcon());
+                intent.setClass(AppInfoShowActivity.this,AppUsageShowActivity.class);
+                startActivity(intent);
             }
         });
     }
 
-    public void getApps() {
+    public void getApps() throws PackageManager.NameNotFoundException {
         List<ApplicationInfo> apps = queryFilterAppInfo();
         for (ApplicationInfo applicationInfo : apps) {
             //packageManager是应用管理者对象
             PackageManager packageManager = getPackageManager();
+
+            //获取应用图标
+            Drawable appIconDrawale = applicationInfo.loadIcon(packageManager);
+            Bitmap appIcon = PicUtil.DrawableToBitmap(appIconDrawale);
             //获取应用名
             String appName = applicationInfo.loadLabel(packageManager).toString();
-            //获取应用程序的 包名
+            //获取应用程序的包名
             String appPackageName = applicationInfo.packageName;
-            //获取应用图标
-            Drawable appIcon = applicationInfo.loadIcon(packageManager);
+            //获取应用程序的版本
+            PackageInfo packageInfo =packageManager.getPackageInfo(appPackageName,0);
+            String appVersion=packageInfo.versionName;
             //获取应用存放数据目录
             String appDir = applicationInfo.sourceDir;
             //获取应用数据大小
             long length = new File(appDir).length();
             //转换为 M
             int appSize = (int)(length*1f/1024/1024);
-            appInfoList.add(new AppInfo(appIcon, appName, appPackageName, appDir, appSize));
+            appInfoList.add(new AppInfo(appIcon, appName, appPackageName, appVersion, appDir, appSize));
         }
     }
 
