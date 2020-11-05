@@ -14,7 +14,7 @@ import org.litepal.LitePal;
 
 import java.util.List;
 
-public class roll_Activity extends BaseActivity {
+public class RollActivity extends BaseActivity {
 
     private Button roll;
     private EditText accountRollEdit;
@@ -33,7 +33,7 @@ public class roll_Activity extends BaseActivity {
             @Override
             public void onClick(View v) {
                 int flag=0;
-                Toast toast = Toast.makeText(roll_Activity.this, null, Toast.LENGTH_SHORT);
+                Toast toast = Toast.makeText(RollActivity.this, null, Toast.LENGTH_SHORT);
                 String passward = passwordRollEdit.getText().toString();
                 String passwardConfirm = passwordConfirm.getText().toString();
                 String account1 = accountRollEdit.getText().toString();
@@ -57,7 +57,7 @@ public class roll_Activity extends BaseActivity {
                     login.setUsername(account1);
                     login.setPassward(passward);
                     login.save();
-                    Intent intent = new Intent(roll_Activity.this, Login_Activity.class);
+                    Intent intent = new Intent(RollActivity.this, LoginActivity.class);
                     startActivity(intent);
                     finish();
                 }

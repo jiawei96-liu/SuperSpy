@@ -17,7 +17,7 @@ import org.litepal.tablemanager.Connector;
 
 import java.util.List;
 
-public class Login_Activity extends BaseActivity {
+public class LoginActivity extends BaseActivity {
 
     private Button login;
     private CheckBox rememberpass;
@@ -67,7 +67,7 @@ public class Login_Activity extends BaseActivity {
                     }
                 }
 
-                Toast toast = Toast.makeText(Login_Activity.this,null,Toast.LENGTH_SHORT);
+                Toast toast = Toast.makeText(LoginActivity.this,null,Toast.LENGTH_SHORT);
                 if(account.equals("") && password.equals(""))
                     flag=0;
                 if (flag == 1) {
@@ -85,7 +85,7 @@ public class Login_Activity extends BaseActivity {
                         login1.updateAll("id=?", "1");
                     }
                     toast.setText("登录成功");
-                    Intent intent1 = new Intent(Login_Activity.this, MainActivity.class);
+                    Intent intent1 = new Intent(LoginActivity.this, MainActivity.class);
                     startActivity(intent1);
                     finish();
                 } else {
@@ -103,7 +103,7 @@ public class Login_Activity extends BaseActivity {
         roll.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Login_Activity.this,roll_Activity.class);
+                Intent intent = new Intent(LoginActivity.this,RollActivity.class);
                 startActivity(intent);
 
             }
