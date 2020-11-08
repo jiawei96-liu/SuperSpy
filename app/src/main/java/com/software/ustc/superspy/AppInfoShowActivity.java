@@ -26,6 +26,56 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+
+
+
+
+
+
+import java.util.ArrayList;
+import java.util.List;
+
+
+import android.net.Uri;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
+import android.util.Log;
+import android.view.Gravity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.View.OnLongClickListener;
+import android.view.animation.ScaleAnimation;
+import android.view.ViewGroup;
+import android.widget.AbsListView.OnScrollListener;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.AbsListView;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.ListView;
+import android.widget.PopupWindow;
+import android.widget.TextView;
+import android.widget.Toast;
+import android.annotation.SuppressLint;
+import android.app.Activity;
+import android.content.Intent;
+import android.content.pm.ActivityInfo;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.PackageManager.NameNotFoundException;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
+
+
+
+
+
+
+
+
 public class AppInfoShowActivity extends BaseActivity {
     private List<AppInfo> appInfoList = new ArrayList<>();
 
@@ -33,6 +83,7 @@ public class AppInfoShowActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_app_info_show);
+
         try {
             getApps();
         } catch (PackageManager.NameNotFoundException e) {
@@ -116,4 +167,8 @@ public class AppInfoShowActivity extends BaseActivity {
         }
         return applicationInfos;
     }
+
+
+
+
 }

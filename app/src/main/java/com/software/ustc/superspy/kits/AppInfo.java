@@ -11,6 +11,7 @@ public class AppInfo {
     protected String appVersion;
     protected String appDir;
     protected long appSize;
+    private boolean isSystemApp;
 //    protected boolean appIsSys;
 
 
@@ -46,5 +47,13 @@ public class AppInfo {
 
     public long getAppSize() {
         return appSize;
+    }
+
+    public boolean isSystemApp() {
+        return isSystemApp;
+    }
+
+    public void setSystemApp(boolean isSystemApp) {
+        this.isSystemApp = isSystemApp;
     }
 }
