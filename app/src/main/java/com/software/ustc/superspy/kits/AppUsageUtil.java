@@ -6,16 +6,23 @@ import android.app.usage.UsageStatsManager;
 import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
 
+import com.software.ustc.superspy.db.sqllite.AppUsageDao;
+
 import java.lang.reflect.Field;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.SortedMap;
 import java.util.TreeMap;
+import java.util.concurrent.TimeUnit;
 
 public class AppUsageUtil {
     private final static String TAG = "AppUsageUtil";
@@ -77,7 +84,57 @@ public class AppUsageUtil {
         return topActivityPackageName;
     }
 
-    public static HashMap<String, Integer> getTimeSpent( Context context,String packageName, long beginTime, long endTime) {
+    public static void getAppUsageInfo(Context context){
+        Calendar beginCal = Calendar.getInstance();
+        beginCal.add(Calendar.HOUR_OF_DAY, -1);
+        Calendar endCal = Calendar.getInstance();
+
+        long start_time = beginCal.getTimeInMillis();
+        long end_time = endCal.getTimeInMillis();
+
+        UsageStatsManager usageStatsManager = (UsageStatsManager)context.getSystemService(Context.USAGE_STATS_SERVICE);
+        List<UsageStats> list = usageStatsManager.queryUsageStats(UsageStatsManager.INTERVAL_YEARLY,start_time, end_time);
+
+        String run_times ="none";
+        AppUsageDao appUsageDao = new AppUsageDao(context);
+        appUsageDao.deleteAppInfo("runlog");
+
+        for(UsageStats tt : list){
+
+            try{
+                run_times = String.valueOf(tt.getClass().getDeclaredField("mLaunchCount").getInt(tt));
+            } catch (NoSuchFieldException | IllegalAccessException e) {
+                e.printStackTrace();
+            }
+
+            SimpleDateFormat df = new SimpleDateFormat("yyyyMMdd HH:mm:ss");
+            String PackageName = tt.getPackageName();
+            String first_start_time = df.format(tt.getFirstTimeStamp());
+            String last_time = df.format(tt.getLastTimeStamp());
+
+            String Foreground_time = String.valueOf(TimeUnit.MILLISECONDS.toSeconds(tt.getTotalTimeInForeground())) ;
+
+//            String str = "com.android.calculator2";
+
+            PackageInfo info = null;
+            String app_name = "test";
+            PackageManager pm =  context.getPackageManager();
+            try {
+                info = pm.getPackageInfo(PackageName,PackageManager.GET_ACTIVITIES);
+                app_name = info.applicationInfo.loadLabel(pm).toString();
+            } catch (PackageManager.NameNotFoundException e) {
+                e.printStackTrace();
+            }
+
+            AppUsageInfo appUsageinfo = new AppUsageInfo(1,app_name,first_start_time,last_time,Foreground_time,run_times);
+
+            appUsageDao.insertAppInfo(appUsageinfo);
+        }
+
+    }
+
+
+    public static HashMap<String, Integer> getAppUsageTimeSpent( Context context,String packageName, long beginTime, long endTime) {
         UsageEvents.Event currentEvent;
         List<UsageEvents.Event> allEvents = new ArrayList<>();
         HashMap<String, Integer> appUsageMap = new HashMap<>();
@@ -88,20 +145,26 @@ public class AppUsageUtil {
         List<UsageStats> list = usageStatsManager.queryUsageStats(UsageStatsManager.INTERVAL_YEARLY,beginTime, endTime);
 
         for(UsageStats tt : list){
-//            KLog.d("value:"+tt.getPackageName() + tt.getFirstTimeStamp()+tt.getLastTimeStamp()+tt.getTotalTimeInForeground());
+
             try{
                 Field field = tt.getClass().getDeclaredField("mLaunchCount");
-//                KLog.d(field);
+                String app_name = field.getName();
             } catch (NoSuchFieldException e) {
                 e.printStackTrace();
             }
+
+            SimpleDateFormat df = new SimpleDateFormat("yyyyMMdd HH:mm:ss");
+            String first_start_time = df.format(tt.getFirstTimeStamp());
+            String last_time = df.format(tt.getLastTimeStamp());
+            String Foreground_time =  df.format(tt.getTotalTimeInForeground());
+            String PackageName = df.format(tt.getPackageName());
+
+
         }
 
         while (usageEvents.hasNextEvent()) {
             currentEvent = new UsageEvents.Event();
             usageEvents.getNextEvent(currentEvent);
-
-//            KLog.d(currentEvent.getPackageName()+"");
             if(currentEvent.getPackageName().equals(packageName) || packageName == null) {
                 if (currentEvent.getEventType() == UsageEvents.Event.ACTIVITY_RESUMED
                         || currentEvent.getEventType() == UsageEvents.Event.ACTIVITY_PAUSED) {
@@ -136,6 +199,8 @@ public class AppUsageUtil {
 //                if(prev == null) prev = 0;
 //                appUsageMap.put(E0.getPackageName(), prev + diff);
 //            }
+
+
         }
         return appUsageMap;
     }

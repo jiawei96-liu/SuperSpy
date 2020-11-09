@@ -164,7 +164,7 @@ public class AppUsageShowActivity extends BaseActivity {
         long endTime = calendar.getTimeInMillis();
         calendar.add(Calendar.DAY_OF_WEEK,-1);
         long startTime=calendar.getTimeInMillis();
-        HashMap<String, Integer> timeSpentMap= AppUsageUtil.getTimeSpent(this,appInfo.getAppPackageName(), startTime, endTime);
+        HashMap<String, Integer> timeSpentMap= AppUsageUtil.getAppUsageTimeSpent(this,appInfo.getAppPackageName(), startTime, endTime);
         Integer value=(Integer)timeSpentMap.get(appInfo.getAppPackageName());
         appTimeUsageTV.setText("过去一周使用时间: "+ Integer.toString(value) +" s");
     }
