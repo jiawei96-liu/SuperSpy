@@ -58,19 +58,19 @@ public class MainActivity extends BaseActivity {
 
         //权限检查
         AppUsageUtil.checkUsageStateAccessPermission(this);
+        pdao = new AppInfoDao(this);
+        pdao.deleteAppInfo("appInfoTable");
         try {
             getAppInfos();
         } catch (PackageManager.NameNotFoundException e) {
             e.printStackTrace();
         }
-        pdao = new AppInfoDao(this);
-        pdao.queryAppInfoList();
+        List<AppInfo> list=pdao.queryAppInfoList();
     }
 
     public void getAppInfos() throws PackageManager.NameNotFoundException {
         //数据库相关
-        AppInfoDao appInfoDao = new AppInfoDao(this);
-        appInfoDao.deleteAppInfo("appInfoTable");
+
 
         List<ApplicationInfo> apps = queryFilterAppInfo();
         for (ApplicationInfo applicationInfo : apps) {
@@ -94,7 +94,7 @@ public class MainActivity extends BaseActivity {
 
             AppInfo appInfo = new AppInfo(app_icon,app_name,app_pkg,app_version,app_dir,app_size);
 
-            appInfoDao.insertAppInfo(appInfo);
+            pdao.insertAppInfo(appInfo);
 
         }
     }
