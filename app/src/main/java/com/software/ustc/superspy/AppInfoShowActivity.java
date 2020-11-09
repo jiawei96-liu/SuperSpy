@@ -1,7 +1,5 @@
 package com.software.ustc.superspy;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
@@ -13,8 +11,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.Toast;
-
 import com.software.ustc.superspy.kits.AppInfo;
 import com.software.ustc.superspy.kits.AppInfoAdapter;
 import com.software.ustc.superspy.kits.BaseActivity;
@@ -25,55 +21,6 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-
-
-
-
-
-
-
-import java.util.ArrayList;
-import java.util.List;
-
-
-import android.net.Uri;
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
-import android.util.Log;
-import android.view.Gravity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.View.OnLongClickListener;
-import android.view.animation.ScaleAnimation;
-import android.view.ViewGroup;
-import android.widget.AbsListView.OnScrollListener;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import android.widget.AbsListView;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.ListView;
-import android.widget.PopupWindow;
-import android.widget.TextView;
-import android.widget.Toast;
-import android.annotation.SuppressLint;
-import android.app.Activity;
-import android.content.Intent;
-import android.content.pm.ActivityInfo;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
-import android.content.pm.PackageManager.NameNotFoundException;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
-
-
-
-
-
-
 
 
 public class AppInfoShowActivity extends BaseActivity {
@@ -96,11 +43,7 @@ public class AppInfoShowActivity extends BaseActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 AppInfo appInfo = appInfoList.get(position);
-//                Toast toast = Toast.makeText(AppInfoShowActivity.this,null,Toast.LENGTH_SHORT);
-//                toast.setText(appInfo.getAppName()+" : "+appInfo.getAppName());
-//                toast.show();
                 Intent intent = new Intent();
-
                 //传递Bundle(集装箱),将我们需要传递的数据全部放入集装箱，然后直接将集装箱传递到目标页面
                 Bundle appInfoBundle=new Bundle();
                 appInfoBundle.putString("appName",appInfo.getAppName());

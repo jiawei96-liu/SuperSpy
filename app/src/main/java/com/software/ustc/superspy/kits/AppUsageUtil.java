@@ -114,10 +114,8 @@ public class AppUsageUtil {
 
             String Foreground_time = String.valueOf(TimeUnit.MILLISECONDS.toSeconds(tt.getTotalTimeInForeground())) ;
 
-//            String str = "com.android.calculator2";
-
             PackageInfo info = null;
-            String app_name = "test";
+            String app_name = "None";
             PackageManager pm =  context.getPackageManager();
             try {
                 info = pm.getPackageInfo(PackageName,PackageManager.GET_ACTIVITIES);
@@ -125,6 +123,8 @@ public class AppUsageUtil {
             } catch (PackageManager.NameNotFoundException e) {
                 e.printStackTrace();
             }
+            if(app_name.equals("None"))
+                continue;
 
             AppUsageInfo appUsageinfo = new AppUsageInfo(1,app_name,first_start_time,last_time,Foreground_time,run_times);
 
@@ -178,9 +178,6 @@ public class AppUsageUtil {
 
 
         for (int i = 0; i < allEvents.size() - 1; i++) {
-//            UsageEvents.Event E0 = allEvents.get(i);
-//            UsageEvents.Event E1 = allEvents.get(i + 1);
-
             UsageEvents.Event lastEvent = allEvents.get(allEvents.size() - 1);
             if(lastEvent.getEventType() == UsageEvents.Event.ACTIVITY_RESUMED) {
                 int diff = (int)System.currentTimeMillis() - (int)lastEvent.getTimeStamp();
@@ -189,18 +186,6 @@ public class AppUsageUtil {
                 if(prev == null) prev = 0;
                 appUsageMap.put(lastEvent.getPackageName(), prev + diff);
             }
-
-//            if (E0.getEventType() == UsageEvents.Event.ACTIVITY_RESUMED
-//                    && E1.getEventType() == UsageEvents.Event.ACTIVITY_PAUSED
-//                    && E0.getClassName().equals(E1.getClassName())) {
-//                int diff = (int)(E1.getTimeStamp() - E0.getTimeStamp());
-//                diff /= 1000;
-//                Integer prev = appUsageMap.get(E0.getPackageName());
-//                if(prev == null) prev = 0;
-//                appUsageMap.put(E0.getPackageName(), prev + diff);
-//            }
-
-
         }
         return appUsageMap;
     }
