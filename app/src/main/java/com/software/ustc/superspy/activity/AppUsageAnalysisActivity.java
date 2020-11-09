@@ -107,17 +107,17 @@ public class AppUsageAnalysisActivity extends BaseActivity implements View.OnCli
             final View app_itemView = View.inflate(AppUsageAnalysisActivity.this, R.layout.item_app_usage_info, null);
 
             //获取数据项视图
-            TextView txt_app_name1 = (TextView) app_itemView.findViewById(R.id.txt_app_name1);
-            TextView txt_first_runtime = (TextView) app_itemView.findViewById(R.id.txt_first_runtime1);
-            TextView txt_last_runtime = (TextView) app_itemView.findViewById(R.id.txt_last_runtime1);
-            TextView txt_total_runtime = (TextView) app_itemView.findViewById(R.id.txt_total_runtime1);
+            TextView txt_app_name = (TextView) app_itemView.findViewById(R.id.txt_app_name_usage_item);
+            TextView txt_last_start_time = (TextView) app_itemView.findViewById(R.id.txt_last_start_time_usage_item);
+            TextView txt_run_times = (TextView) app_itemView.findViewById(R.id.txt_run_times_usage_item);
+            TextView txt_foreground_time = (TextView) app_itemView.findViewById(R.id.txt_foreground_time_usage_item);
 
             //获取数据项
             final AppUsageInfo appUsageInfo = (AppUsageInfo) plist.get(position);
-            txt_app_name1.setText(appUsageInfo.getApk_name());
-//            txt_first_runtime.setText(appUsageInfo.getFirst_start_time());
-            txt_last_runtime.setText(appUsageInfo.getLast_start_time());
-            txt_total_runtime.setText(appUsageInfo.getForeground_time() + "秒");
+            txt_app_name.setText(appUsageInfo.getApp_name());
+            txt_last_start_time.setText(appUsageInfo.getLast_start_time());
+            txt_run_times.setText(appUsageInfo.getRun_times());
+            txt_foreground_time.setText(appUsageInfo.getForeground_time());
             return app_itemView;
         }
     }

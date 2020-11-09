@@ -97,6 +97,7 @@ public class AppUsageDao {
             //封装数据（Map(key,value)）
             ContentValues values = new ContentValues();
             values.put("apk_name", appUsageInfo.getApk_name());
+            values.put("app_name", appUsageInfo.getApp_name());
             values.put("first_timestamp", appUsageInfo.getFirst_timestamp());
             values.put("last_timestamp", appUsageInfo.getLast_timestamp());
             values.put("foreground_time", appUsageInfo.getForeground_time());

@@ -8,12 +8,12 @@
     tools:context=".activity.AppUsageAnalysisActivity">
 
     <TextView
-        android:layout_height="wrap_content"
         android:layout_width="match_parent"
+        android:layout_height="40dp"
         android:background="@drawable/textview_border"
         android:gravity="center"
         android:textSize="20dp"
-        android:text="过去一天app的使用情况统计" />
+        android:text="应用使用统计" />
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -39,52 +39,108 @@
             android:layout_marginLeft="30dp"
             android:background="@drawable/selector_blue"/>
     </LinearLayout>
-
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:background="@drawable/selector_orange"/>
     <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="37dp"
-        android:baselineAligned="false"
-        android:orientation="horizontal"
-        android:textAlignment="center">
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:baselineAligned="false"
+            android:orientation="horizontal"
+            android:textAlignment="center">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/textview_border"
+                android:gravity="center"
+                android:text="统计起始时间" />
+
+            <TextView
+                android:id="@+id/txt_first_timestamp_all"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/textview_border"
+                android:gravity="center" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/textview_border"
+                android:gravity="center"
+                android:text="统计终止时间" />
+
+            <TextView
+                android:id="@+id/txt_last_timestamp_all"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/textview_border"
+                android:gravity="center" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:baselineAligned="false"
+            android:orientation="horizontal"
+            android:textAlignment="center">
+
+            <TextView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/textview_border"
+                android:gravity="center"
+                android:text="图标" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/textview_border"
+                android:gravity="center"
+                android:text="APP名称" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/textview_border"
+                android:gravity="center"
+                android:text="末次启动时间" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/textview_border"
+                android:gravity="center"
+                android:text="启动次数" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/textview_border"
+                android:gravity="center"
+                android:text="运行总时长" />
+
+        </LinearLayout>
         <TextView
-            android:id="@+id/txt_app_name"
-            android:layout_width="80dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@drawable/textview_border"
-            android:gravity="center"
-            android:text="APP名称" />
-
-        <TextView
-            android:id="@+id/txt_first_runtime"
-            android:layout_width="118dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@drawable/textview_border"
-            android:gravity="center"
-            android:text="第一次启动时间" />
-
-        <TextView
-            android:id="@+id/txt_last_runtime"
-            android:layout_width="131dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@drawable/textview_border"
-            android:gravity="center"
-            android:text="最后一次启动时间" />
-
-        <TextView
-            android:id="@+id/txt_total_runtime"
-            android:layout_width="122dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@drawable/textview_border"
-            android:gravity="center"
-            android:text="App总运行时间" />
-
+            android:layout_width="match_parent"
+            android:layout_height="5dp"
+            android:background="@drawable/selector_orange"/>
     </LinearLayout>
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
