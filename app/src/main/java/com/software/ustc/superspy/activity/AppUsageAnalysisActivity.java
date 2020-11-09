@@ -34,6 +34,7 @@ public class AppUsageAnalysisActivity extends BaseActivity implements View.OnCli
         setContentView(R.layout.activity_app_usage_analysis);
         //权限检查
         AppUsageUtil.checkUsageStateAccessPermission(this);
+        //数据库刷新
         AppUsageUtil.getAppUsageInfo(getApplicationContext());
         //service switch
         Button startAppUsageServiceBtn=(Button)findViewById(R.id.btn_app_usage_collect_service_start);
@@ -52,7 +53,10 @@ public class AppUsageAnalysisActivity extends BaseActivity implements View.OnCli
 
     @Override
     protected void onResume() {
-        super.onResume();
+        //权限检查
+        AppUsageUtil.checkUsageStateAccessPermission(this);
+        //数据库刷新
+        AppUsageUtil.getAppUsageInfo(getApplicationContext());
         //数据展示
         lvapp = (ListView) findViewById(R.id.lvapp);
         pdao = new AppUsageDao(this);//数据层
@@ -61,6 +65,7 @@ public class AppUsageAnalysisActivity extends BaseActivity implements View.OnCli
         adapter = new MyAdapter();
         //设置适配器
         lvapp.setAdapter(adapter);
+        super.onResume();
     }
 
     @Override

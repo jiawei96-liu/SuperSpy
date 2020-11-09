@@ -38,31 +38,29 @@ public class AppUsageShowActivity extends BaseActivity {
     private Button uninstall;
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_app_usage);
         //资源初始化
-        appIconIV = (ImageView)findViewById(R.id.iv_icon_single);
-        appNameTV = (TextView)findViewById(R.id.txt_app_name_single);
-        appVersionTV = (TextView)findViewById(R.id.txt_app_version_single);
-        appPackageNameTV = (TextView)findViewById(R.id.txt_app_package_name_single);
-        appDirTV = (TextView)findViewById(R.id.txt_app_dir_single);
-        appSizeTV = (TextView)findViewById(R.id.txt_app_size_single);
-        appTimeUsageTV=(TextView)findViewById(R.id.txt_app_time_usage_single);
-        start=findViewById(R.id.ll_app_start);
-        share=findViewById(R.id.ll_app_share);
-        uninstall=findViewById(R.id.ll_app_uninstall);
+        appIconIV = (ImageView) findViewById(R.id.iv_icon_single);
+        appNameTV = (TextView) findViewById(R.id.txt_app_name_single);
+        appVersionTV = (TextView) findViewById(R.id.txt_app_version_single);
+        appPackageNameTV = (TextView) findViewById(R.id.txt_app_package_name_single);
+        appDirTV = (TextView) findViewById(R.id.txt_app_dir_single);
+        appSizeTV = (TextView) findViewById(R.id.txt_app_size_single);
+        appTimeUsageTV = (TextView) findViewById(R.id.txt_app_time_usage_single);
+        start = findViewById(R.id.ll_app_start);
+        share = findViewById(R.id.ll_app_share);
+        uninstall = findViewById(R.id.ll_app_uninstall);
         appBasicInfoShow();
 //        appUsageInfoShow();
 
-
-        Bundle bundle=getIntent().getBundleExtra("appInfo");
-        final Bitmap appIron=getIntent().getParcelableExtra("appIron");
-        appInfo = new AppInfo(appIron,bundle.getString("appName",""),
-                bundle.getString("appPkgName",""),bundle.getString("appVersion",""),
-                bundle.getString("appDir",""),bundle.getLong("appSize",0));
+        Bundle bundle = getIntent().getBundleExtra("appInfo");
+        final Bitmap appIron = getIntent().getParcelableExtra("appIron");
+        appInfo = new AppInfo(appIron, bundle.getString("appName", ""),
+                bundle.getString("appPkgName", ""), bundle.getString("appVersion", ""),
+                bundle.getString("appDir", ""), bundle.getLong("appSize", 0));
 
         start.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -79,19 +77,19 @@ public class AppUsageShowActivity extends BaseActivity {
                     //扫描出来的所有activity节点的信息
                     ActivityInfo[] activityInfos = packageInfo.activities;
                     //有些应用是无法启动的，所以我们就要判断一下
-                    if(activityInfos != null && activityInfos.length > 0){
+                    if (activityInfos != null && activityInfos.length > 0) {
                         //在扫描出来的应用里面，第一个是具有启动意义的
                         ActivityInfo startActivity = activityInfos[0];
                         //设置Intent，启动activity
-                        try{
+                        try {
                             Intent intent = new Intent();
                             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                             intent.setClassName(appInfo.getAppPackageName(), startActivity.name);
                             startActivity(intent);
-                        }catch(Exception e){
+                        } catch (Exception e) {
                             Toast.makeText(AppUsageShowActivity.this, "很抱歉，启动失败！", Toast.LENGTH_SHORT).show();
                         }
-                    }else{
+                    } else {
                         Toast.makeText(AppUsageShowActivity.this, "这个应用程序无法启动", Toast.LENGTH_SHORT).show();
                     }
                 } catch (PackageManager.NameNotFoundException e) {
@@ -113,7 +111,7 @@ public class AppUsageShowActivity extends BaseActivity {
                 //设置分享主题
                 shareintent.putExtra(Intent.EXTRA_SUBJECT, "分享");
                 //设置分享的文本
-                shareintent.putExtra(Intent.EXTRA_TEXT, "有一个很好的应用程序哦！给你推荐一下：" +appInfo.getAppPackageName()+"/n本消息来自系统测试");
+                shareintent.putExtra(Intent.EXTRA_TEXT, "有一个很好的应用程序哦！给你推荐一下：" + appInfo.getAppPackageName() + "/n本消息来自系统测试");
                 startActivity(shareintent);
             }
         });
@@ -131,9 +129,9 @@ public class AppUsageShowActivity extends BaseActivity {
 //                delectIntent.setData(uri);
 //                startActivityForResult(delectIntent, 0);
 
-                Intent intetnDelete=new Intent();
+                Intent intetnDelete = new Intent();
                 intetnDelete.setAction(Intent.ACTION_DELETE);
-                intetnDelete.setData(Uri.parse("package:"+appInfo.getAppPackageName()));
+                intetnDelete.setData(Uri.parse("package:" + appInfo.getAppPackageName()));
                 startActivity(intetnDelete);
 
 //                Uri uri = Uri.fromParts("package", appInfo.getAppPackageName(), null);
@@ -142,43 +140,33 @@ public class AppUsageShowActivity extends BaseActivity {
 //                }
             }
         });
-
-
-
-
-
-
-
-
     }
 
-    private void appUsageInfoShow()
-    {
-        Calendar calendar=Calendar.getInstance();
+    private void appUsageInfoShow() {
+        Calendar calendar = Calendar.getInstance();
         long endTime = calendar.getTimeInMillis();
-        calendar.add(Calendar.DAY_OF_WEEK,-1);
-        long startTime=calendar.getTimeInMillis();
-        HashMap<String, Integer> timeSpentMap= AppUsageUtil.getAppUsageTimeSpent(this,appInfo.getAppPackageName(), startTime, endTime);
-        Integer value=(Integer)timeSpentMap.get(appInfo.getAppPackageName());
-        appTimeUsageTV.setText("过去一周使用时间: "+ Integer.toString(value) +" s");
+        calendar.add(Calendar.DAY_OF_WEEK, -1);
+        long startTime = calendar.getTimeInMillis();
+        HashMap<String, Integer> timeSpentMap = AppUsageUtil.getAppUsageTimeSpent(this, appInfo.getAppPackageName(), startTime, endTime);
+        Integer value = (Integer) timeSpentMap.get(appInfo.getAppPackageName());
+        appTimeUsageTV.setText("过去一周使用时间: " + Integer.toString(value) + " s");
     }
 
-    private void appBasicInfoShow()
-    {
+    private void appBasicInfoShow() {
         //获取传递过来的数据
-        Bundle bundle=getIntent().getBundleExtra("appInfo");
-        Bitmap appIron=getIntent().getParcelableExtra("appIron");
-        appInfo = new AppInfo(appIron,bundle.getString("appName",""),
-                bundle.getString("appPkgName",""),bundle.getString("appVersion",""),
-                bundle.getString("appDir",""),bundle.getLong("appSize",0));
+        Bundle bundle = getIntent().getBundleExtra("appInfo");
+        Bitmap appIron = getIntent().getParcelableExtra("appIron");
+        appInfo = new AppInfo(appIron, bundle.getString("appName", ""),
+                bundle.getString("appPkgName", ""), bundle.getString("appVersion", ""),
+                bundle.getString("appDir", ""), bundle.getLong("appSize", 0));
         appIconIV.setImageDrawable(PicUtil.BitmapToDrawable(PicUtil.CreateReflectionImageWithOrigin(appInfo.getAppIcon())));
         appNameTV.setText(appInfo.getAppName());
-        appVersionTV.setText("版本号: "+appInfo.getAppVersion());
-        appPackageNameTV.setText("包名: "+appInfo.getAppPackageName());
-        appDirTV.setText("路径: "+appInfo.getAppDir());
-        java.text.DecimalFormat myformat=new java.text.DecimalFormat("0.00");
-        String appSiseMB = myformat.format(appInfo.getAppSize()/1024.0/1024.0);
-        appSizeTV.setText("大小: "+appSiseMB+"M / "+Long.toString(appInfo.getAppSize())+"B");
+        appVersionTV.setText("版本号: " + appInfo.getAppVersion());
+        appPackageNameTV.setText("包名: " + appInfo.getAppPackageName());
+        appDirTV.setText("路径: " + appInfo.getAppDir());
+        java.text.DecimalFormat myformat = new java.text.DecimalFormat("0.00");
+        String appSiseMB = myformat.format(appInfo.getAppSize() / 1024.0 / 1024.0);
+        appSizeTV.setText("大小: " + appSiseMB + "M / " + Long.toString(appInfo.getAppSize()) + "B");
     }
 
 }
