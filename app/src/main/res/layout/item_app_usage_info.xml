@@ -1,34 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/app_list_linearlayout1"
+    android:id="@+id/app_list_linearlayout11"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".AppUsageAnalysisActivity">
+    android:layout_height="match_parent">
 
     <LinearLayout
-        android:id="@+id/app_list_linearlayout2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"
-        android:orientation="horizontal"
-        android:textAlignment="center">
-
-        <Button
-            android:id="@+id/btn_app_list"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:onClick="btn_app_list"
-            android:text="获取应用启动记录" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/app_list_linearlayout3"
+        android:id="@+id/app_list_linearlayout22"
         android:layout_width="wrap_content"
         android:layout_height="37dp"
         android:baselineAligned="false"
@@ -36,7 +13,7 @@
         android:textAlignment="center">
 
         <TextView
-            android:id="@+id/txt_app_name"
+            android:id="@+id/txt_app_name1"
             android:layout_width="80dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -45,7 +22,7 @@
             android:text="APP名称" />
 
         <TextView
-            android:id="@+id/txt_first_runtime"
+            android:id="@+id/txt_first_runtime1"
             android:layout_width="118dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -54,7 +31,7 @@
             android:text="第一次启动时间" />
 
         <TextView
-            android:id="@+id/txt_last_runtime"
+            android:id="@+id/txt_last_runtime1"
             android:layout_width="131dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -63,7 +40,7 @@
             android:text="最后一次启动时间" />
 
         <TextView
-            android:id="@+id/txt_total_runtime"
+            android:id="@+id/txt_total_runtime1"
             android:layout_width="122dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -71,18 +48,6 @@
             android:gravity="center"
             android:text=" App总运行时间" />
 
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/app_list_linearlayout4"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-
-        <ListView
-            android:id="@+id/lvapp"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
     </LinearLayout>
 
 </LinearLayout>

@@ -46,7 +46,7 @@ public class MainActivity extends BaseActivity {
         AppUsageUtil.checkUsageStateAccessPermission(mContext);
         mUsageStatsManager = (UsageStatsManager) getSystemService(USAGE_STATS_SERVICE);
     }
-
+/*
     @Override
     protected void onResume() {
         super.onResume();
@@ -91,7 +91,7 @@ public class MainActivity extends BaseActivity {
                         + " , LastEventTime = " + eventStats.getLastEventTime() + " , TotalTime = " + eventStats.getTotalTime());
             }
         }
-    }
+    }*/
 
 
     @Override

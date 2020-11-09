@@ -31,7 +31,7 @@ public class AppUsageDao {
             //创建数据库操作对象
             db = helper.getReadableDatabase();
 
-            Cursor cursor = db.rawQuery("select * from runlog ",null );
+            Cursor cursor = db.rawQuery("select * from runlog order by cast(foreground_time as int ) desc",null );
             while (cursor.moveToNext()) {
                 //取数据
                 int id = cursor.getInt(cursor.getColumnIndex("id"));

@@ -12,6 +12,7 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.software.ustc.superspy.AppInfoShowActivity;
+import com.software.ustc.superspy.AppUsageAnalysisActivity;
 import com.software.ustc.superspy.R;
 import com.software.ustc.superspy.SysInfoShowActivity;
 
@@ -32,6 +33,10 @@ public class DashboardFragment extends Fragment implements View.OnClickListener 
         super.onActivityCreated(savedInstanceState);
         Button btnApps = (Button) getActivity().findViewById(R.id.btn_apps);
         btnApps.setOnClickListener(this);
+        Button btnSyss = (Button) getActivity().findViewById(R.id.btn_sys);
+        btnSyss.setOnClickListener(this);
+        Button btnAppUsages = (Button) getActivity().findViewById(R.id.btn_app_usage_list);
+        btnAppUsages.setOnClickListener(this);
     }
 
     @Override
@@ -42,6 +47,10 @@ public class DashboardFragment extends Fragment implements View.OnClickListener 
                 break;
             case R.id.btn_sys:
                 startActivity(new Intent(getActivity(), SysInfoShowActivity.class));
+                break;
+            case R.id.btn_app_usage_list:
+                startActivity(new Intent(getActivity(), AppUsageAnalysisActivity.class));
+                break;
             default:
                 break;
         }
