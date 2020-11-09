@@ -84,6 +84,19 @@ public class AppUsageUtil {
         return topActivityPackageName;
     }
 
+/*
+    UsageStats
+    UsageStats是在指定时间区间内某个应用使用统计数据的封装类。包含的公开方法及对应的作用如下：
+
+    方法	用途
+    getFirstTimeStamp()	获取指定时间区间内应用第一次使用时间戳
+    getLastTimeStamp()	获取指定时间区间内应用最后一次使用时间戳
+    getLastTimeUsed()	获取应用最后一次使用时间戳
+    getPackageName()	获取应用包名
+    getTotalTimeInForeground()	获取应用在前台的时间
+    https://www.jianshu.com/p/3b6bcf9cec67
+*/
+
     public static void getAppUsageInfo(Context context){
         Calendar beginCal = Calendar.getInstance();
         beginCal.add(Calendar.HOUR_OF_DAY, -1);
@@ -93,7 +106,22 @@ public class AppUsageUtil {
         long end_time = endCal.getTimeInMillis();
 
         UsageStatsManager usageStatsManager = (UsageStatsManager)context.getSystemService(Context.USAGE_STATS_SERVICE);
-        List<UsageStats> list = usageStatsManager.queryUsageStats(UsageStatsManager.INTERVAL_YEARLY,start_time, end_time);
+/*
+        INTERVAL_DAILY：天存储级别的数据；
+        INTERVAL_WEEKLY：星期存储级别的数据；
+        INTERVAL_MONTHLY：月存储级别的数据；
+        INTERVAL_YEARLY：年存储级别的数据；
+        INTERVAL_BEST：根据给定时间范围选取最佳时间间隔类型
+
+        queryUsageStats 返回的数据，它是一个 UsageStats 类型的数据集合，其中有几个关键字段
+        mBeginTimeStamp：查询范围的起始时间；
+        mEndTimeStamp：查询范围的起结束时间；
+        mLastTimeUsed：应用最后一次使用结束时的时间；
+        mTotalTimeInForeground：查询范围内应用在前台的累积时长；
+        mLaunchCount：查询范围内应用的打开次数。
+        https://blog.csdn.net/liuwan1992/article/details/83625520
+*/
+        List<UsageStats> list = usageStatsManager.queryUsageStats(UsageStatsManager.INTERVAL_BEST,start_time, end_time);
 
         String run_times ="none";
         AppUsageDao appUsageDao = new AppUsageDao(context);
@@ -110,7 +138,7 @@ public class AppUsageUtil {
             SimpleDateFormat df = new SimpleDateFormat("yyyyMMdd HH:mm:ss");
             String PackageName = tt.getPackageName();
             String first_start_time = df.format(tt.getFirstTimeStamp());
-            String last_time = df.format(tt.getLastTimeStamp());
+            String last_time = df.format(tt.getLastTimeUsed());
 
             String Foreground_time = String.valueOf(TimeUnit.MILLISECONDS.toSeconds(tt.getTotalTimeInForeground())) ;
 

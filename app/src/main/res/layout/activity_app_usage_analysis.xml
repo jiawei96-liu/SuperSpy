@@ -24,7 +24,12 @@
 <!--            android:onClick="btn_app_list"-->
 <!--            android:text="获取应用启动记录" />-->
 <!--    </LinearLayout>-->
-
+    <TextView
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:background="@drawable/textview_border"
+        android:gravity="center"
+        android:text="过去一天app的使用情况统计" />
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="37dp"
