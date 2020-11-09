@@ -35,6 +35,12 @@ public class AppUsageAnalysisActivity extends BaseActivity implements View.OnCli
         //权限检查
         AppUsageUtil.checkUsageStateAccessPermission(this);
         AppUsageUtil.getAppUsageInfo(getApplicationContext());
+        //service switch
+        Button startAppUsageServiceBtn=(Button)findViewById(R.id.btn_app_usage_collect_service_start);
+        Button stopAppUsageServiceBtn=(Button)findViewById(R.id.btn_app_usage_collect_service_stop);
+        startAppUsageServiceBtn.setOnClickListener(this);
+        stopAppUsageServiceBtn.setOnClickListener(this);
+        //数据展示
         lvapp = (ListView) findViewById(R.id.lvapp);
         pdao = new AppUsageDao(this);//数据层
         plist = pdao.queryAppUsageInfo();
@@ -42,11 +48,19 @@ public class AppUsageAnalysisActivity extends BaseActivity implements View.OnCli
         adapter = new MyAdapter();
         //设置适配器
         lvapp.setAdapter(adapter);
-        //service switch
-        Button startAppUsageServiceBtn=(Button)findViewById(R.id.btn_app_usage_collect_service_start);
-        Button stopAppUsageServiceBtn=(Button)findViewById(R.id.btn_app_usage_collect_service_stop);
-        startAppUsageServiceBtn.setOnClickListener(this);
-        stopAppUsageServiceBtn.setOnClickListener(this);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        //数据展示
+        lvapp = (ListView) findViewById(R.id.lvapp);
+        pdao = new AppUsageDao(this);//数据层
+        plist = pdao.queryAppUsageInfo();
+        //适配器
+        adapter = new MyAdapter();
+        //设置适配器
+        lvapp.setAdapter(adapter);
     }
 
     @Override

@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.os.IBinder;
 import android.widget.Toast;
 
+import com.software.ustc.superspy.kits.AppUsageUtil;
+
 public class AppUsageService extends Service {
     public AppUsageService() {
     }
@@ -26,14 +28,10 @@ public class AppUsageService extends Service {
     //每次服务启动时调用
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
+        AppUsageUtil.getAppUsageInfo(getApplicationContext());
         Toast.makeText(this, "AppUsageService Start", Toast.LENGTH_SHORT).show();
-        return super.onStartCommand(intent, flags, startId);
-//        appRunTime temp = new appRunTime();
-//        temp.getAppInfo(getApplicationContext());
-//        KLog.d("end");
-//
-//
-//        return START_STICKY;
+//        return super.onStartCommand(intent, flags, startId);
+        return START_STICKY;
     }
 
     @Override
