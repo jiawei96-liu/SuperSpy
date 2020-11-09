@@ -125,7 +125,7 @@ public class AppUsageUtil {
 
         String run_times ="0";
         AppUsageDao appUsageDao = new AppUsageDao(context);
-        appUsageDao.deleteAppInfo("usageInfoTable");
+        appUsageDao.deleteAppUsage("usageInfoTable");
 
         for(UsageStats tt : list){
 
@@ -161,7 +161,7 @@ public class AppUsageUtil {
             AppUsageInfo appUsageinfo = new AppUsageInfo(PackageName,app_name,first_timestamp,last_timestamp,
                     foreground_time,last_start_time,run_times);
 
-            appUsageDao.insertAppInfo(appUsageinfo);
+            appUsageDao.insertAppUsage(appUsageinfo);
         }
 
     }
