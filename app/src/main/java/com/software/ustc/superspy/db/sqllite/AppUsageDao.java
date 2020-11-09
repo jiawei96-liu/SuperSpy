@@ -17,7 +17,7 @@ public class AppUsageDao {
 
     public AppUsageDao(Context context) {
         //初始化DbHelper帮助类
-        helper = new DbHelper(context, "SuperSpy.db", null, 1);
+        helper = new DbHelper(context, "AppUsage.db", null, 1);
     }
 
     public List queryAppUsageList() {
