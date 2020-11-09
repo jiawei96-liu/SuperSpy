@@ -123,9 +123,9 @@ public class AppUsageUtil {
 */
         List<UsageStats> list = usageStatsManager.queryUsageStats(UsageStatsManager.INTERVAL_BEST,start_time, end_time);
 
-        String run_times ="None";
+        String run_times ="0";
         AppUsageDao appUsageDao = new AppUsageDao(context);
-        appUsageDao.deleteAppInfo("runlog");
+        appUsageDao.deleteAppInfo("usageInfoTable");
 
         for(UsageStats tt : list){
 
@@ -142,10 +142,10 @@ public class AppUsageUtil {
 
             SimpleDateFormat df = new SimpleDateFormat("yyyyMMdd HH:mm:ss");
             String PackageName = tt.getPackageName();
-            String first_start_time = df.format(tt.getFirstTimeStamp());
-            String last_time = df.format(tt.getLastTimeUsed());
-
-            String Foreground_time = String.valueOf(TimeUnit.MILLISECONDS.toSeconds(tt.getTotalTimeInForeground())) ;
+            String first_timestamp = df.format(tt.getFirstTimeStamp());
+            String last_timestamp = df.format(tt.getLastTimeStamp());
+            String last_start_time = df.format(tt.getLastTimeUsed());
+            String foreground_time = String.valueOf(TimeUnit.MILLISECONDS.toSeconds(tt.getTotalTimeInForeground())) ;
 
             PackageInfo info = null;
             String app_name = "None";
@@ -158,68 +158,11 @@ public class AppUsageUtil {
             }
             if(app_name.equals("None"))
                 continue;
-
-            AppUsageInfo appUsageinfo = new AppUsageInfo(1,app_name,first_start_time,last_time,Foreground_time,run_times);
+            AppUsageInfo appUsageinfo = new AppUsageInfo(PackageName,app_name,first_timestamp,last_timestamp,
+                    foreground_time,last_start_time,run_times);
 
             appUsageDao.insertAppInfo(appUsageinfo);
         }
 
-    }
-
-
-    public static HashMap<String, Integer> getAppUsageTimeSpent( Context context,String packageName, long beginTime, long endTime) {
-        UsageEvents.Event currentEvent;
-        List<UsageEvents.Event> allEvents = new ArrayList<>();
-        HashMap<String, Integer> appUsageMap = new HashMap<>();
-
-        UsageStatsManager usageStatsManager = (UsageStatsManager)context.getSystemService(Context.USAGE_STATS_SERVICE);
-        UsageEvents usageEvents = usageStatsManager.queryEvents(beginTime, endTime);
-
-        List<UsageStats> list = usageStatsManager.queryUsageStats(UsageStatsManager.INTERVAL_YEARLY,beginTime, endTime);
-
-        for(UsageStats tt : list){
-
-            try{
-                Field field = tt.getClass().getDeclaredField("mLaunchCount");
-                String app_name = field.getName();
-            } catch (NoSuchFieldException e) {
-                e.printStackTrace();
-            }
-
-            SimpleDateFormat df = new SimpleDateFormat("yyyyMMdd HH:mm:ss");
-            String first_start_time = df.format(tt.getFirstTimeStamp());
-            String last_time = df.format(tt.getLastTimeStamp());
-            String Foreground_time =  df.format(tt.getTotalTimeInForeground());
-            String PackageName = df.format(tt.getPackageName());
-
-
-        }
-
-        while (usageEvents.hasNextEvent()) {
-            currentEvent = new UsageEvents.Event();
-            usageEvents.getNextEvent(currentEvent);
-            if(currentEvent.getPackageName().equals(packageName) || packageName == null) {
-                if (currentEvent.getEventType() == UsageEvents.Event.ACTIVITY_RESUMED
-                        || currentEvent.getEventType() == UsageEvents.Event.ACTIVITY_PAUSED) {
-                    allEvents.add(currentEvent);
-                    String key = currentEvent.getPackageName();
-                    if (appUsageMap.get(key) == null)
-                        appUsageMap.put(key, 0);
-                }
-            }
-        }
-
-
-        for (int i = 0; i < allEvents.size() - 1; i++) {
-            UsageEvents.Event lastEvent = allEvents.get(allEvents.size() - 1);
-            if(lastEvent.getEventType() == UsageEvents.Event.ACTIVITY_RESUMED) {
-                int diff = (int)System.currentTimeMillis() - (int)lastEvent.getTimeStamp();
-                diff /= 1000;
-                Integer prev = appUsageMap.get(lastEvent.getPackageName());
-                if(prev == null) prev = 0;
-                appUsageMap.put(lastEvent.getPackageName(), prev + diff);
-            }
-        }
-        return appUsageMap;
     }
 }

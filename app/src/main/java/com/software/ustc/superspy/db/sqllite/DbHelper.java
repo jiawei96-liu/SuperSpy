@@ -13,14 +13,22 @@ public class DbHelper extends SQLiteOpenHelper {
     //数据库第一次被创建时调用，创建表
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String sql =  "create table runlog(id integer primary key autoincrement," +
-                "app_name varchar(100) ," +
-                "first_start_time varchar(50)," +
-                "last_start_time varchar(50)," +
+        String sqlusage =  "create table usageInfoTable(apk_name varchar(100) primary key," +
+                "app_name  varchar(50),"+
+                "first_timestamp varchar(50)," +
+                "last_timestamp varchar(50)," +
                 "foreground_time varchar(50)," +
+                "last_start_time varchar(50)," +
                 "run_times varchar(50))";
 
-        db.execSQL(sql);//创建数据库表
+        String sqlbasic =  "create table basicInfoTable(apk_name varchar(100) primary key," +
+                "app_name varchar(50)," +
+                "app_version varchar(50)," +
+                "app_dir varchar(50)," +
+                "app_size varchar(50)," +
+                "app_icon BLOB)";
+        db.execSQL(sqlusage);//创建数据库表
+        db.execSQL(sqlbasic);//创建数据库表
     }
 
     //当数据库更新调用，例如：数据版本更新，增加表，修改表字段

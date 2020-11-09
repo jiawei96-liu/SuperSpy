@@ -114,8 +114,8 @@ public class AppUsageAnalysisActivity extends BaseActivity implements View.OnCli
 
             //获取数据项
             final AppUsageInfo appUsageInfo = (AppUsageInfo) plist.get(position);
-            txt_app_name1.setText(appUsageInfo.getApp_name());
-            txt_first_runtime.setText(appUsageInfo.getFirst_start_time());
+            txt_app_name1.setText(appUsageInfo.getApk_name());
+//            txt_first_runtime.setText(appUsageInfo.getFirst_start_time());
             txt_last_runtime.setText(appUsageInfo.getLast_start_time());
             txt_total_runtime.setText(appUsageInfo.getForeground_time() + "秒");
             return app_itemView;

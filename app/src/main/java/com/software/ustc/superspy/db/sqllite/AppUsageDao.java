@@ -17,7 +17,7 @@ public class AppUsageDao {
 
     public AppUsageDao(Context context) {
         //初始化DbHelper帮助类
-        helper = new DbHelper(context, "AppUsage.db", null, 1);
+        helper = new DbHelper(context, "SuperSpy.db", null, 1);
     }
 
     public List queryAppUsageInfoList() {
@@ -31,16 +31,17 @@ public class AppUsageDao {
             //创建数据库操作对象
             db = helper.getReadableDatabase();
 
-            Cursor cursor = db.rawQuery("select * from runlog order by cast(foreground_time as int ) desc",null );
+            Cursor cursor = db.rawQuery("select * from usageInfoTable order by cast(foreground_time as int ) desc",null );
             while (cursor.moveToNext()) {
-                //取数据
-                int id = cursor.getInt(cursor.getColumnIndex("id"));
+                String apk_name = cursor.getString(cursor.getColumnIndex("apk_name"));
                 String app_name = cursor.getString(cursor.getColumnIndex("app_name"));
-                String first_start_time = cursor.getString(cursor.getColumnIndex("first_start_time"));//推荐的方式
-                String last_start_time = cursor.getString(cursor.getColumnIndex("last_start_time"));
+                String first_timestamp = cursor.getString(cursor.getColumnIndex("first_timestamp"));
+                String last_timestamp = cursor.getString(cursor.getColumnIndex("last_timestamp"));
                 String foreground_time = cursor.getString(cursor.getColumnIndex("foreground_time"));
+                String last_start_time = cursor.getString(cursor.getColumnIndex("last_start_time"));
+                String run_times = cursor.getString(cursor.getColumnIndex("run_times"));
                 //封装到个人对象中
-                AppUsageInfo appUsageInfo = new AppUsageInfo(id,app_name,first_start_time,last_start_time,foreground_time,null);
+                AppUsageInfo appUsageInfo = new AppUsageInfo(apk_name,app_name,first_timestamp,last_timestamp,foreground_time,last_start_time,run_times);
                 plist.add(appUsageInfo);
             }
         } catch (Exception e) {
@@ -53,7 +54,7 @@ public class AppUsageDao {
         return plist;
     }
 
-    public AppUsageInfo querySignalAppUsageInfo(String appName) {
+    public AppUsageInfo querySignalAppUsageInfo(String apkName) {
         //创建数据库操作对象
         SQLiteDatabase db = null;
         AppUsageInfo appUsageInfo = null;
@@ -63,16 +64,17 @@ public class AppUsageDao {
             //创建数据库操作对象
             db = helper.getReadableDatabase();
 
-            Cursor cursor = db.rawQuery("select * from runlog where app_name = \""+ appName+ "\"",null );
+            Cursor cursor = db.rawQuery("select * from usageInfoTable where app_name = \""+ apkName+ "\"",null );
             while (cursor.moveToNext()) {
-                //取数据
-                int id = cursor.getInt(cursor.getColumnIndex("id"));
+                String apk_name = cursor.getString(cursor.getColumnIndex("apk_name"));
                 String app_name = cursor.getString(cursor.getColumnIndex("app_name"));
-                String first_start_time = cursor.getString(cursor.getColumnIndex("first_start_time"));//推荐的方式
-                String last_start_time = cursor.getString(cursor.getColumnIndex("last_start_time"));
+                String first_timestamp = cursor.getString(cursor.getColumnIndex("first_timestamp"));
+                String last_timestamp = cursor.getString(cursor.getColumnIndex("last_timestamp"));
                 String foreground_time = cursor.getString(cursor.getColumnIndex("foreground_time"));
+                String last_start_time = cursor.getString(cursor.getColumnIndex("last_start_time"));
+                String run_times = cursor.getString(cursor.getColumnIndex("run_times"));
                 //封装到个人对象中
-                appUsageInfo = new AppUsageInfo(id,app_name,first_start_time,last_start_time,foreground_time,null);
+                appUsageInfo = new AppUsageInfo(apk_name,app_name,first_timestamp,last_timestamp,foreground_time,last_start_time,run_times);
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -94,14 +96,14 @@ public class AppUsageDao {
             db = helper.getWritableDatabase();//可写
             //封装数据（Map(key,value)）
             ContentValues values = new ContentValues();
-
-            values.put("app_name", appUsageInfo.getApp_name());
-            values.put("first_start_time", appUsageInfo.getFirst_start_time());
-            values.put("last_start_time", appUsageInfo.getLast_start_time());
+            values.put("apk_name", appUsageInfo.getApk_name());
+            values.put("first_timestamp", appUsageInfo.getFirst_timestamp());
+            values.put("last_timestamp", appUsageInfo.getLast_timestamp());
             values.put("foreground_time", appUsageInfo.getForeground_time());
+            values.put("last_start_time", appUsageInfo.getLast_start_time());
             values.put("run_times", appUsageInfo.getRun_times());
             //增加一条个人信息记录
-            db.insert("runlog", null, values);
+            db.insert("usageInfoTable", null, values);
         } catch (Exception e) {
             e.printStackTrace();
         }
