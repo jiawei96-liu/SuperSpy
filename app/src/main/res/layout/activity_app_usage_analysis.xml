@@ -97,7 +97,7 @@
             android:textAlignment="center">
 
             <TextView
-                android:layout_width="40dp"
+                android:layout_width="60dp"
                 android:layout_height="40dp"
                 android:background="@drawable/textview_border"
                 android:gravity="center"
@@ -105,35 +105,35 @@
 
             <TextView
                 android:layout_width="0dp"
-                android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:layout_height="match_parent"
                 android:background="@drawable/textview_border"
                 android:gravity="center"
                 android:text="APP名称" />
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_width="0dp"
                 android:layout_weight="1"
+                android:layout_height="match_parent"
                 android:background="@drawable/textview_border"
                 android:gravity="center"
                 android:text="末次启动时间" />
 
             <TextView
                 android:layout_width="0dp"
-                android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:layout_height="match_parent"
                 android:background="@drawable/textview_border"
                 android:gravity="center"
                 android:text="启动次数" />
 
             <TextView
                 android:layout_width="0dp"
-                android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:layout_height="match_parent"
                 android:background="@drawable/textview_border"
                 android:gravity="center"
-                android:text="运行总时长" />
+                android:text="运行总时长/s" />
 
         </LinearLayout>
         <TextView
