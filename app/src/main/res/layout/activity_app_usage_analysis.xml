@@ -2,33 +2,30 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/app_list_linearlayout1"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".AppUsageAnalysisActivity">
 
-    <LinearLayout
-        android:id="@+id/app_list_linearlayout2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"
-        android:orientation="horizontal"
-        android:textAlignment="center">
+<!--    <LinearLayout-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_gravity="center"-->
+<!--        android:layout_marginTop="10dp"-->
+<!--        android:layout_marginBottom="10dp"-->
+<!--        android:orientation="horizontal"-->
+<!--        android:textAlignment="center">-->
 
-        <Button
-            android:id="@+id/btn_app_list"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:onClick="btn_app_list"
-            android:text="获取应用启动记录" />
-    </LinearLayout>
+<!--        <Button-->
+<!--            android:id="@+id/btn_app_list"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_weight="1"-->
+<!--            android:onClick="btn_app_list"-->
+<!--            android:text="获取应用启动记录" />-->
+<!--    </LinearLayout>-->
 
     <LinearLayout
-        android:id="@+id/app_list_linearlayout3"
         android:layout_width="wrap_content"
         android:layout_height="37dp"
         android:baselineAligned="false"
@@ -69,12 +66,11 @@
             android:layout_weight="1"
             android:background="@drawable/textview_border"
             android:gravity="center"
-            android:text=" App总运行时间" />
+            android:text="App总运行时间" />
 
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/app_list_linearlayout4"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
@@ -82,7 +78,7 @@
         <ListView
             android:id="@+id/lvapp"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"/>
     </LinearLayout>
 
 </LinearLayout>
