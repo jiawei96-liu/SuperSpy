@@ -73,7 +73,6 @@ public class AppUsageDao {
                 String foreground_time = cursor.getString(cursor.getColumnIndex("foreground_time"));
                 String last_start_time = cursor.getString(cursor.getColumnIndex("last_start_time"));
                 String run_times = cursor.getString(cursor.getColumnIndex("run_times"));
-                //封装到个人对象中
                 appUsageInfo = new AppUsageInfo(apk_name,app_name,first_timestamp,last_timestamp,foreground_time,last_start_time,run_times);
             }
         } catch (Exception e) {
@@ -103,17 +102,15 @@ public class AppUsageDao {
             values.put("foreground_time", appUsageInfo.getForeground_time());
             values.put("last_start_time", appUsageInfo.getLast_start_time());
             values.put("run_times", appUsageInfo.getRun_times());
-            //增加一条个人信息记录
             db.insert("usageInfoTable", null, values);
         } catch (Exception e) {
             e.printStackTrace();
         }
-//        finally {
-//            if(db!=null){
-//                db.close();//关闭数据库
-//            }
-//        }
-
+        finally {
+            if(db!=null){
+                db.close();//关闭数据库
+            }
+        }
     }
 
     //删

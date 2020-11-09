@@ -25,7 +25,7 @@ public class DbHelper extends SQLiteOpenHelper {
                 "app_name varchar(50)," +
                 "app_version varchar(50)," +
                 "app_dir varchar(50)," +
-                "app_size varchar(50)," +
+                "app_size INTEGER," +
                 "app_icon BLOB)";
         db.execSQL(sqlusage);//创建数据库表
         db.execSQL(sqlbasic);//创建数据库表
