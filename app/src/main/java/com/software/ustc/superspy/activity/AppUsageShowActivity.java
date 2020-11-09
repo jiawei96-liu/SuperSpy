@@ -14,7 +14,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.software.ustc.superspy.R;
+import com.software.ustc.superspy.db.sqllite.AppUsageDao;
 import com.software.ustc.superspy.kits.AppInfo;
+import com.software.ustc.superspy.kits.AppUsageInfo;
 import com.software.ustc.superspy.kits.AppUsageUtil;
 import com.software.ustc.superspy.kits.BaseActivity;
 import com.software.ustc.superspy.kits.PicUtil;
@@ -31,6 +33,8 @@ public class AppUsageShowActivity extends BaseActivity {
     private TextView appDirTV;
     private TextView appSizeTV;
     private TextView appTimeUsageTV;
+    private AppUsageDao pdao;
+    AppUsageInfo appUsageInfo;
 
 
     private Button start;
@@ -53,8 +57,9 @@ public class AppUsageShowActivity extends BaseActivity {
         start = findViewById(R.id.ll_app_start);
         share = findViewById(R.id.ll_app_share);
         uninstall = findViewById(R.id.ll_app_uninstall);
+
         appBasicInfoShow();
-//        appUsageInfoShow();
+        appUsageInfoShow();
 
         Bundle bundle = getIntent().getBundleExtra("appInfo");
         final Bitmap appIron = getIntent().getParcelableExtra("appIron");
@@ -147,9 +152,10 @@ public class AppUsageShowActivity extends BaseActivity {
         long endTime = calendar.getTimeInMillis();
         calendar.add(Calendar.DAY_OF_WEEK, -1);
         long startTime = calendar.getTimeInMillis();
-        HashMap<String, Integer> timeSpentMap = AppUsageUtil.getAppUsageTimeSpent(this, appInfo.getAppPackageName(), startTime, endTime);
-        Integer value = (Integer) timeSpentMap.get(appInfo.getAppPackageName());
-        appTimeUsageTV.setText("过去一周使用时间: " + Integer.toString(value) + " s");
+        pdao = new AppUsageDao(this);//数据层
+        appUsageInfo = pdao.querySignalAppUsageInfo(appInfo.getAppName());
+        appTimeUsageTV.setText("过去一天使用信息统计: \n第一次启动时间:"+appUsageInfo.getFirst_start_time()+
+                "\n最后一次使用时间"+appUsageInfo.getLast_start_time()+"\nApp总运行时间"+appUsageInfo.getForeground_time()+"\n");
     }
 
     private void appBasicInfoShow() {

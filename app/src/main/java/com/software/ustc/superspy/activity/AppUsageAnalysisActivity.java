@@ -44,7 +44,7 @@ public class AppUsageAnalysisActivity extends BaseActivity implements View.OnCli
         //数据展示
         lvapp = (ListView) findViewById(R.id.lvapp);
         pdao = new AppUsageDao(this);//数据层
-        plist = pdao.queryAppUsageInfo();
+        plist = pdao.queryAppUsageInfoList();
         //适配器
         adapter = new MyAdapter();
         //设置适配器
@@ -60,7 +60,7 @@ public class AppUsageAnalysisActivity extends BaseActivity implements View.OnCli
         //数据展示
         lvapp = (ListView) findViewById(R.id.lvapp);
         pdao = new AppUsageDao(this);//数据层
-        plist = pdao.queryAppUsageInfo();
+        plist = pdao.queryAppUsageInfoList();
         //适配器
         adapter = new MyAdapter();
         //设置适配器

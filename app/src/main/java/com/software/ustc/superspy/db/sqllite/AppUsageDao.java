@@ -20,7 +20,7 @@ public class AppUsageDao {
         helper = new DbHelper(context, "AppUsage.db", null, 1);
     }
 
-    public List queryAppUsageInfo() {
+    public List queryAppUsageInfoList() {
         //返回值
         List plist = new ArrayList();
         //创建数据库操作对象
@@ -41,7 +41,6 @@ public class AppUsageDao {
                 String foreground_time = cursor.getString(cursor.getColumnIndex("foreground_time"));
                 //封装到个人对象中
                 AppUsageInfo appUsageInfo = new AppUsageInfo(id,app_name,first_start_time,last_start_time,foreground_time,null);
-                //讲个人对象加入集合
                 plist.add(appUsageInfo);
             }
         } catch (Exception e) {
@@ -52,6 +51,37 @@ public class AppUsageDao {
             }
         }
         return plist;
+    }
+
+    public AppUsageInfo querySignalAppUsageInfo(String appName) {
+        //创建数据库操作对象
+        SQLiteDatabase db = null;
+        AppUsageInfo appUsageInfo = null;
+
+        try {
+
+            //创建数据库操作对象
+            db = helper.getReadableDatabase();
+
+            Cursor cursor = db.rawQuery("select * from runlog where app_name = \""+ appName+ "\"",null );
+            while (cursor.moveToNext()) {
+                //取数据
+                int id = cursor.getInt(cursor.getColumnIndex("id"));
+                String app_name = cursor.getString(cursor.getColumnIndex("app_name"));
+                String first_start_time = cursor.getString(cursor.getColumnIndex("first_start_time"));//推荐的方式
+                String last_start_time = cursor.getString(cursor.getColumnIndex("last_start_time"));
+                String foreground_time = cursor.getString(cursor.getColumnIndex("foreground_time"));
+                //封装到个人对象中
+                appUsageInfo = new AppUsageInfo(id,app_name,first_start_time,last_start_time,foreground_time,null);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (db != null) {
+                db.close();//关闭数据库
+            }
+        }
+        return appUsageInfo;
     }
 
     //插入数据库
