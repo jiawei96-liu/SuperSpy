@@ -13,7 +13,6 @@ import android.content.pm.ResolveInfo;
 import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.util.Log;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.software.ustc.superspy.R;
@@ -42,9 +41,7 @@ import java.util.concurrent.TimeUnit;
 public class MainActivity extends BaseActivity {
 
     private final static String TAG = "MainActivity";
-    private Context mContext;
-    private UsageStatsManager mUsageStatsManager;
-    private long mCurrentTime;
+    private AppUsageDao pdao;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,14 +57,14 @@ public class MainActivity extends BaseActivity {
         NavigationUI.setupWithNavController(navView, navController);
 
         //权限检查
-        mContext = this;
-        AppUsageUtil.checkUsageStateAccessPermission(mContext);
-        mUsageStatsManager = (UsageStatsManager) getSystemService(USAGE_STATS_SERVICE);
+        AppUsageUtil.checkUsageStateAccessPermission(this);
         try {
             getAppInfos();
         } catch (PackageManager.NameNotFoundException e) {
             e.printStackTrace();
         }
+        AppInfoDao dao = new AppInfoDao(this);
+        List list= dao.queryAppInfoList();
     }
 
     public void getAppInfos() throws PackageManager.NameNotFoundException {
