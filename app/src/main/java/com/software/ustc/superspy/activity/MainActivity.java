@@ -41,7 +41,7 @@ import java.util.concurrent.TimeUnit;
 public class MainActivity extends BaseActivity {
 
     private final static String TAG = "MainActivity";
-    private AppUsageDao pdao;
+    private AppInfoDao pdao;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,8 +63,8 @@ public class MainActivity extends BaseActivity {
         } catch (PackageManager.NameNotFoundException e) {
             e.printStackTrace();
         }
-        AppInfoDao dao = new AppInfoDao(this);
-        List list= dao.queryAppInfoList();
+        pdao = new AppInfoDao(this);
+        pdao.queryAppInfoList();
     }
 
     public void getAppInfos() throws PackageManager.NameNotFoundException {
