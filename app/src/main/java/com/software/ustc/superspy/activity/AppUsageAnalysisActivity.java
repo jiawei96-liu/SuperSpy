@@ -1,24 +1,24 @@
-package com.software.ustc.superspy;
+package com.software.ustc.superspy.activity;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.provider.Settings;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.software.ustc.superspy.R;
 import com.software.ustc.superspy.db.sqllite.AppUsageDao;
 import com.software.ustc.superspy.kits.AppUsageInfo;
 import com.software.ustc.superspy.kits.AppUsageUtil;
 import com.software.ustc.superspy.kits.BaseActivity;
+import com.software.ustc.superspy.service.AppUsageService;
+
 import java.util.List;
 
-public class AppUsageAnalysisActivity extends BaseActivity {
+public class AppUsageAnalysisActivity extends BaseActivity implements View.OnClickListener{
 
     private ListView lvapp;
 
@@ -32,7 +32,8 @@ public class AppUsageAnalysisActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_app_usage_analysis);
-        startActivity(new Intent(Settings.ACTION_USAGE_ACCESS_SETTINGS));
+        //权限检查
+        AppUsageUtil.checkUsageStateAccessPermission(this);
         AppUsageUtil.getAppUsageInfo(getApplicationContext());
         lvapp = (ListView) findViewById(R.id.lvapp);
         pdao = new AppUsageDao(this);//数据层
@@ -41,13 +42,26 @@ public class AppUsageAnalysisActivity extends BaseActivity {
         adapter = new MyAdapter();
         //设置适配器
         lvapp.setAdapter(adapter);
+        //service switch
+        Button startAppUsageServiceBtn=(Button)findViewById(R.id.btn_app_usage_collect_service_start);
+        Button stopAppUsageServiceBtn=(Button)findViewById(R.id.btn_app_usage_collect_service_stop);
+        startAppUsageServiceBtn.setOnClickListener(this);
+        stopAppUsageServiceBtn.setOnClickListener(this);
     }
 
-/*    //获取app运行记录
-    public void btn_app_list(View view) {
-
-    }*/
-
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.btn_app_usage_collect_service_start:
+                startService(new Intent(this, AppUsageService.class));
+                break;
+            case R.id.btn_app_usage_collect_service_stop:
+                stopService(new Intent(this, AppUsageService.class));
+                break;
+            default:
+                break;
+        }
+    }
 
     class MyAdapter extends BaseAdapter {
         @Override

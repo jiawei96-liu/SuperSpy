@@ -1,9 +1,10 @@
-package com.software.ustc.superspy;
+package com.software.ustc.superspy.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
+import com.software.ustc.superspy.R;
 import com.software.ustc.superspy.kits.BaseActivity;
 
 public class SysInfoShowActivity extends BaseActivity {

@@ -5,31 +5,41 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".AppUsageAnalysisActivity">
+    tools:context=".activity.AppUsageAnalysisActivity">
 
-<!--    <LinearLayout-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_gravity="center"-->
-<!--        android:layout_marginTop="10dp"-->
-<!--        android:layout_marginBottom="10dp"-->
-<!--        android:orientation="horizontal"-->
-<!--        android:textAlignment="center">-->
-
-<!--        <Button-->
-<!--            android:id="@+id/btn_app_list"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_weight="1"-->
-<!--            android:onClick="btn_app_list"-->
-<!--            android:text="获取应用启动记录" />-->
-<!--    </LinearLayout>-->
     <TextView
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
         android:background="@drawable/textview_border"
         android:gravity="center"
+        android:textSize="20dp"
         android:text="过去一天app的使用情况统计" />
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:orientation="horizontal"
+        android:textAlignment="center">
+
+        <Button
+            android:id="@+id/btn_app_usage_collect_service_start"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="启动AppUsage信息收集"
+            android:background="@drawable/selector_blue"/>
+        <Button
+            android:id="@+id/btn_app_usage_collect_service_stop"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="关闭AppUsage信息收集"
+            android:layout_marginLeft="30dp"
+            android:background="@drawable/selector_blue"/>
+    </LinearLayout>
+
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="37dp"

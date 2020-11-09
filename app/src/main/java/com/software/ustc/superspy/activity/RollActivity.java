@@ -1,4 +1,4 @@
-package com.software.ustc.superspy;
+package com.software.ustc.superspy.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -7,6 +7,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.software.ustc.superspy.R;
 import com.software.ustc.superspy.kits.BaseActivity;
 import com.software.ustc.superspy.db.litepal.LoginData;
 

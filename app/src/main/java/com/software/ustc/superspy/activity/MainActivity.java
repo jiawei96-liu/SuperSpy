@@ -1,4 +1,4 @@
-package com.software.ustc.superspy;
+package com.software.ustc.superspy.activity;
 
 import android.app.usage.ConfigurationStats;
 import android.app.usage.EventStats;
@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.util.Log;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.software.ustc.superspy.R;
 import com.software.ustc.superspy.kits.ActivityCollector;
 import com.software.ustc.superspy.kits.AppUsageUtil;
 import com.software.ustc.superspy.kits.BaseActivity;

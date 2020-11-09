@@ -1,9 +1,10 @@
-package com.software.ustc.superspy;
+package com.software.ustc.superspy.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.WindowManager;
 
+import com.software.ustc.superspy.R;
 import com.software.ustc.superspy.kits.BaseActivity;
 
 public class WelcomeActivity extends BaseActivity {

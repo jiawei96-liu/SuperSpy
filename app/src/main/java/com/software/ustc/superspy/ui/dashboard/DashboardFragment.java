@@ -11,10 +11,10 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
 
-import com.software.ustc.superspy.AppInfoShowActivity;
-import com.software.ustc.superspy.AppUsageAnalysisActivity;
+import com.software.ustc.superspy.activity.AppInfoShowActivity;
+import com.software.ustc.superspy.activity.AppUsageAnalysisActivity;
 import com.software.ustc.superspy.R;
-import com.software.ustc.superspy.SysInfoShowActivity;
+import com.software.ustc.superspy.activity.SysInfoShowActivity;
 
 public class DashboardFragment extends Fragment implements View.OnClickListener {
 

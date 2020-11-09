@@ -1,10 +1,5 @@
-package com.software.ustc.superspy;
+package com.software.ustc.superspy.activity;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.app.ActivityManager;
-import android.app.usage.UsageStatsManager;
-import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.content.pm.PackageInfo;
@@ -12,13 +7,13 @@ import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
-import android.provider.Settings;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.software.ustc.superspy.R;
 import com.software.ustc.superspy.kits.AppInfo;
 import com.software.ustc.superspy.kits.AppUsageUtil;
 import com.software.ustc.superspy.kits.BaseActivity;
@@ -26,7 +21,6 @@ import com.software.ustc.superspy.kits.PicUtil;
 
 import java.util.Calendar;
 import java.util.HashMap;
-import java.util.List;
 
 public class AppUsageShowActivity extends BaseActivity {
     private AppInfo appInfo;

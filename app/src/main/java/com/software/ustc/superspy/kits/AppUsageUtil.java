@@ -123,13 +123,18 @@ public class AppUsageUtil {
 */
         List<UsageStats> list = usageStatsManager.queryUsageStats(UsageStatsManager.INTERVAL_BEST,start_time, end_time);
 
-        String run_times ="none";
+        String run_times ="None";
         AppUsageDao appUsageDao = new AppUsageDao(context);
         appUsageDao.deleteAppInfo("runlog");
 
         for(UsageStats tt : list){
 
             try{
+                /*获取系统记录的各个应用的使用次数：
+                由于该字段不能通过api拿到，故而采取反射的形式，拿到该字段。
+                (注：其实该字段的统计数据并不可靠，一旦强行关机，比如拔电池就可能失去数据，
+                所以在系统代码中该字段是被隐藏的。当然关于数据的可靠性，在接下来的文章中会有更详细的说明)
+                 */
                 run_times = String.valueOf(tt.getClass().getDeclaredField("mLaunchCount").getInt(tt));
             } catch (NoSuchFieldException | IllegalAccessException e) {
                 e.printStackTrace();
