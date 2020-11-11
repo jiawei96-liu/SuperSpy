@@ -60,6 +60,19 @@
                             style="@style/content_item_rt_img"
                             android:padding="0dp" />
                     </LinearLayout>
+                    <LinearLayout
+                        android:id="@+id/llAboutDonateUs"
+                        style="@style/content_item_white">
+
+                        <TextView
+                            style="@style/content_item_lf_tv"
+                            android:layout_weight="1"
+                            android:text="项目捐赠" />
+
+                        <ImageView
+                            style="@style/content_item_rt_img"
+                            android:padding="0dp" />
+                    </LinearLayout>
 
                     <View style="@style/divider_horizontal_1px" />
 
@@ -94,7 +107,7 @@
                         <TextView
                             style="@style/content_item_lf_tv"
                             android:layout_weight="1"
-                            android:text="博客" />
+                            android:text="Git仓库" />
 
                         <TextView
                             style="@style/content_item_rt_tv"

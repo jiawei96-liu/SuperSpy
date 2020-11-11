@@ -152,13 +152,13 @@
             android:orientation="horizontal">
 
             <Button
-                android:id="@+id/btn_app_share"
+                android:id="@+id/btn_app_theme"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_gravity="center_horizontal"
                 android:background="@drawable/textview_border"
-                android:drawableTop="@mipmap/app_icon_share"
-                android:text="应用分享" />
+                android:drawableTop="@mipmap/app_icon_theme"
+                android:text="应用主题" />
         </LinearLayout>
     </LinearLayout>
     <TextView

@@ -42,7 +42,7 @@ public class DashboardFragment extends Fragment implements View.OnClickListener 
         btnAppUsages.setOnClickListener(this);
         Button btnAccount = (Button) getActivity().findViewById(R.id.btn_account);
         btnAccount.setOnClickListener(this);
-        Button btnShare = (Button) getActivity().findViewById(R.id.btn_app_share);
+        Button btnShare = (Button) getActivity().findViewById(R.id.btn_app_theme);
         btnShare.setOnClickListener(this);
         Button btnAuth = (Button) getActivity().findViewById(R.id.btn_authority);
         btnAuth.setOnClickListener(this);
@@ -66,7 +66,7 @@ public class DashboardFragment extends Fragment implements View.OnClickListener 
                 break;
             case R.id.btn_account:
                 break;
-            case R.id.btn_app_share:
+            case R.id.btn_app_theme:
                 break;
             case R.id.btn_authority:
                 Intent intent = new Intent(android.provider.Settings.ACTION_USAGE_ACCESS_SETTINGS);
