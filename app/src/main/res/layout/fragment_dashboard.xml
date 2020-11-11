@@ -16,7 +16,7 @@
         android:id="@+id/rol1"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
+        android:layout_weight="2"
         android:orientation="horizontal">
 
         <LinearLayout
@@ -55,7 +55,7 @@
         android:id="@+id/rol2"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
+        android:layout_weight="2"
         android:orientation="horizontal">
 
         <TextView
@@ -76,7 +76,7 @@
         android:id="@+id/row2"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
+        android:layout_weight="2"
         android:orientation="horizontal">
 
         <LinearLayout
@@ -116,13 +116,13 @@
         android:id="@+id/row3"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
+        android:layout_weight="2"
         android:orientation="horizontal">
 
         <LinearLayout
             android:id="@+id/item31"
             android:layout_width="0dp"
-            android:layout_height="120dp"
+            android:layout_height="match_parent"
             android:layout_weight="1">
 
             <Button
@@ -138,7 +138,7 @@
         <LinearLayout
             android:id="@+id/item32"
             android:layout_width="0dp"
-            android:layout_height="120dp"
+            android:layout_height="match_parent"
             android:layout_weight="1"
             android:orientation="horizontal">
 
@@ -155,5 +155,6 @@
         android:layout_height="0dp"
         android:layout_weight="1"
         android:background="@drawable/textview_border_white"
-        android:gravity="center" />
+        android:gravity="center"
+        android:text="SuperSpy"/>
 </LinearLayout>
