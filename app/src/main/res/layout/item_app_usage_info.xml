@@ -50,8 +50,8 @@
             android:gravity="center" />
     </LinearLayout>
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="2dp"
-        android:background="@drawable/selector_blue" />
+<!--    <TextView-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="2dp"-->
+<!--        android:background="@drawable/selector_blue" />-->
 </LinearLayout>
