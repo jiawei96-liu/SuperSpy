@@ -6,6 +6,6 @@
     <version value="1" />
     <!--用于设定所有的映射模型,即你定义数据库表的类名路径-->
     <list>
-        <mapping class="com.software.ustc.superspy.db.litepalDB.LoginData" />
+        <mapping class="com.software.ustc.superspy.db.litepal.LoginData" />
     </list>
 </litepal>

@@ -13,16 +13,8 @@
         android:background="@drawable/textview_border_white"
         android:gravity="center"
         android:textSize="20dp"
-        android:text="应用使用统计" />
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"
-        android:orientation="horizontal"
-        android:textAlignment="center">
-    </LinearLayout>
+        android:text="应用使用信息统计" />
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="5dp"
@@ -133,7 +125,7 @@
         <ListView
             android:id="@+id/lvapp"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_height="match_parent" />
     </LinearLayout>
 
 </LinearLayout>

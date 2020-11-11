@@ -1,7 +1,9 @@
 package com.software.ustc.superspy.ui.dashboard;
 
+import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,6 +20,7 @@ import com.software.ustc.superspy.activity.SysInfoShowActivity;
 
 public class DashboardFragment extends Fragment implements View.OnClickListener {
 
+    private static final String TAG = "DashboardFragment";
     private DashboardViewModel dashboardViewModel;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -33,10 +36,20 @@ public class DashboardFragment extends Fragment implements View.OnClickListener 
         super.onActivityCreated(savedInstanceState);
         Button btnApps = (Button) getActivity().findViewById(R.id.btn_apps);
         btnApps.setOnClickListener(this);
-        Button btnSyss = (Button) getActivity().findViewById(R.id.btn_sys);
-        btnSyss.setOnClickListener(this);
+        Button btnSys = (Button) getActivity().findViewById(R.id.btn_sys);
+        btnSys.setOnClickListener(this);
         Button btnAppUsages = (Button) getActivity().findViewById(R.id.btn_app_usage_list);
         btnAppUsages.setOnClickListener(this);
+        Button btnAccount = (Button) getActivity().findViewById(R.id.btn_account);
+        btnAccount.setOnClickListener(this);
+        Button btnShare = (Button) getActivity().findViewById(R.id.btn_app_share);
+        btnShare.setOnClickListener(this);
+        Button btnAuth = (Button) getActivity().findViewById(R.id.btn_authority);
+        btnAuth.setOnClickListener(this);
+        Button btnBattery = (Button) getActivity().findViewById(R.id.btn_battery);
+        btnBattery.setOnClickListener(this);
+        Button btnAppRecomend = (Button) getActivity().findViewById(R.id.btn_app_recommend_list);
+        btnAppRecomend.setOnClickListener(this);
     }
 
     @Override
@@ -50,6 +63,19 @@ public class DashboardFragment extends Fragment implements View.OnClickListener 
                 break;
             case R.id.btn_app_usage_list:
                 startActivity(new Intent(getActivity(), AppUsageAnalysisActivity.class));
+                break;
+            case R.id.btn_account:
+                break;
+            case R.id.btn_app_share:
+                break;
+            case R.id.btn_authority:
+                Intent intent = new Intent(android.provider.Settings.ACTION_USAGE_ACCESS_SETTINGS);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                getContext().startActivity(intent);
+                break;
+            case R.id.btn_battery:
+                break;
+            case R.id.btn_app_recommend_list:
                 break;
             default:
                 break;
