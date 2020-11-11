@@ -1,6 +1,132 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:orientation="vertical">
-</LinearLayout>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/activity_page">
+
+    <LinearLayout style="@style/ll_vertical_match_match">
+
+        <RelativeLayout
+            style="@style/match_match"
+            android:layout_weight="1">
+
+            <ScrollView style="@style/match_match">
+
+                <LinearLayout style="@style/ll_vertical_match_match">
+
+                    <ImageView
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:layout_margin="15dp"
+                        android:src="@mipmap/superspy" />
+
+                    <TextView
+                        android:id="@+id/tvAboutAppInfo"
+                        style="@style/text_big_black"
+                        android:layout_marginBottom="30dp"
+                        android:text="SuperSpy\n1.0" />
+
+
+                    <View style="@style/divider_horizontal_1px" />
+
+                    <View
+                        style="@style/divider_horizontal_1px"
+                        android:layout_marginBottom="@dimen/item_padding_bottom" />
+
+                    <LinearLayout
+                        android:id="@+id/llAboutUpdate"
+                        style="@style/content_item_white">
+
+                        <TextView
+                            style="@style/content_item_lf_tv"
+                            android:layout_weight="1"
+                            android:text="更新日志" />
+
+                        <ImageView
+                            style="@style/content_item_rt_img"
+                            android:padding="0dp" />
+                    </LinearLayout>
+
+                    <View style="@style/divider_horizontal_1px" />
+
+                    <LinearLayout
+                        android:id="@+id/llAboutShare"
+                        style="@style/content_item_white">
+
+                        <TextView
+                            style="@style/content_item_lf_tv"
+                            android:layout_weight="1"
+                            android:text="分享" />
+
+                        <ImageView
+                            style="@style/content_item_rt_img"
+                            android:padding="0dp" />
+                    </LinearLayout>
+
+                    <View style="@style/divider_horizontal_1px" />
+
+                    <View
+                        style="@style/divider_horizontal_1px"
+                        android:layout_marginBottom="@dimen/item_padding_bottom" />
+
+                    <LinearLayout
+                        android:id="@+id/llAboutDeveloper"
+                        style="@style/content_item_white">
+
+                        <TextView
+                            style="@style/content_item_lf_tv"
+                            android:text="开发者" />
+
+                        <TextView
+                            style="@style/content_item_rt_tv"
+                            android:layout_weight="1"
+                            android:text="Jiawei.liu/Mengrui.liu" />
+
+                        <ImageView
+                            style="@style/content_item_rt_img"
+                            android:padding="0dp" />
+                    </LinearLayout>
+
+                    <View style="@style/divider_horizontal_1px" />
+
+                    <LinearLayout
+                        android:id="@+id/llAboutWeibo"
+                        style="@style/content_item_white">
+
+                        <TextView
+                            style="@style/content_item_lf_tv"
+                            android:layout_weight="1"
+                            android:text="博客" />
+
+                        <TextView
+                            style="@style/content_item_rt_tv"
+                            android:layout_weight="1"
+                            android:text="https://github.com/jiawei96-liu/SuperSpy" />
+
+                        <ImageView
+                            style="@style/content_item_rt_img"
+                            android:padding="0dp" />
+                    </LinearLayout>
+
+                    <View style="@style/divider_horizontal_1px" />
+
+                    <LinearLayout
+                        android:id="@+id/llAboutContactUs"
+                        style="@style/content_item_white">
+
+                        <TextView
+                            style="@style/content_item_lf_tv"
+                            android:text="联系我们" />
+
+                        <TextView
+                            style="@style/content_item_rt_tv"
+                            android:layout_weight="1"
+                            android:text="jiawei96.liu@outlook.com" />
+
+                        <ImageView
+                            style="@style/content_item_rt_img"
+                            android:padding="0dp" />
+                    </LinearLayout>
+                </LinearLayout>
+            </ScrollView>
+        </RelativeLayout>
+    </LinearLayout>
+</FrameLayout>
