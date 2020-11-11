@@ -36,11 +36,6 @@ public class AppUsageAnalysisActivity extends BaseActivity implements View.OnCli
         AppUsageUtil.checkUsageStateAccessPermission(this);
         //数据库刷新
         AppUsageUtil.getAppUsageInfo(getApplicationContext());
-        //service switch
-        Button startAppUsageServiceBtn=(Button)findViewById(R.id.btn_app_usage_collect_service_start);
-        Button stopAppUsageServiceBtn=(Button)findViewById(R.id.btn_app_usage_collect_service_stop);
-        startAppUsageServiceBtn.setOnClickListener(this);
-        stopAppUsageServiceBtn.setOnClickListener(this);
         //数据展示
         lvapp = (ListView) findViewById(R.id.lvapp);
         pdao = new AppUsageDao(this);//数据层
@@ -49,6 +44,8 @@ public class AppUsageAnalysisActivity extends BaseActivity implements View.OnCli
         adapter = new MyAdapter();
         //设置适配器
         lvapp.setAdapter(adapter);
+
+        startService(new Intent(this, AppUsageService.class));
     }
 
     @Override
@@ -69,14 +66,20 @@ public class AppUsageAnalysisActivity extends BaseActivity implements View.OnCli
     }
 
     @Override
+    protected void onDestroy() {
+        stopService(new Intent(this, AppUsageService.class));
+        super.onDestroy();
+    }
+
+    @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.btn_app_usage_collect_service_start:
-                startService(new Intent(this, AppUsageService.class));
-                break;
-            case R.id.btn_app_usage_collect_service_stop:
-                stopService(new Intent(this, AppUsageService.class));
-                break;
+//            case R.id.btn_app_usage_collect_service_start:
+//
+//                break;
+//            case R.id.btn_app_usage_collect_service_stop:
+//
+//                break;
             default:
                 break;
         }

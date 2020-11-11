@@ -1,34 +1,159 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/all"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:orientation="vertical">
-    <Button
+
+    <TextView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:id="@+id/btn_sys"
-        android:text="系统信息"
-        />
-    <Button
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@drawable/textview_border_white"
+        android:gravity="center" />
+
+    <LinearLayout
+        android:id="@+id/rol1"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:id="@+id/btn_apps"
-        android:text="应用信息"
-        />
-    <Button
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:id="@+id/item11"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <Button
+                android:id="@+id/btn_sys"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_horizontal"
+                android:background="@drawable/textview_border"
+                android:drawableTop="@mipmap/app_icon_device_info"
+                android:text="设备信息" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/item12"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <Button
+                android:id="@+id/btn_battery"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_horizontal"
+                android:background="@drawable/textview_border"
+                android:drawableTop="@mipmap/app_icon_battery"
+                android:text="电池管理" />
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/rol2"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:id="@+id/btn_battery"
-        android:text="电池信息"
-        />
-    <Button
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/textview_border_white"
+            android:gravity="center" />
+    </LinearLayout>
+
+    <TextView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:id="@+id/btn_app_usage_list"
-        android:text="使用信息"
-        />
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@drawable/textview_border_white"
+        android:gravity="center" />
+
+    <LinearLayout
+        android:id="@+id/row2"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:id="@+id/item21"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <Button
+                android:id="@+id/btn_apps"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_horizontal"
+                android:background="@drawable/textview_border"
+                android:drawableTop="@mipmap/app_icon_info_list"
+                android:text="应用信息" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/item22"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <Button
+                android:id="@+id/btn_app_usage_list"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_horizontal"
+                android:background="@drawable/textview_border"
+                android:drawableTop="@mipmap/app_icon_statistics"
+                android:text="应用分析" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/row3"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:id="@+id/item31"
+            android:layout_width="0dp"
+            android:layout_height="120dp"
+            android:layout_weight="1">
+
+            <Button
+                android:id="@+id/btn_app_recommend_list1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_horizontal"
+                android:background="@drawable/textview_border"
+                android:drawableTop="@mipmap/app_icon_recommendation"
+                android:text="应用推荐" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/item32"
+            android:layout_width="0dp"
+            android:layout_height="120dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/textview_border_white"
+                android:gravity="center" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@drawable/textview_border_white"
+        android:gravity="center" />
 </LinearLayout>

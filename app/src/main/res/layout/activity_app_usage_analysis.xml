@@ -10,7 +10,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:background="@drawable/textview_border"
+        android:background="@drawable/textview_border_white"
         android:gravity="center"
         android:textSize="20dp"
         android:text="应用使用统计" />
@@ -22,22 +22,6 @@
         android:layout_marginBottom="10dp"
         android:orientation="horizontal"
         android:textAlignment="center">
-
-        <Button
-            android:id="@+id/btn_app_usage_collect_service_start"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="启动AppUsage信息收集"
-            android:background="@drawable/selector_blue"/>
-        <Button
-            android:id="@+id/btn_app_usage_collect_service_stop"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="关闭AppUsage信息收集"
-            android:layout_marginLeft="30dp"
-            android:background="@drawable/selector_blue"/>
     </LinearLayout>
     <TextView
         android:layout_width="match_parent"
@@ -59,7 +43,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@drawable/textview_border"
+                android:background="@drawable/textview_border_white"
                 android:gravity="center"
                 android:text="统计起始时间" />
 
@@ -68,14 +52,14 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@drawable/textview_border"
+                android:background="@drawable/textview_border_white"
                 android:gravity="center" />
 
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@drawable/textview_border"
+                android:background="@drawable/textview_border_white"
                 android:gravity="center"
                 android:text="统计终止时间" />
 
@@ -84,7 +68,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@drawable/textview_border"
+                android:background="@drawable/textview_border_white"
                 android:gravity="center" />
 
         </LinearLayout>
@@ -99,7 +83,7 @@
             <TextView
                 android:layout_width="60dp"
                 android:layout_height="40dp"
-                android:background="@drawable/textview_border"
+                android:background="@drawable/textview_border_white"
                 android:gravity="center"
                 android:text="图标" />
 
@@ -107,7 +91,7 @@
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="match_parent"
-                android:background="@drawable/textview_border"
+                android:background="@drawable/textview_border_white"
                 android:gravity="center"
                 android:text="APP名称" />
 
@@ -115,7 +99,7 @@
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="match_parent"
-                android:background="@drawable/textview_border"
+                android:background="@drawable/textview_border_white"
                 android:gravity="center"
                 android:text="末次启动时间" />
 
@@ -123,7 +107,7 @@
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="match_parent"
-                android:background="@drawable/textview_border"
+                android:background="@drawable/textview_border_white"
                 android:gravity="center"
                 android:text="启动次数" />
 
@@ -131,7 +115,7 @@
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="match_parent"
-                android:background="@drawable/textview_border"
+                android:background="@drawable/textview_border_white"
                 android:gravity="center"
                 android:text="运行总时长/s" />
 

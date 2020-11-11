@@ -19,7 +19,7 @@ public class WelcomeActivity extends BaseActivity {
             @Override
             public void run() {
                 try{
-                    sleep(WELCONE_DISPLAY_LENGHT);//使程序休眠五秒
+                    sleep(WELCONE_DISPLAY_LENGHT);
                     Intent it=new Intent(getApplicationContext(), LoginActivity.class);//启动MainActivity
                     startActivity(it);
                     finish();//关闭当前活动
