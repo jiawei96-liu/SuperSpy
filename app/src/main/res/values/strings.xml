@@ -1,8 +1,8 @@
 <resources>
     <string name="app_name">SuperSpy</string>
-    <string name="title_home"></string>
-    <string name="title_dashboard"></string>
-    <string name="title_notifications"></string>
+    <string name="title_home">主页</string>
+    <string name="title_dashboard">工具箱</string>
+    <string name="title_notifications">设置</string>
     <string name="title_activity_login">登录</string>
     <string name="user_name">用户名</string>
     <string name="prompt_password">密码</string>
