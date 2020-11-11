@@ -1,16 +1,22 @@
 package com.software.ustc.superspy.activity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+
 import com.software.ustc.superspy.R;
 import com.software.ustc.superspy.db.sqllite.AppUsageDao;
+import com.software.ustc.superspy.kits.AppInfo;
 import com.software.ustc.superspy.kits.AppUsageInfo;
 import com.software.ustc.superspy.kits.AppUsageUtil;
 import com.software.ustc.superspy.kits.BaseActivity;
@@ -23,7 +29,7 @@ public class AppUsageAnalysisActivity extends BaseActivity implements View.OnCli
     private ListView lvapp;
 
     //数据集合
-    private List plist;
+    private List<AppUsageInfo> plist;
     private AppUsageDao pdao;
     //适配器
     MyAdapter adapter;
@@ -41,7 +47,7 @@ public class AppUsageAnalysisActivity extends BaseActivity implements View.OnCli
         pdao = new AppUsageDao(this);//数据层
         plist = pdao.queryAppUsageList();
         //适配器
-        adapter = new MyAdapter();
+        adapter = new MyAdapter(AppUsageAnalysisActivity.this, R.layout.item_app_usage_info, plist);
         //设置适配器
         lvapp.setAdapter(adapter);
 
@@ -59,7 +65,7 @@ public class AppUsageAnalysisActivity extends BaseActivity implements View.OnCli
         pdao = new AppUsageDao(this);//数据层
         plist = pdao.queryAppUsageList();
         //适配器
-        adapter = new MyAdapter();
+        adapter = new MyAdapter(AppUsageAnalysisActivity.this, R.layout.item_app_usage_info, plist);
         //设置适配器
         lvapp.setAdapter(adapter);
         super.onResume();
@@ -85,29 +91,25 @@ public class AppUsageAnalysisActivity extends BaseActivity implements View.OnCli
         }
     }
 
-    class MyAdapter extends BaseAdapter {
-        @Override
-        public int getCount() {
-            //数据项大小
-            return plist.size();
+    class MyAdapter extends ArrayAdapter<AppUsageInfo> {
+        private int resId;
+        public MyAdapter(@NonNull Context context, int resource, @NonNull List<AppUsageInfo> objects) {
+            super(context, resource, objects);
+            resId=resource;
         }
-
-        @Override
-        public Object getItem(int position) {
-            //返回数据
-            return plist.get(position);
-        }
-
-        @Override
-        public long getItemId(int position) {
-            return position;
-        }
-
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
 
-            //初始化数据项
-            final View app_itemView = View.inflate(AppUsageAnalysisActivity.this, R.layout.item_app_usage_info, null);
+            //可以将之前加载好的布局进行缓存,之后进行重用,提高加载速度
+            View app_itemView;
+            if(convertView == null)
+            {
+                app_itemView = LayoutInflater.from(AppUsageAnalysisActivity.this).inflate(resId,parent,false);
+            }
+            else
+            {
+                app_itemView=convertView;
+            }
 
             //获取数据项视图
             TextView txt_app_name = (TextView) app_itemView.findViewById(R.id.txt_app_name_usage_item);
