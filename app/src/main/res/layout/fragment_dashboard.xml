@@ -58,11 +58,37 @@
         android:layout_weight="2"
         android:orientation="horizontal">
 
-        <TextView
-            android:layout_width="match_parent"
+        <LinearLayout
+            android:id="@+id/item21"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:background="@drawable/textview_border_white"
-            android:gravity="center" />
+            android:layout_weight="1">
+
+            <Button
+                android:id="@+id/btn_account"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_horizontal"
+                android:background="@drawable/textview_border"
+                android:drawableTop="@mipmap/app_icon_account"
+                android:text="账号管理" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/item22"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <Button
+                android:id="@+id/btn_authority"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_horizontal"
+                android:background="@drawable/textview_border"
+                android:drawableTop="@mipmap/app_icon_authority"
+                android:text="系统权限管理" />
+        </LinearLayout>
     </LinearLayout>
 
     <TextView
@@ -73,14 +99,14 @@
         android:gravity="center" />
 
     <LinearLayout
-        android:id="@+id/row2"
+        android:id="@+id/rol3"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="2"
         android:orientation="horizontal">
 
         <LinearLayout
-            android:id="@+id/item21"
+            android:id="@+id/item31"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1">
@@ -96,7 +122,7 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/item22"
+            android:id="@+id/item32"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1">
@@ -113,14 +139,14 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/row3"
+        android:id="@+id/rol4"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="2"
         android:orientation="horizontal">
 
         <LinearLayout
-            android:id="@+id/item31"
+            android:id="@+id/item41"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1">
@@ -136,7 +162,7 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/item32"
+            android:id="@+id/item42"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
