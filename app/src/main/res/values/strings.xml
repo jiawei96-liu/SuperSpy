@@ -2,7 +2,7 @@
     <string name="app_name">SuperSpy</string>
     <string name="title_home">首页</string>
     <string name="title_dashboard">工具箱</string>
-    <string name="title_notifications">反馈</string>
+    <string name="title_notifications">信息与反馈</string>
     <string name="title_activity_login">登录</string>
     <string name="user_name">用户名</string>
     <string name="prompt_password">密码</string>

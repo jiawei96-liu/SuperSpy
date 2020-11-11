@@ -1,4 +1,4 @@
-package com.software.ustc.superspy.ui.dashboard;
+package com.software.ustc.superspy.fragment;
 
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
@@ -21,12 +21,9 @@ import com.software.ustc.superspy.activity.SysInfoShowActivity;
 public class DashboardFragment extends Fragment implements View.OnClickListener {
 
     private static final String TAG = "DashboardFragment";
-    private DashboardViewModel dashboardViewModel;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        dashboardViewModel =
-                ViewModelProviders.of(this).get(DashboardViewModel.class);
         View root = inflater.inflate(R.layout.fragment_dashboard, container, false);
         return root;
     }

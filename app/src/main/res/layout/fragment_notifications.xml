@@ -90,8 +90,7 @@
 
                         <TextView
                             style="@style/content_item_rt_tv"
-                            android:layout_weight="1"
-                            android:text="Jiawei.liu/Mengrui.liu" />
+                            android:layout_weight="1" />
 
                         <ImageView
                             style="@style/content_item_rt_img"
@@ -111,8 +110,7 @@
 
                         <TextView
                             style="@style/content_item_rt_tv"
-                            android:layout_weight="1"
-                            android:text="https://github.com/jiawei96-liu/SuperSpy" />
+                            android:layout_weight="1" />
 
                         <ImageView
                             style="@style/content_item_rt_img"
@@ -131,8 +129,7 @@
 
                         <TextView
                             style="@style/content_item_rt_tv"
-                            android:layout_weight="1"
-                            android:text="jiawei96.liu@outlook.com" />
+                            android:layout_weight="1"/>
 
                         <ImageView
                             style="@style/content_item_rt_img"
