@@ -13,9 +13,11 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
 
+import com.software.ustc.superspy.activity.AccountMangementActivity;
 import com.software.ustc.superspy.activity.AppInfoShowActivity;
 import com.software.ustc.superspy.activity.AppUsageAnalysisActivity;
 import com.software.ustc.superspy.R;
+import com.software.ustc.superspy.activity.DevInfoActivity;
 import com.software.ustc.superspy.activity.SysInfoShowActivity;
 
 public class DashboardFragment extends Fragment implements View.OnClickListener {
@@ -56,12 +58,13 @@ public class DashboardFragment extends Fragment implements View.OnClickListener 
                 startActivity(new Intent(getActivity(), AppInfoShowActivity.class));
                 break;
             case R.id.btn_sys:
-                startActivity(new Intent(getActivity(), SysInfoShowActivity.class));
+                startActivity(new Intent(getActivity(), DevInfoActivity.class));
                 break;
             case R.id.btn_app_usage_list:
                 startActivity(new Intent(getActivity(), AppUsageAnalysisActivity.class));
                 break;
             case R.id.btn_account:
+                startActivity(new Intent(getActivity(), AccountMangementActivity.class));
                 break;
             case R.id.btn_app_theme:
                 break;

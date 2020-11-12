@@ -47,14 +47,22 @@ public class LoginActivity extends BaseActivity {
             LoginData login1 = new LoginData();
             login1.setUsername("");
             login1.setPassward("");
-            login1.updateAll("id=?", "1");
+            login1.setId(1);
+            login1.save();
+//            login1.updateAll("id=?", "1");
+            LoginData login2 = new LoginData();
+            login2.setUsername("");
+            login2.setPassward("");
+            login2.setId(2);
+            login2.save();
+//            login2.updateAll("id=?", "2");
         }
 
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                Connector.getDatabase();
+
 
                 String account = accountEdit.getText().toString();
                 String password = passwordEdit.getText().toString();
@@ -84,6 +92,10 @@ public class LoginActivity extends BaseActivity {
                         login1.setPassward("");
                         login1.updateAll("id=?", "1");
                     }
+                    LoginData login2 = new LoginData();
+                    login2.setUsername(account);
+                    login2.setPassward(password);
+                    login2.updateAll("id=?", "2");
                     toast.setText("登录成功");
                     Intent intent1 = new Intent(LoginActivity.this, MainActivity.class);
                     startActivity(intent1);

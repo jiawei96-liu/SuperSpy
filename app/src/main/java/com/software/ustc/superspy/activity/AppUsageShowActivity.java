@@ -1,10 +1,14 @@
 package com.software.ustc.superspy.activity;
 
+import android.app.usage.UsageStats;
+import android.app.usage.UsageStatsManager;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
@@ -13,6 +17,14 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.github.mikephil.charting.charts.LineChart;
+import com.github.mikephil.charting.charts.PieChart;
+import com.github.mikephil.charting.data.Entry;
+import com.github.mikephil.charting.data.LineData;
+import com.github.mikephil.charting.data.LineDataSet;
+import com.github.mikephil.charting.data.PieData;
+import com.github.mikephil.charting.data.PieDataSet;
+import com.github.mikephil.charting.data.PieEntry;
 import com.software.ustc.superspy.R;
 import com.software.ustc.superspy.db.sqllite.AppUsageDao;
 import com.software.ustc.superspy.kits.AppInfo;
@@ -21,8 +33,10 @@ import com.software.ustc.superspy.kits.AppUsageUtil;
 import com.software.ustc.superspy.kits.BaseActivity;
 import com.software.ustc.superspy.kits.PicUtil;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
+import java.util.List;
 
 public class AppUsageShowActivity extends BaseActivity {
     private AppInfo appInfo;
@@ -41,6 +55,8 @@ public class AppUsageShowActivity extends BaseActivity {
     private Button share;
     private Button uninstall;
 
+    private LineChart lc;
+    private PieChart pc;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -145,6 +161,46 @@ public class AppUsageShowActivity extends BaseActivity {
 //                }
             }
         });
+
+        Calendar beginCal = Calendar.getInstance();
+        beginCal.add(Calendar.HOUR_OF_DAY, -1);
+        Calendar endCal = Calendar.getInstance();
+        UsageStatsManager manager=(UsageStatsManager)getApplicationContext().getSystemService(USAGE_STATS_SERVICE);
+        List<UsageStats> stats=manager.queryUsageStats(UsageStatsManager.INTERVAL_DAILY,beginCal.getTimeInMillis(),endCal.getTimeInMillis());
+        //折线图
+        lc = (LineChart) findViewById(R.id.lc);
+        // 1. 获取一或多组Entry对象集合的数据
+        // 模拟数据1
+        List<Entry> yVals1 = new ArrayList<>();
+        float[] ys1 = new float[] {22f, 24f, 25f, 25f, 25f, 22f};
+        for (int i = 0; i < ys1.length; i++) {
+            yVals1.add(new Entry(i,ys1[i]));
+        }
+        // 2. 分别通过每一组Entry对象集合的数据创建折线数据集
+        LineDataSet lineDataSet1 = new LineDataSet(yVals1, "最高温度");
+        // 3. 将每一组折线数据集添加到折线数据中
+        LineData lineData = new LineData(lineDataSet1);
+        // 4. 将折线数据设置给图表
+        lc.setData(lineData);
+
+        //饼状图
+        pc = (PieChart) findViewById(R.id.pc);
+        List<PieEntry> yVals = new ArrayList<>();
+        yVals.add(new PieEntry(28.6f, "有违章"));
+        yVals.add(new PieEntry(71.3f, "无违章"));
+
+        List<Integer> colors = new ArrayList<>();
+        colors.add(Color.parseColor("#4A92FC"));
+        colors.add(Color.parseColor("#ee6e55"));
+
+        PieDataSet pieDataSet = new PieDataSet(yVals, "");
+        pieDataSet.setColors(colors);
+        PieData pieData = new PieData(pieDataSet);
+
+        pc.setData(pieData);
+
+
+
     }
 
     private void appUsageInfoShow() {
