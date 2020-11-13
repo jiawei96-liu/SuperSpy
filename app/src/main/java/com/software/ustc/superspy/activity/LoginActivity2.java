@@ -24,6 +24,7 @@ import android.widget.Toast;
 
 import com.software.ustc.superspy.R;
 import com.software.ustc.superspy.db.litepal.LoginData;
+import com.software.ustc.superspy.kits.BaseActivity;
 
 import org.litepal.LitePal;
 import org.litepal.tablemanager.Connector;
@@ -143,6 +144,13 @@ public class LoginActivity2 extends Activity implements View.OnClickListener {
             login2.setPassward(password);
             login2.updateAll("id=?", "2");
             toast.setText("登录成功");
+            mWidth = mBtnLogin.getMeasuredWidth();
+            mHeight = mBtnLogin.getMeasuredHeight();
+            // 隐藏输入框
+            mName.setVisibility(View.INVISIBLE);
+            mPsw.setVisibility(View.INVISIBLE);
+
+            inputAnimator(mInputLayout, mWidth, mHeight);
 
         } else {
             toast.setText("用户名或密码错误");
@@ -150,13 +158,7 @@ public class LoginActivity2 extends Activity implements View.OnClickListener {
         toast.show();
         ///////////////////////////
 
-        mWidth = mBtnLogin.getMeasuredWidth();
-        mHeight = mBtnLogin.getMeasuredHeight();
-        // 隐藏输入框
-        mName.setVisibility(View.INVISIBLE);
-        mPsw.setVisibility(View.INVISIBLE);
 
-        inputAnimator(mInputLayout, mWidth, mHeight);
 
     }
 
