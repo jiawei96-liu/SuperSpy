@@ -1,9 +1,6 @@
 package com.software.ustc.superspy.fragment;
-
-import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,14 +8,12 @@ import android.widget.Button;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProviders;
-
 import com.software.ustc.superspy.activity.AccountMangementActivity;
 import com.software.ustc.superspy.activity.AppInfoShowActivity;
 import com.software.ustc.superspy.activity.AppUsageAnalysisActivity;
 import com.software.ustc.superspy.R;
+import com.software.ustc.superspy.activity.AppsRecomendActivity;
 import com.software.ustc.superspy.activity.DevInfoActivity;
-import com.software.ustc.superspy.activity.SysInfoShowActivity;
 
 public class DashboardFragment extends Fragment implements View.OnClickListener {
 
@@ -66,8 +61,6 @@ public class DashboardFragment extends Fragment implements View.OnClickListener 
             case R.id.btn_account:
                 startActivity(new Intent(getActivity(), AccountMangementActivity.class));
                 break;
-            case R.id.btn_app_theme:
-                break;
             case R.id.btn_authority:
                 Intent intent = new Intent(android.provider.Settings.ACTION_USAGE_ACCESS_SETTINGS);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -76,6 +69,9 @@ public class DashboardFragment extends Fragment implements View.OnClickListener 
             case R.id.btn_battery:
                 break;
             case R.id.btn_app_recommend_list:
+                startActivity(new Intent(getActivity(), AppsRecomendActivity.class));
+                break;
+            case R.id.btn_app_theme:
                 break;
             default:
                 break;
