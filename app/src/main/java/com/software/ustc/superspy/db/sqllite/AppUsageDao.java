@@ -68,7 +68,7 @@ public class AppUsageDao {
             //创建数据库操作对象
             db = helper.getReadableDatabase();
 
-            Cursor cursor = db.rawQuery("select * from usageInfoTable where app_name = \""+ apkName+ "\"",null );
+            Cursor cursor = db.rawQuery("select * from usageInfoTable where apk_name = \""+ apkName+ "\"",null );
             while (cursor.moveToNext()) {
                 String apk_name = cursor.getString(cursor.getColumnIndex("apk_name"));
                 String app_name = cursor.getString(cursor.getColumnIndex("app_name"));

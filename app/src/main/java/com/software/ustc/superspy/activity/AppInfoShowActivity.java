@@ -35,31 +35,31 @@ public class AppInfoShowActivity extends BaseActivity {
 
         try {
             getApps();
+            AppInfoAdapter adapter = new AppInfoAdapter(AppInfoShowActivity.this, R.layout.item_app_info, appInfoList);
+            final ListView listView = (ListView) findViewById(R.id.lv_apps);
+            listView.setAdapter(adapter);
+            listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    AppInfo appInfo = appInfoList.get(position);
+                    Intent intent = new Intent();
+                    //传递Bundle(集装箱),将我们需要传递的数据全部放入集装箱，然后直接将集装箱传递到目标页面
+                    Bundle appInfoBundle=new Bundle();
+                    appInfoBundle.putString("appName",appInfo.getAppName());
+                    appInfoBundle.putString("appPkgName",appInfo.getAppPackageName());
+                    appInfoBundle.putLong("appSize",appInfo.getAppSize());
+                    appInfoBundle.putString("appDir",appInfo.getAppDir());
+                    appInfoBundle.putString("appVersion",appInfo.getAppVersion());
+                    intent.putExtra("appInfo",appInfoBundle);
+                    //传递bitmap
+                    intent.putExtra("appIron", appInfo.getAppIcon());
+                    intent.setClass(AppInfoShowActivity.this,AppUsageShowActivity.class);
+                    startActivity(intent);
+                }
+            });
         } catch (PackageManager.NameNotFoundException e) {
             e.printStackTrace();
         }
-        AppInfoAdapter adapter = new AppInfoAdapter(AppInfoShowActivity.this, R.layout.item_app_info, appInfoList);
-        final ListView listView = (ListView) findViewById(R.id.lv_apps);
-        listView.setAdapter(adapter);
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                AppInfo appInfo = appInfoList.get(position);
-                Intent intent = new Intent();
-                //传递Bundle(集装箱),将我们需要传递的数据全部放入集装箱，然后直接将集装箱传递到目标页面
-                Bundle appInfoBundle=new Bundle();
-                appInfoBundle.putString("appName",appInfo.getAppName());
-                appInfoBundle.putString("appPkgName",appInfo.getAppPackageName());
-                appInfoBundle.putLong("appSize",appInfo.getAppSize());
-                appInfoBundle.putString("appDir",appInfo.getAppDir());
-                appInfoBundle.putString("appVersion",appInfo.getAppVersion());
-                intent.putExtra("appInfo",appInfoBundle);
-                //传递bitmap
-                intent.putExtra("appIron", appInfo.getAppIcon());
-                intent.setClass(AppInfoShowActivity.this,AppUsageShowActivity.class);
-                startActivity(intent);
-            }
-        });
     }
 
     public void getApps() throws PackageManager.NameNotFoundException {
