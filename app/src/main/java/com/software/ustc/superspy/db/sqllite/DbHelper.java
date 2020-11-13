@@ -20,7 +20,8 @@ public class DbHelper extends SQLiteOpenHelper {
                 "last_timestamp varchar(50)," +
                 "foreground_time varchar(50)," +
                 "last_start_time varchar(50)," +
-                "run_times varchar(50))";
+                "run_times varchar(50)," +
+                "app_tag varchar(50))";
 
         String sqlbasic =  "create table appInfoTable(apk_name varchar(100) primary key," +
                 "app_name varchar(50)," +

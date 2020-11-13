@@ -27,6 +27,7 @@ import java.util.concurrent.TimeUnit;
 public class AppUsageUtil {
     private final static String TAG = "AppUsageUtil";
     private final static String PACKAGE_NAME_UNKNOWN = "unknown";
+    private AppTagsMap appTagsMap;
 
     public static void checkUsageStateAccessPermission(Context context) {
         if(!AppUsageUtil.checkAppUsagePermission(context)) {
@@ -101,6 +102,7 @@ public class AppUsageUtil {
         Calendar beginCal = Calendar.getInstance();
         beginCal.add(Calendar.HOUR_OF_DAY, -1);
         Calendar endCal = Calendar.getInstance();
+        AppTagsMap appTagsMap = new AppTagsMap();
 
         long start_time = beginCal.getTimeInMillis();
         long end_time = endCal.getTimeInMillis();
@@ -158,8 +160,12 @@ public class AppUsageUtil {
             }
             if(app_name.equals("None"))
                 continue;
+            String app_tag = appTagsMap.getAppTagsMap().get(app_name);
+            if(app_tag==null){
+                app_tag="其他";
+            }
             AppUsageInfo appUsageinfo = new AppUsageInfo(PackageName,app_name,first_timestamp,last_timestamp,
-                    foreground_time,last_start_time,run_times);
+                    foreground_time,last_start_time,run_times,app_tag);
 
             appUsageDao.insertAppUsage(appUsageinfo);
         }

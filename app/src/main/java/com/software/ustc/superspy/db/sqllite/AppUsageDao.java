@@ -5,11 +5,14 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
+import com.software.ustc.superspy.kits.AppTagsMap;
 import com.software.ustc.superspy.kits.AppUsageInfo;
 import com.software.ustc.superspy.kits.AppUsageUtil;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Set;
 
 public class AppUsageDao {
     //定义DbHelper帮助类
@@ -40,8 +43,9 @@ public class AppUsageDao {
                 String foreground_time = cursor.getString(cursor.getColumnIndex("foreground_time"));
                 String last_start_time = cursor.getString(cursor.getColumnIndex("last_start_time"));
                 String run_times = cursor.getString(cursor.getColumnIndex("run_times"));
+                String app_tag = cursor.getString(cursor.getColumnIndex("app_tag"));
                 //封装到个人对象中
-                AppUsageInfo appUsageInfo = new AppUsageInfo(apk_name,app_name,first_timestamp,last_timestamp,foreground_time,last_start_time,run_times);
+                AppUsageInfo appUsageInfo = new AppUsageInfo(apk_name,app_name,first_timestamp,last_timestamp,foreground_time,last_start_time,run_times,app_tag);
                 plist.add(appUsageInfo);
             }
         } catch (Exception e) {
@@ -73,7 +77,8 @@ public class AppUsageDao {
                 String foreground_time = cursor.getString(cursor.getColumnIndex("foreground_time"));
                 String last_start_time = cursor.getString(cursor.getColumnIndex("last_start_time"));
                 String run_times = cursor.getString(cursor.getColumnIndex("run_times"));
-                appUsageInfo = new AppUsageInfo(apk_name,app_name,first_timestamp,last_timestamp,foreground_time,last_start_time,run_times);
+                String app_tag = cursor.getString(cursor.getColumnIndex("app_tag"));
+                appUsageInfo = new AppUsageInfo(apk_name,app_name,first_timestamp,last_timestamp,foreground_time,last_start_time,run_times,app_tag);
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -102,6 +107,7 @@ public class AppUsageDao {
             values.put("foreground_time", appUsageInfo.getForeground_time());
             values.put("last_start_time", appUsageInfo.getLast_start_time());
             values.put("run_times", appUsageInfo.getRun_times());
+            values.put("app_tag",appUsageInfo.getApp_tag());
             db.insert("usageInfoTable", null, values);
         } catch (Exception e) {
             e.printStackTrace();

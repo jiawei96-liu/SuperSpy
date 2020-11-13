@@ -6,11 +6,13 @@ import android.graphics.Color;
 import android.os.Bundle;
 
 import com.github.mikephil.charting.charts.RadarChart;
+import com.github.mikephil.charting.components.AxisBase;
 import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.RadarData;
 import com.github.mikephil.charting.data.RadarDataSet;
 import com.github.mikephil.charting.data.RadarEntry;
+import com.github.mikephil.charting.formatter.IAxisValueFormatter;
 import com.software.ustc.superspy.R;
 
 import java.util.ArrayList;
@@ -19,8 +21,6 @@ import java.util.List;
 public class AppsRecomendActivity extends AppCompatActivity {
 
     private RadarChart chart;
-    private int[] colors = {Color.RED, Color.BLACK, Color.GREEN, Color.BLUE, Color.GRAY};
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,24 +39,46 @@ public class AppsRecomendActivity extends AppCompatActivity {
         //设置中心线颜色(也就是竖着的线条)
         chart.setWebColor(Color.BLACK);
         chart.setWebAlpha(50);
-
         XAxis xAxis = chart.getXAxis();
         //设置x轴标签字体颜色
-        xAxis.setLabelCount(4, true);
+        xAxis.setLabelCount(9, false);
+        //自定义X轴坐标描述（也就是五个顶点上的文字,默认是0、1、2、3、4）
+        xAxis.setValueFormatter(new IAxisValueFormatter() {
+            @Override
+            public String getFormattedValue(float v, AxisBase axisBase) {
+                if (v==0){
+                    return "聊天社交";
+                }
+                if (v==1){
+                    return "金融理财";
+                }
+                if (v==2){
+                    return "旅行交通";
+                }
+                if (v==3){
+                    return "时尚购物";
+                }
+                if (v==4){
+                    return "影音视听";
+                }
+                if (v==5){
+                    return "游戏";
+                }
+                if (v==6){
+                    return "学习教育";
+                }
+                if (v==7){
+                    return "新闻资讯";
+                }
+                if (v==8){
+                    return "其他";
+                }
+                return "";
+            }
+        });
         xAxis.setAxisMaximum(4f);
         xAxis.setAxisMinimum(0f);
-        xAxis.setTextSize(20f);
-
-//        //自定义y轴标签，x轴同理
-//        xAxis.setValueFormatter(new ValueFormatter() {
-//            @Override
-//            public String getFormattedValue(float value) {
-//                //这里只是自定义了标签的颜色，如果要使用自定义标签颜色，请更改布局文件为自定为RoadarCharts类
-//                chart.getXAxis().setTextColor(colors[(int) Math.abs(value % 5)]);
-//                return super.getFormattedValue(value);
-//            }
-//        });
-
+        xAxis.setTextSize(10f);
         YAxis yAxis = chart.getYAxis();
         //设置y轴的标签个数
         yAxis.setLabelCount(5, true);

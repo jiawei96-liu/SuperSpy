@@ -8,8 +8,9 @@ public class AppUsageInfo {
     protected String foreground_time;
     protected String last_start_time;
     protected String run_times;
+    protected String app_tag;
 
-    public AppUsageInfo(String apk_name,String app_name, String first_timestamp, String last_timestamp, String foreground_time, String last_start_time, String run_times) {
+    public AppUsageInfo(String apk_name, String app_name, String first_timestamp, String last_timestamp, String foreground_time, String last_start_time, String run_times, String app_tag) {
         this.apk_name = apk_name;
         this.app_name = app_name;
         this.first_timestamp = first_timestamp;
@@ -17,6 +18,7 @@ public class AppUsageInfo {
         this.foreground_time = foreground_time;
         this.last_start_time = last_start_time;
         this.run_times = run_times;
+        this.app_tag = app_tag;
     }
 
     //set,get
@@ -74,5 +76,13 @@ public class AppUsageInfo {
 
     public void setLast_start_time(String last_start_time) {
         this.last_start_time = last_start_time;
+    }
+
+    public String getApp_tag() {
+        return app_tag;
+    }
+
+    public void setApp_tag(String app_tag) {
+        this.app_tag = app_tag;
     }
 }
