@@ -20,7 +20,8 @@
         android:roundIcon="@mipmap/superspy"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.PasswordChangeActivity"></activity>
+        <activity android:name=".activity.LoginActivity2"></activity>
+        <activity android:name=".activity.PasswordChangeActivity" />
         <activity android:name=".activity.AccountMangementActivity" />
         <activity android:name=".activity.DevInfoActivity" />
 

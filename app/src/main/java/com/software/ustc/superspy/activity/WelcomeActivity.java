@@ -20,7 +20,7 @@ public class WelcomeActivity extends BaseActivity {
             public void run() {
                 try{
                     sleep(WELCONE_DISPLAY_LENGHT);
-                    Intent it=new Intent(getApplicationContext(), LoginActivity.class);//启动MainActivity
+                    Intent it=new Intent(getApplicationContext(), LoginActivity2.class);//启动MainActivity
                     startActivity(it);
                     finish();//关闭当前活动
                 }catch (Exception e){

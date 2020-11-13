@@ -3,8 +3,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@drawable/background">
-<!--    android:background="@drawable/background"-->
+    android:background="#7adfb8">
+    <!--    android:background="@drawable/background"-->
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -170,7 +170,10 @@
             android:layout_marginTop="40dp"
             android:text="注册"
             android:textSize="24sp"
-            android:background="@drawable/selector_orange2" />
+            android:textColor="#eeeeee"
+            android:background="@drawable/text_bg"/>
+<!--            android:background="@drawable/selector_orange2"-->
+
     </RelativeLayout>
 
 
