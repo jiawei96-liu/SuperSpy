@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#FCBC94</color>
-    <color name="colorPrimaryDark">#FB8B89</color>
-    <color name="colorAccent">#FB8B89</color>
+    <color name="colorPrimary">#73CDAA</color>
+    <color name="colorPrimaryDark">#33cc99</color>
+    <color name="colorAccent">#33cc99</color>
     <color name="activity_bg">#f7f8f8</color>
     <color name="topbar_bg">#33cc99</color>
     <color name="topbar_bg_white">#ffffffff</color>
@@ -62,4 +62,11 @@
     <color name="btn_gray_pressed">#666667</color>
     <color name="btn_red_normal">#ff3b3b</color>
     <color name="btn_red_pressed">#dd0000</color>
+
+    <color name="timeselect_bg1">#ff54acea</color>
+    <color name="timeselect_bg2">#62c8f9</color>
+    <color name="timeselect_bg3">#FCBC94</color>
+    <color name="timeselect_bg4">#e87a22</color>
+    <color name="timeselect_bg5">#FB8B89</color>
+    <color name="timeselect_bg6">#FB8B89</color>
 </resources>
