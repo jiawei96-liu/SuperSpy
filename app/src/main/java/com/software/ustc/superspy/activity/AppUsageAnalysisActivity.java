@@ -51,7 +51,7 @@ public class AppUsageAnalysisActivity extends BaseActivity implements View.OnCli
         //设置适配器
         lvapp.setAdapter(adapter);
 
-        startService(new Intent(this, AppUsageService.class));
+//        startService(new Intent(this, AppUsageService.class));
     }
 
     @Override
@@ -80,12 +80,6 @@ public class AppUsageAnalysisActivity extends BaseActivity implements View.OnCli
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-//            case R.id.btn_app_usage_collect_service_start:
-//
-//                break;
-//            case R.id.btn_app_usage_collect_service_stop:
-//
-//                break;
             default:
                 break;
         }

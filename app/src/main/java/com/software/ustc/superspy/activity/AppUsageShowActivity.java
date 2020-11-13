@@ -210,8 +210,10 @@ public class AppUsageShowActivity extends BaseActivity {
         long startTime = calendar.getTimeInMillis();
         pdao = new AppUsageDao(this);//数据层
         appUsageInfo = pdao.querySignalAppUsage(appInfo.getAppName());
-//        appTimeUsageTV.setText("过去一天使用信息统计: \n第一次启动时间:"+appUsageInfo.getFirst_start_time()+
-//                "\n最后一次使用时间"+appUsageInfo.getLast_start_time()+"\nApp总运行时间"+appUsageInfo.getForeground_time()+"\n");
+        appTimeUsageTV.setText("过去一天使用信息统计: \n统计起始时间:"+appUsageInfo.getFirst_timestamp()+
+                "\n统计截止时间:"+appUsageInfo.getLast_start_time()+"\n启动次数:"+appUsageInfo.getRun_times()+
+                "\n最后一次使用时间:"+appUsageInfo.getLast_start_time()+"\nApp总运行时间:"+appUsageInfo.getForeground_time()+
+                "\nTAG:"+appUsageInfo.getApp_tag());
     }
 
     private void appBasicInfoShow() {

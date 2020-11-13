@@ -23,9 +23,9 @@ public class AppUsageDao {
         helper = new DbHelper(context, "AppUsage.db", null, 1);
     }
 
-    public List queryAppUsageList() {
+    public List<AppUsageInfo> queryAppUsageList() {
         //返回值
-        List plist = new ArrayList();
+        List<AppUsageInfo> plist = new ArrayList();
         //创建数据库操作对象
         SQLiteDatabase db = null;
 
