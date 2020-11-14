@@ -196,8 +196,13 @@
             android:layout_weight="1"
             android:orientation="vertical"
             >
-
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/shebeiqudong"
+                android:layout_marginBottom="5dp"/>
             <TextView
+                android:layout_marginTop="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="2"
@@ -219,7 +224,13 @@
             android:layout_height="match_parent"
             android:orientation="vertical"
             >
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/cpu"
+                android:layout_marginBottom="5dp"/>
             <TextView
+                android:layout_marginTop="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="2"
@@ -240,6 +251,7 @@
         android:layout_weight="2"
         android:layout_margin="10dp"
         >
+
         <LinearLayout
             android:layout_margin="10dp"
             android:layout_width="0dp"
@@ -247,7 +259,13 @@
             android:layout_weight="1"
             android:orientation="vertical"
             >
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/pingmu"
+                android:layout_marginBottom="5dp"/>
             <TextView
+                android:layout_marginTop="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="2"
@@ -269,7 +287,13 @@
             android:layout_height="match_parent"
             android:orientation="vertical"
             >
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/fenbianlv"
+                android:layout_marginBottom="5dp"/>
             <TextView
+                android:layout_marginTop="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="2"

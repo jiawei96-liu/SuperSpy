@@ -20,7 +20,9 @@
 <!--        android:textSize="30sp"/>-->
 
 <!--    </RelativeLayout>-->
-
+    <include
+        android:id="@+id/main_title"
+        layout="@layout/title_layout2" />
 
     <LinearLayout
         android:layout_marginTop="100dp"
@@ -130,59 +132,6 @@
                 android:textSize="18sp" />
         </LinearLayout>
 
-<!--        <LinearLayout-->
-
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="60dp"-->
-<!--            android:gravity="center_vertical"-->
-<!--            android:orientation="horizontal" >-->
-<!--            <TextView-->
-<!--                android:layout_width="0px"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_weight="1"-->
-<!--                android:layout_marginLeft="10dp"-->
-<!--                android:paddingLeft="6dp"-->
-<!--                android:gravity="left"-->
-<!--                android:text="性别"-->
-<!--                android:textSize="18sp" />-->
-<!--            <RadioGroup-->
-<!--                android:layout_width="0px"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_weight="2.6"-->
-<!--                android:id="@+id/SexRadio"-->
-<!--                android:paddingLeft="5dp">-->
-<!--                <RadioButton-->
-<!--                    android:id="@+id/mainRegisterRdBtnFemale"-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:text="女生"/>-->
-<!--                <RadioButton-->
-<!--                    android:id="@+id/mainRegisterRdBtnMale"-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:text="男生"/>-->
-<!--            </RadioGroup>-->
-<!--        </LinearLayout>-->
-
-<!--        <LinearLayout-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="50dp"-->
-<!--            android:gravity="center_vertical"-->
-<!--            android:orientation="horizontal" >-->
-<!--            <EditText-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_marginLeft="10dp"-->
-<!--                android:layout_marginRight="10dp"-->
-<!--                android:paddingTop="2dp"-->
-<!--                android:paddingBottom="2dp"-->
-<!--                android:paddingLeft="6dp"-->
-<!--                android:hint="学校"-->
-<!--                android:singleLine="true"-->
-<!--                android:maxLength="15"-->
-<!--                android:background="#ffffff"-->
-<!--                android:textSize="18sp" />-->
-<!--        </LinearLayout>-->
 
     </LinearLayout>
 
@@ -209,69 +158,6 @@
     </RelativeLayout>
 
 
-<!--    <LinearLayout-->
-<!--        android:orientation="vertical"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="match_parent"-->
-<!--        android:layout_marginTop="100dp"-->
-<!--        android:layout_marginLeft="30dp"-->
-<!--        android:padding="30dp"-->
-<!--        android:layout_marginRight="30dp"-->
 
-<!--        >-->
-<!--        <TextView-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:text="欢迎注册"-->
-<!--            android:layout_marginTop="30dp"-->
-<!--            android:textSize="50sp"-->
-<!--            android:gravity="center"-->
-<!--            />-->
-<!--        <EditText-->
-<!--            android:layout_marginTop="50dp"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="50dp"-->
-<!--            android:textSize="30sp"-->
-<!--            android:textColor="#ffad33"-->
-<!--            android:id="@+id/eLUsername"-->
-<!--            android:background="@drawable/up2"-->
-<!--            android:hint=" 请输入账号"-->
-<!--            />-->
-
-<!--        <EditText-->
-<!--            android:id="@+id/eLPassward"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="50dp"-->
-<!--            android:layout_marginTop="50dp"-->
-<!--            android:background="@drawable/up2"-->
-<!--            android:hint=" 请输入密码"-->
-<!--            android:inputType="textPassword"-->
-<!--            android:textColor="#ffad33"-->
-<!--            android:textSize="30sp"-->
-
-<!--            />-->
-<!--        <EditText-->
-<!--            android:id="@+id/eConfirm"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="50dp"-->
-<!--            android:layout_marginTop="50dp"-->
-<!--            android:background="@drawable/up2"-->
-<!--            android:hint=" 确认密码"-->
-<!--            android:inputType="textPassword"-->
-<!--            android:textColor="#ffad33"-->
-<!--            android:textSize="30sp"-->
-
-<!--            />-->
-
-<!--        <Button-->
-<!--            android:id="@+id/bRoll"-->
-<!--            android:layout_width="200dp"-->
-<!--            android:layout_height="80dp"-->
-<!--            android:layout_gravity="center"-->
-<!--            android:layout_marginTop="60dp"-->
-<!--            android:background="@drawable/selector_blue"-->
-<!--            android:text="立刻注册"-->
-<!--            android:textColor="#fff"-->
-<!--            android:textSize="30dp" />-->
-<!--    </LinearLayout>-->
+    
 </LinearLayout>
