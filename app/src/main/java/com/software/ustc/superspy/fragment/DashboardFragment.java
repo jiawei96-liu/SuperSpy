@@ -36,12 +36,8 @@ public class DashboardFragment extends Fragment implements View.OnClickListener 
         btnAppUsages.setOnClickListener(this);
         Button btnAccount = (Button) getActivity().findViewById(R.id.btn_account);
         btnAccount.setOnClickListener(this);
-        Button btnShare = (Button) getActivity().findViewById(R.id.btn_app_theme);
-        btnShare.setOnClickListener(this);
         Button btnAuth = (Button) getActivity().findViewById(R.id.btn_authority);
         btnAuth.setOnClickListener(this);
-        Button btnBattery = (Button) getActivity().findViewById(R.id.btn_battery);
-        btnBattery.setOnClickListener(this);
         Button btnAppRecomend = (Button) getActivity().findViewById(R.id.btn_app_recommend_list);
         btnAppRecomend.setOnClickListener(this);
     }
@@ -66,12 +62,8 @@ public class DashboardFragment extends Fragment implements View.OnClickListener 
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 getContext().startActivity(intent);
                 break;
-            case R.id.btn_battery:
-                break;
             case R.id.btn_app_recommend_list:
                 startActivity(new Intent(getActivity(), AppsRecomendActivity.class));
-                break;
-            case R.id.btn_app_theme:
                 break;
             default:
                 break;

@@ -4,6 +4,7 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:orientation="vertical">
+
     <LinearLayout
         android:id="@+id/rol1"
         android:layout_width="match_parent"
@@ -34,15 +35,16 @@
             android:layout_weight="1">
 
             <Button
-                android:id="@+id/btn_battery"
+                android:id="@+id/btn_account"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_gravity="center_horizontal"
                 android:background="@drawable/textview_border"
-                android:drawableTop="@mipmap/app_icon_battery"
-                android:text="电池管理" />
+                android:drawableTop="@mipmap/app_icon_account"
+                android:text="账号管理" />
         </LinearLayout>
     </LinearLayout>
+
     <LinearLayout
         android:id="@+id/rol2"
         android:layout_width="match_parent"
@@ -52,21 +54,6 @@
 
         <LinearLayout
             android:id="@+id/item21"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1">
-            <Button
-                android:id="@+id/btn_account"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_gravity="center_horizontal"
-                android:background="@drawable/textview_border"
-                android:drawableTop="@mipmap/app_icon_account"
-                android:text="账号管理" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/item22"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1">
@@ -80,16 +67,9 @@
                 android:drawableTop="@mipmap/app_icon_authority"
                 android:text="系统权限管理" />
         </LinearLayout>
-    </LinearLayout>
-    <LinearLayout
-        android:id="@+id/rol3"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="2"
-        android:orientation="horizontal">
 
         <LinearLayout
-            android:id="@+id/item31"
+            android:id="@+id/item22"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1">
@@ -103,13 +83,20 @@
                 android:drawableTop="@mipmap/app_icon_info_list"
                 android:text="应用信息" />
         </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/rol3"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2"
+        android:orientation="horizontal">
 
         <LinearLayout
-            android:id="@+id/item32"
+            android:id="@+id/item31"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1">
-
             <Button
                 android:id="@+id/btn_app_usage_list"
                 android:layout_width="match_parent"
@@ -118,22 +105,14 @@
                 android:background="@drawable/textview_border"
                 android:drawableTop="@mipmap/app_icon_statistics"
                 android:text="应用分析" />
-        </LinearLayout>
-    </LinearLayout>
 
-    <LinearLayout
-        android:id="@+id/rol4"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="2"
-        android:orientation="horizontal">
+        </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/item41"
+            android:id="@+id/item32"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1">
-
             <Button
                 android:id="@+id/btn_app_recommend_list"
                 android:layout_width="match_parent"
@@ -142,28 +121,14 @@
                 android:background="@drawable/textview_border"
                 android:drawableTop="@mipmap/app_icon_recommendation"
                 android:text="应用推荐" />
-        </LinearLayout>
 
-        <LinearLayout
-            android:id="@+id/item42"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:orientation="horizontal">
 
-            <Button
-                android:id="@+id/btn_app_theme"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_gravity="center_horizontal"
-                android:background="@drawable/textview_border"
-                android:drawableTop="@mipmap/app_icon_theme"
-                android:text="应用主题" />
         </LinearLayout>
     </LinearLayout>
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
-        android:gravity="center"/>
+        android:layout_weight="2"
+        android:gravity="center" />
 </LinearLayout>
