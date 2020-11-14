@@ -21,10 +21,6 @@ public class AppUsageDao {
         helper = new AppUsageDbHelper(context, "AppUsage.db", null, 1);
     }
 
-//    public AppUsageDao(Context context,String dbName) {
-//        helper = new AppUsageDbHelper(context, dbName, null, 1);
-//    }
-
     public List<AppUsageInfo> queryAppUsageList() {
         //返回值
         List<AppUsageInfo> plist = new ArrayList();

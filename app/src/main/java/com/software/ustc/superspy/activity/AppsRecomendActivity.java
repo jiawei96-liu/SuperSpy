@@ -1,25 +1,24 @@
 package com.software.ustc.superspy.activity;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.graphics.Color;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.MotionEvent;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.Spinner;
-import android.widget.TextView;
 
+import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.charts.RadarChart;
 import com.github.mikephil.charting.components.AxisBase;
+import com.github.mikephil.charting.components.Legend;
 import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.components.YAxis;
+import com.github.mikephil.charting.data.BarData;
+import com.github.mikephil.charting.data.BarDataSet;
+import com.github.mikephil.charting.data.BarEntry;
+import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.RadarData;
 import com.github.mikephil.charting.data.RadarDataSet;
 import com.github.mikephil.charting.data.RadarEntry;
 import com.github.mikephil.charting.formatter.IAxisValueFormatter;
+import com.github.mikephil.charting.formatter.IValueFormatter;
+import com.github.mikephil.charting.utils.ViewPortHandler;
 import com.software.ustc.superspy.R;
 import com.software.ustc.superspy.db.sqllite.AppUsageDao;
 import com.software.ustc.superspy.kits.AppTagsMap;
@@ -34,84 +33,27 @@ import java.util.List;
 import java.util.Map;
 
 public class AppsRecomendActivity extends BaseActivity {
-
-    private RadarChart chart;
     private AppUsageDao pdao;
     private AppTagsMap appTagsMap;
-    private HashMap<String, String> chartData = new HashMap<String, String>();
+
+    private RadarChart chart;
     private final List<String>chartX=new ArrayList<String>();
     private final List<String>chartY=new ArrayList<String>();
-    private List<String> timeBeginEndList = new ArrayList<String>();
-    private TextView timeBeginEndShowTextView;
-    private Spinner timeBeginEndShowChoseSpinner;
-    private ArrayAdapter<String> timeBeginEndShowAdapter;
-    private int timeBeginEnd=30;
+
+    private BarChart bar;
+    private List<BarEntry> barEntryList = new ArrayList<BarEntry>();
+    private final List<String>barX=new ArrayList<String>();
+    private final List<String>barY=new ArrayList<String>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_apps_recomend);
-        initBeginEndList();
+
         repareData();
-        initChart();
-        setChartData();
-    }
-    void initBeginEndList()
-    {
-        //第一步：定义下拉列表内容
-        timeBeginEndList.add("一周");
-        timeBeginEndList.add("半月");
-        timeBeginEndList.add("一月");
-        timeBeginEndList.add("三月");
-        timeBeginEndList.add("半年");
-        timeBeginEndList.add("一年");
-        timeBeginEndShowTextView = (TextView)findViewById(R.id.tv_time_beginend);
-        timeBeginEndShowChoseSpinner = (Spinner)findViewById(R.id.span_time_beginend);
-        //第二步：为下拉列表定义一个适配器
-        timeBeginEndShowAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, timeBeginEndList);
-        //第三步：设置下拉列表下拉时的菜单样式
-        timeBeginEndShowAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        //第四步：将适配器添加到下拉列表上
-        timeBeginEndShowChoseSpinner.setAdapter(timeBeginEndShowAdapter);
-        //第五步：添加监听器，为下拉列表设置事件的响应
-        timeBeginEndShowChoseSpinner.setOnItemSelectedListener(new Spinner.OnItemSelectedListener() {
-            public void onltemSelected(AdapterView<?> argO, View argl, int arg2, long arg3) {
-                // TODO Auto-generated method stub
-                /* 将所选timeBeginEndShowChoseSpinner的值带入myTextView中*/
-                timeBeginEndShowTextView.setText("当前时间粒度:" + timeBeginEndShowAdapter.getItem(arg2));
-                /* 将 timeBeginEndShowChoseSpinner 显示^*/
-                argO.setVisibility(View.VISIBLE);
-            }
-
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-
-            }
-
-            public void onNothingSelected(AdapterView<?> argO) {
-                // TODO Auto-generated method stub
-                timeBeginEndShowTextView.setText(String.valueOf(timeBeginEnd)+"天");
-                argO.setVisibility(View.VISIBLE);
-            }
-        });
-        //将timeBeginEndShowChoseSpinner添加到OnTouchListener对内容选项触屏事件处理
-        timeBeginEndShowChoseSpinner.setOnTouchListener(new Spinner.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                // TODO Auto-generated method stub
-                // 将mySpinner隐藏
-                v.setVisibility(View.INVISIBLE);
-                Log.i("spinner", "Spinner Touch事件被触发!");
-                return false;
-            }
-        });
-        //焦点改变事件处理
-        timeBeginEndShowChoseSpinner.setOnFocusChangeListener(new Spinner.OnFocusChangeListener() {
-            public void onFocusChange(View v, boolean hasFocus) {
-                // TODO Auto-generated method stub
-                v.setVisibility(View.VISIBLE);
-                Log.i("spinner", "Spinner FocusChange事件被触发！");
-            }
-        });
+        showBar();
+        showChart();
+        showTextView();
     }
 
     void repareData()
@@ -120,20 +62,25 @@ public class AppsRecomendActivity extends BaseActivity {
         //权限检查
         AppUsageUtil.checkUsageStateAccessPermission(this);
         Calendar beginCal = Calendar.getInstance();
-        beginCal.add(Calendar.HOUR_OF_DAY, -timeBeginEnd);
+        beginCal.add(Calendar.YEAR, -1);
         Calendar endCal = Calendar.getInstance();
         long start_time = beginCal.getTimeInMillis();
         long end_time = endCal.getTimeInMillis();
         //数据库刷新
         AppUsageUtil.getAppUsageInfo(getApplicationContext(),start_time,end_time);
         pdao = new AppUsageDao(this);//数据层
-        long[] tagUsage=new long[10];
+        long[] tagChart=new long[10];
+        long[] tagBar=new long[10];
         for(int i=0;i<appTagsMap.getAppTag().length-1;++i)
         {
-            tagUsage[i]=pdao.queryAppTagUsage(appTagsMap.getAppTag()[i]);
+            tagChart[i]=pdao.queryAppTagUsage(appTagsMap.getAppTag()[i]);
         }
-        //寻找使用最多的五种类型的app,构建图标数据
-        long[] temp=tagUsage;
+        for(int i=0;i<appTagsMap.getAppTag().length;++i)
+        {
+            tagBar[i]=pdao.queryAppTagUsage(appTagsMap.getAppTag()[i]);
+        }
+        //寻找使用最多的五种类型的app,构建Chart数据
+        long[] temp=tagChart;
         for(int i=0;i<5;++i)
         {
             int max=0;
@@ -147,23 +94,132 @@ public class AppsRecomendActivity extends BaseActivity {
             }
             java.text.DecimalFormat myformat = new java.text.DecimalFormat("0.00");
             String hour = myformat.format(temp[max]/60.0/60.0);
-            chartData.put(appTagsMap.getPeopleTag()[max],hour);
+            chartX.add(appTagsMap.getPeopleTag()[max]);
+            chartY.add(hour);
             temp[max]=-1;
         }
-        Iterator<Map.Entry<String, String>> iterator = chartData.entrySet().iterator();
-        while (iterator.hasNext()) {
-            Map.Entry<String, String> entry = iterator.next();
-            chartX.add(entry.getKey());
-            chartY.add(entry.getValue());
+        //排序,构建Bar数据
+        temp=tagBar;
+        for(int i=0;i<10;++i)
+        {
+            int max=0;
+            for(int j=0;j<appTagsMap.getAppTag().length;++j)
+            {
+                if(temp[j]>temp[max])
+                {
+                    max=j;
+                }
+            }
+            java.text.DecimalFormat myformat = new java.text.DecimalFormat("0.00");
+            String hour = myformat.format(temp[max]/60.0/60.0);
+            barX.add(appTagsMap.getAppTag()[max]);
+            barY.add(hour);
+            temp[max]=-1;
         }
     }
 
+    void showBar()
+    {
+        bar = (BarChart) findViewById(R.id.bar);
+        //添加数据
+        for(int i=1;i<=10;++i)
+        {
+            barEntryList.add(new BarEntry(i,new Float(barY.get(i-1))/100));
+        }
 
+        BarDataSet barDataSet=new BarDataSet(barEntryList,"应用类型");   //list是你这条线的数据  "语文" 是你对这条线的描述
+        BarData barData=new BarData(barDataSet);
+        bar.setData(barData);
+        bar.getXAxis().setDrawGridLines(false);  //是否绘制X轴上的网格线（背景里面的竖线）
+        bar.getAxisLeft().setDrawGridLines(false);  //是否绘制Y轴上的网格线（背景里面的横线）
+        bar.getDescription().setEnabled(false);                  //是否显示右下角描述
+
+        //X轴
+        XAxis xAxis=bar.getXAxis();
+        xAxis.setDrawGridLines(false);  //是否绘制X轴上的网格线（背景里面的竖线）
+        xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);        //X轴所在位置,默认为上面
+        xAxis.setValueFormatter(new IAxisValueFormatter() {   //X轴自定义坐标
+            @Override
+            public String getFormattedValue(float v, AxisBase axisBase) {
+                if (v==1){
+                    return barX.get(0);
+                }
+                if (v==2){
+                    return barX.get(1);
+                }
+                if (v==3){
+                    return barX.get(2);
+                }
+                if (v==4){
+                    return barX.get(3);
+                }
+                if (v==5){
+                    return barX.get(4);
+                }
+                if (v==6){
+                    return barX.get(5);
+                }
+                if (v==7){
+                    return barX.get(6);
+                }
+                if (v==8){
+                    return barX.get(7);
+                }
+                if (v==9){
+                    return barX.get(8);
+                }
+                if (v==10){
+                    return barX.get(9);
+                }
+                return "";//注意这里需要改成 ""
+            }
+        });
+        xAxis.setAxisMaximum(11);   //X轴最大数值
+        xAxis.setAxisMinimum(0);   //X轴最小数值
+        //X轴坐标的个数    第二个参数一般填false     true表示强制设置标签数 可能会导致X轴坐标显示不全等问题
+        xAxis.setLabelCount(6,false);
+        //Y轴
+        YAxis AxisLeft=bar.getAxisLeft();
+        AxisLeft.setDrawGridLines(false);  //是否绘制Y轴上的网格线（背景里面的横线）
+        AxisLeft.setValueFormatter(new IAxisValueFormatter() {  //Y轴自定义坐标
+            @Override
+            public String getFormattedValue(float v, AxisBase axisBase) {
+                for (int a=0;a<8;a++){     //用个for循环方便
+                    if (a==v){
+                        return a*100+"h";
+                    }
+                }
+
+                return "";
+            }
+        });
+        AxisLeft.setAxisMaximum(8);   //Y轴最大数值
+        AxisLeft.setAxisMinimum(0);   //Y轴最小数值
+        //是否隐藏右边的Y轴（不设置的话有两条Y轴 同理可以隐藏左边的Y轴）
+        bar.getAxisRight().setEnabled(false);
+
+        //柱子
+        barDataSet.setColors(Color.CYAN,Color.GREEN,Color.BLUE,Color.YELLOW);//设置柱子多种颜色  循环使用
+        barDataSet.setHighlightEnabled(false);//选中柱子是否高亮显示  默认为true
+        //定义柱子上的数据显示    可以实现加单位    以及显示整数（默认是显示小数）
+        barDataSet.setValueFormatter(new IValueFormatter() {
+            @Override
+            public String getFormattedValue(float v, Entry entry, int i, ViewPortHandler viewPortHandler) {
+                if (entry.getY()==v){
+                    return v*100+"h";
+                }
+                return "";
+            }
+        });
+        //数据更新
+        bar.notifyDataSetChanged();
+        bar.invalidate();
+    }
 
     /**
-     * 一些轴上的设置等等
+     * 设置数据
      */
-    private void initChart() {
+    private void showChart() {
         chart = findViewById(R.id.chart);
         //设置web线的颜色(即就是外面包着的那个颜色)
         chart.setWebColorInner(Color.BLACK);
@@ -171,9 +227,6 @@ public class AppsRecomendActivity extends BaseActivity {
         chart.setWebColor(Color.BLACK);
         chart.setWebAlpha(50);
         XAxis xAxis = chart.getXAxis();
-        //设置x轴标签字体颜色
-        xAxis.setLabelCount(9, false);
-        //自定义X轴坐标描述（也就是五个顶点上的文字,默认是0、1、2、3、4）
         xAxis.setValueFormatter(new IAxisValueFormatter() {
             @Override
             public String getFormattedValue(float v, AxisBase axisBase) {
@@ -200,16 +253,12 @@ public class AppsRecomendActivity extends BaseActivity {
         xAxis.setTextSize(10f);
         YAxis yAxis = chart.getYAxis();
         //设置y轴的标签个数
-        yAxis.setLabelCount(5, true);
+//        yAxis.setLabelCount(6, true);
         //设置y轴从0f开始
         yAxis.setAxisMinimum(0f);
         /*启用绘制Y轴顶点标签，这个是最新添加的功能
          * */
         yAxis.setDrawTopYLabelEntry(false);
-        //设置字体大小
-        yAxis.setTextSize(15f);
-        //设置字体颜色
-        yAxis.setTextColor(Color.RED);
 
         //启用线条，如果禁用，则无任何线条
         chart.setDrawWeb(true);
@@ -217,12 +266,6 @@ public class AppsRecomendActivity extends BaseActivity {
         //禁用图例和图表描述
         chart.getDescription().setEnabled(false);
         chart.getLegend().setEnabled(false);
-    }
-
-    /**
-     * 设置数据
-     */
-    private void setChartData() {
         List<RadarEntry> list = new ArrayList<>();
         for (int i = 0; i < 5; i++) {
             list.add(new RadarEntry(Float.parseFloat(chartY.get(i))));
@@ -237,20 +280,14 @@ public class AppsRecomendActivity extends BaseActivity {
         set.setFillAlpha(40);
         //设置启用填充
         set.setDrawFilled(true);
-        //设置点击之后标签是否显示圆形外围
-        set.setDrawHighlightCircleEnabled(true);
-        //设置点击之后标签圆形外围的颜色
-        set.setHighlightCircleFillColor(Color.RED);
-        //设置点击之后标签圆形外围的透明度
-        set.setHighlightCircleStrokeAlpha(40);
-        //设置点击之后标签圆形外围的半径
-        set.setHighlightCircleInnerRadius(20f);
-        //设置点击之后标签圆形外围内圆的半径
-        set.setHighlightCircleOuterRadius(10f);
-
 
         RadarData data = new RadarData(set);
         chart.setData(data);
         chart.invalidate();
+    }
+
+    void showTextView()
+    {
+
     }
 }

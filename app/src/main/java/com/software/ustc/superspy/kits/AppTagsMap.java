@@ -6,8 +6,8 @@ public class AppTagsMap {
     private HashMap<String, String> appTagsMap = new HashMap<String, String>();
     private String[] appTag={"聊天社交","金融理财","旅行交通","时尚购物","影音视听",
             "游戏","短视频","学习教育","新闻资讯","其他"};
-    private String[] peopleTag={"交际达人","关注金融","永远在路上","购物达人","影音达人",
-            "电竞达人","短视频达人","热爱学习","关注时事","看不透啊"};
+    private String[] peopleTag={"交际达人","理财达人","旅游达人","购物达人","影音达人",
+            "电竞达人","短视频达人","学习达人","关注时事","看不透啊"};
     public AppTagsMap()
     {
         appTagsMap = new HashMap<String, String>();

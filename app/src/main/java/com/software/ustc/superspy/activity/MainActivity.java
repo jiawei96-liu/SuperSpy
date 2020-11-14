@@ -77,7 +77,6 @@ public class MainActivity extends BaseActivity {
         } catch (PackageManager.NameNotFoundException e) {
             e.printStackTrace();
         }
-        AppInfo appInfo=pdao.querySignalAppInfo("SuperSpy");
     }
 
 
