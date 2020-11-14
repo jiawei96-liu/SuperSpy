@@ -36,30 +36,27 @@
         <activity android:name=".activity.AppUsageShowActivity" />
         <activity android:name=".activity.AppInfoShowActivity" />
         <activity android:name=".activity.RollActivity" />
-        <activity android:name=".activity.LoginActivity">
+        <activity android:name=".activity.LoginActivity"></activity>
+        <activity android:name=".activity.LoginActivity2"/>
 <!--            <intent-filter>-->
 <!--                <action android:name="android.intent.action.MAIN" />-->
 
 
 <!--                <category android:name="android.intent.category.LAUNCHER" />-->
 <!--            </intent-filter>-->
-        </activity>
+
         <activity android:name=".activity.WelcomeActivity">
 
-            <!--             <intent-filter>-->
-            <!--             <action android:name="android.intent.action.MAIN" />-->
+                         <intent-filter>
+                         <action android:name="android.intent.action.MAIN" />
 
 
-            <!--             <category android:name="android.intent.category.LAUNCHER" />-->
-            <!--             </intent-filter>-->
+                         <category android:name="android.intent.category.LAUNCHER" />
+                         </intent-filter>
         </activity>
         <activity
             android:name=".activity.MainActivity"
             android:label="@string/app_name">
-                        <intent-filter>
-                            <action android:name="android.intent.action.MAIN" />
-                            <category android:name="android.intent.category.LAUNCHER" />
-                        </intent-filter>
         </activity>
     </application>
 
