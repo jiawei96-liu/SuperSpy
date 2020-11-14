@@ -54,9 +54,6 @@ public class MainActivity extends BaseActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(navView, navController);
-
-        //另起service进行App
-        startService(new Intent(this, AppDbPrepareService.class));
     }
 
     public void getAppInfos() throws PackageManager.NameNotFoundException {

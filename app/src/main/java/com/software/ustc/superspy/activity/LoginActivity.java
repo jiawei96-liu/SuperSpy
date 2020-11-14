@@ -25,6 +25,7 @@ import android.widget.Toast;
 import com.software.ustc.superspy.R;
 import com.software.ustc.superspy.db.litepal.LoginData;
 import com.software.ustc.superspy.kits.BaseActivity;
+import com.software.ustc.superspy.service.AppDbPrepareService;
 
 import org.litepal.LitePal;
 import org.litepal.tablemanager.Connector;
@@ -55,8 +56,8 @@ public class LoginActivity extends Activity implements View.OnClickListener {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_login);
-
-
+        //另起service提前进行App所需的数据库准备
+        startService(new Intent(this, AppDbPrepareService.class));
         initView();
     }
 

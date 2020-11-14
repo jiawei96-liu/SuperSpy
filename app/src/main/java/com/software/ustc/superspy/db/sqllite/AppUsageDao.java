@@ -17,10 +17,12 @@ import java.util.Set;
 public class AppUsageDao {
     //定义DbHelper帮助类
     private DbHelper helper;
-
     public AppUsageDao(Context context) {
-        //初始化DbHelper帮助类
         helper = new DbHelper(context, "AppUsage.db", null, 1);
+    }
+
+    public AppUsageDao(Context context,String dbName) {
+        helper = new DbHelper(context, dbName, null, 1);
     }
 
     public List<AppUsageInfo> queryAppUsageList() {

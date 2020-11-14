@@ -9,15 +9,15 @@
 
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="20dp"
+        android:layout_height="40dp"
         android:gravity="center"
-        android:background="@color/green"
+        android:background="@color/colorPrimary"
         android:textStyle="bold"
         android:text="应用使用统计与分析"/>
     <TextView
         android:layout_width="match_parent"
         android:layout_height="2dp"
-        android:background="@drawable/selector_orange" />
+        android:background="@color/orange" />
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="60dp"
@@ -29,8 +29,7 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:orientation="horizontal"
-            android:background="@drawable/textview_border_orange">
+            android:orientation="horizontal">
             <TextView
                 android:layout_width="0dp"
                 android:layout_weight="1"
@@ -86,7 +85,7 @@
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="match_parent"
-                android:background="@drawable/textview_border_orange"
+                android:background="@drawable/selector_green"
                 android:gravity="center"
                 android:text="确定刷新" />
         </LinearLayout>
@@ -95,7 +94,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="2dp"
-        android:background="@drawable/selector_orange" />
+        android:background="@color/orange" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -148,7 +147,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="2dp"
-        android:background="@drawable/selector_orange" />
+        android:background="@color/orange" />
 
     <LinearLayout
         android:layout_width="match_parent"
