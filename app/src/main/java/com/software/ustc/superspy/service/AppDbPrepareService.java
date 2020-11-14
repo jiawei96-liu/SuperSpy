@@ -2,18 +2,12 @@ package com.software.ustc.superspy.service;
 
 import android.app.Service;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.os.IBinder;
 import android.util.Log;
-import android.widget.Toast;
 
-import com.software.ustc.superspy.activity.LoginActivity;
-import com.software.ustc.superspy.db.sqllite.AppInfoDao;
-import com.software.ustc.superspy.kits.AppInfo;
 import com.software.ustc.superspy.kits.AppUsageUtil;
 
 import java.util.Calendar;
-import java.util.List;
 
 public class AppDbPrepareService extends Service {
     private final int DELAY_LENGHT = 10000; // 10s刷新一次数据库

@@ -48,7 +48,7 @@ public class LoginActivity2 extends Activity implements View.OnClickListener {
     private  EditText passwordEdit;
     private TextView roll;
 
-    private final int WELCONE_DISPLAY_LENGHT = 3000;
+    private final int WELCONE_DISPLAY_LENGHT = 1000;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
