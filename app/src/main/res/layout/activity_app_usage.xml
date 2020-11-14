@@ -24,7 +24,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="10dp"
-                android:background="@drawable/selector_white"
+                android:background="@color/colorPrimary"
                 android:orientation="vertical">
 
                 <TextView
@@ -95,7 +95,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:layout_marginTop="10dp"
-            android:background="@drawable/selector_orange"
+            android:background="@color/orange"
             android:textSize="15dp" />
 
         <TextView
@@ -104,7 +104,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:layout_marginTop="10dp"
-            android:background="@drawable/selector_blue"
+            android:background="@color/blue_sky"
             android:textSize="15dp" />
     </LinearLayout>
     <LinearLayout
@@ -113,11 +113,6 @@
         android:orientation="vertical">
     <com.github.mikephil.charting.charts.LineChart
         android:id="@+id/lc"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"/>
-    <com.github.mikephil.charting.charts.PieChart
-        android:id="@+id/pc"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"/>
