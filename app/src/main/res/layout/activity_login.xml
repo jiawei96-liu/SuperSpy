@@ -58,7 +58,16 @@
             android:layout_height="130dip"
             layout="@layout/layout_progress"
             android:visibility="gone" />
-
+        <TextView
+            android:id="@+id/getpass"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/input_layout"
+            android:textSize="10sp"
+            android:layout_marginLeft="30dp"
+            android:text="忘记密码？"
+            android:textColor="#0000FF"
+            />
         <CheckBox
             android:layout_marginLeft="50dp"
             android:id="@+id/b_remember_pwd"
@@ -79,7 +88,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/input_layout"
             android:layout_centerInParent="true"
-            android:layout_marginTop="15dip"
+            android:layout_marginTop="50dip"
             android:background="@drawable/text_bg"
             android:gravity="center"
             android:paddingBottom="2dip"

@@ -3,7 +3,7 @@
     <!--数据库名称-->
     <dbname value="LoginData" />
     <!--数据库版本号-->
-    <version value="1" />
+    <version value="4" />
     <!--用于设定所有的映射模型,即你定义数据库表的类名路径-->
     <list>
         <mapping class="com.software.ustc.superspy.db.litepal.LoginData" />

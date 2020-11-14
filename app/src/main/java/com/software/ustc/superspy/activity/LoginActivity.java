@@ -48,6 +48,7 @@ public class LoginActivity extends Activity implements View.OnClickListener {
     private EditText accountEdit;
     private  EditText passwordEdit;
     private TextView roll;
+    private TextView getpass;
 
     private final int WELCONE_DISPLAY_LENGHT = 1000;
 
@@ -67,7 +68,7 @@ public class LoginActivity extends Activity implements View.OnClickListener {
         mInputLayout = findViewById(R.id.input_layout);
         mName = (LinearLayout) findViewById(R.id.input_layout_name);
         mPsw = (LinearLayout) findViewById(R.id.input_layout_psw);
-
+        getpass = findViewById(R.id.getpass);
         /////////////////////////////
         LitePal.initialize(this);
         Connector.getDatabase();
@@ -85,13 +86,21 @@ public class LoginActivity extends Activity implements View.OnClickListener {
             LoginData login1 = new LoginData();
             login1.setUsername("");
             login1.setPassward("");
+            login1.setVertify1("");
+            login1.setVertifyid1("");
+            login1.setVertify2("");
+            login1.setVertifyid2("");
             login1.setId(1);
             login1.save();
-            LoginData login2 = new LoginData();
-            login2.setUsername("");
-            login2.setPassward("");
-            login2.setId(2);
-            login2.save();
+//            LoginData login2 = new LoginData();
+//            login2.setUsername("");
+//            login2.setPassward("");
+//            login2.setVertify1("");
+//            login2.setVertifyid1("");
+            login1.setId(2);
+            login1.save();
+            login1.setId(3);
+            login1.save();
         }
 
         //////////////////////////
@@ -102,7 +111,16 @@ public class LoginActivity extends Activity implements View.OnClickListener {
             public void onClick(View v) {
                 Intent intent = new Intent(LoginActivity.this,RollActivity.class);
                 startActivity(intent);
+                finish();
 
+            }
+        });
+        getpass.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(LoginActivity.this,PasswordGetActivity.class);
+                startActivity(intent);
+                finish();
             }
         });
     }

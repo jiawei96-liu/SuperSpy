@@ -1,4 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="study_view_spinner_values" />
+
+    <string-array name="languages">
+        <item>父亲的名字</item>
+        <item>母亲的名字 </item>
+        <item>住址</item>
+        <item>学校</item>
+        <item>最喜欢的食物</item>
+    </string-array>
 </resources>
