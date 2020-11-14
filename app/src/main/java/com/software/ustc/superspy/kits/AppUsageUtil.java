@@ -98,15 +98,9 @@ public class AppUsageUtil {
     https://www.jianshu.com/p/3b6bcf9cec67
 */
 
-    public static void getAppUsageInfo(Context context){
-        Calendar beginCal = Calendar.getInstance();
-        beginCal.add(Calendar.HOUR_OF_DAY, -1);
-        Calendar endCal = Calendar.getInstance();
+    public static void getAppUsageInfo(Context context,long start_time,long end_time){
+
         AppTagsMap appTagsMap = new AppTagsMap();
-
-        long start_time = beginCal.getTimeInMillis();
-        long end_time = endCal.getTimeInMillis();
-
         UsageStatsManager usageStatsManager = (UsageStatsManager)context.getSystemService(Context.USAGE_STATS_SERVICE);
 /*
         INTERVAL_DAILY：天存储级别的数据；

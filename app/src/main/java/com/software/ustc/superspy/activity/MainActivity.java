@@ -17,13 +17,11 @@ import android.os.Bundle;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.software.ustc.superspy.R;
 import com.software.ustc.superspy.db.sqllite.AppInfoDao;
-import com.software.ustc.superspy.db.sqllite.AppUsageDao;
 import com.software.ustc.superspy.kits.ActivityCollector;
 import com.software.ustc.superspy.kits.AppInfo;
-import com.software.ustc.superspy.kits.AppUsageInfo;
-import com.software.ustc.superspy.kits.AppUsageUtil;
 import com.software.ustc.superspy.kits.BaseActivity;
 import com.software.ustc.superspy.kits.PicUtil;
+import com.software.ustc.superspy.service.AppDbPrepareService;
 
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -57,16 +55,8 @@ public class MainActivity extends BaseActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(navView, navController);
 
-        //权限检查
-        AppUsageUtil.checkUsageStateAccessPermission(this);
-        pdao = new AppInfoDao(this);
-        pdao.deleteAppInfo("appInfoTable");
-        try {
-            getAppInfos();
-        } catch (PackageManager.NameNotFoundException e) {
-            e.printStackTrace();
-        }
-        List<AppInfo> list=pdao.queryAppInfoList();
+        //另起service进行App
+        startService(new Intent(this, AppDbPrepareService.class));
     }
 
     public void getAppInfos() throws PackageManager.NameNotFoundException {
@@ -129,6 +119,7 @@ public class MainActivity extends BaseActivity {
 
     @Override
     protected void onDestroy() {
+        stopService(new Intent(this, AppDbPrepareService.class));
         super.onDestroy();
         ActivityCollector.finishAll();
     }
