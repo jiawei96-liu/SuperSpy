@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="20dp"
         android:gravity="center"
-        android:background="@color/blue_sky"
+        android:background="@color/green"
         android:textStyle="bold"
         android:text="应用使用统计与分析"/>
     <TextView
@@ -20,128 +20,76 @@
         android:background="@drawable/selector_orange" />
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="120dp"
+        android:layout_height="60dp"
         android:baselineAligned="false"
-        android:orientation="horizontal"
+        android:orientation="vertical"
         android:textAlignment="center">
 
         <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
-
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            android:background="@drawable/textview_border_orange">
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
+                android:layout_width="0dp"
                 android:layout_weight="1"
+                android:layout_height="match_parent"
                 android:background="@drawable/textview_border_white"
                 android:gravity="center"
                 android:text="统计起始时间" />
 
             <TextView
                 android:id="@+id/txt_first_timestamp_all"
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
+                android:layout_width="0dp"
                 android:layout_weight="1"
+                android:layout_height="match_parent"
                 android:background="@drawable/textview_border_white"
                 android:gravity="center" />
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
+                android:layout_width="0dp"
                 android:layout_weight="1"
+                android:layout_height="match_parent"
                 android:background="@drawable/textview_border_white"
                 android:gravity="center"
                 android:text="统计终止时间" />
 
             <TextView
                 android:id="@+id/txt_last_timestamp_all"
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
+                android:layout_width="0dp"
                 android:layout_weight="1"
+                android:layout_height="match_parent"
                 android:background="@drawable/textview_border_white"
                 android:gravity="center" />
-            <Button
-                android:id="@+id/btn_time_set_yes"
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:background="@drawable/textview_border_white"
-                android:text="查询"
-                android:gravity="center" />
-
         </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:background="@drawable/textview_border_white"
+                android:gravity="center"
+                android:text="应用类别" />
+            <Spinner
+                android:id="@+id/span_app_tag"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:background="@drawable/textview_border_white"/>
 
-        <TextView
-            android:layout_width="2dp"
-            android:layout_height="match_parent"
-            android:background="@drawable/selector_orange" />
-
-        <TableLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center">
-            <TableRow
-                android:layout_width="wrap_content"
-                android:layout_height="30dp">
-
-                <TextView
-                    android:background="@drawable/textview_border_white"
-                    android:gravity="center"
-                    android:text="年" />
-
-                <TextView
-                    android:background="@drawable/textview_border_white"
-                    android:gravity="center"
-                    android:text="月" />
-
-                <TextView
-                    android:background="@drawable/textview_border_white"
-                    android:gravity="center"
-                    android:text="日" />
-
-                <TextView
-                    android:background="@drawable/textview_border_white"
-                    android:gravity="center"
-                    android:text="时" />
-
-                <TextView
-                    android:background="@drawable/textview_border_white"
-                    android:gravity="center"
-                    android:text="分" />
-            </TableRow>
-
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <NumberPicker
-                    android:id="@+id/number_np_year"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-
-                <NumberPicker
-                    android:id="@+id/number_np_month"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-
-                <NumberPicker
-                    android:id="@+id/number_np_day"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-
-                <NumberPicker
-                    android:id="@+id/number_np_hour"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-
-                <NumberPicker
-                    android:id="@+id/number_np_minute"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-            </TableRow>
-        </TableLayout>
-
+            <Button
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:background="@drawable/textview_border_orange"
+                android:gravity="center"
+                android:text="确定刷新" />
+        </LinearLayout>
     </LinearLayout>
 
     <TextView

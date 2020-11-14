@@ -58,6 +58,28 @@ public class AppUsageDao {
         return plist;
     }
 
+    public long queryAppTagUsage(String tag) {
+        //创建数据库操作对象
+        SQLiteDatabase db = null;
+        long sum=0;
+        try {
+            //创建数据库操作对象
+            db = helper.getReadableDatabase();
+            Cursor cursor = db.rawQuery("select * from usageInfoTable where app_tag = \""+ tag+ "\"",null );
+            while (cursor.moveToNext()) {
+                String foreground_time = cursor.getString(cursor.getColumnIndex("foreground_time"));
+                sum += Long.parseLong(foreground_time);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (db != null) {
+                db.close();//关闭数据库
+            }
+        }
+       return sum;
+    }
+
     public AppUsageInfo querySignalAppUsage(String apkName) {
         //创建数据库操作对象
         SQLiteDatabase db = null;

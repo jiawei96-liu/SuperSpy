@@ -62,6 +62,8 @@ public class AppUsageShowActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_app_usage);
+
+
         //资源初始化
         appIconIV = (ImageView) findViewById(R.id.iv_icon_single);
         appNameTV = (TextView) findViewById(R.id.txt_app_name_single);

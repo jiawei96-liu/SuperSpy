@@ -20,7 +20,6 @@ import com.software.ustc.superspy.kits.AppInfo;
 import com.software.ustc.superspy.kits.AppUsageInfo;
 import com.software.ustc.superspy.kits.AppUsageUtil;
 import com.software.ustc.superspy.kits.BaseActivity;
-import com.software.ustc.superspy.service.AppUsageService;
 
 import java.util.List;
 
@@ -38,11 +37,6 @@ public class AppUsageAnalysisActivity extends BaseActivity implements View.OnCli
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_app_usage_analysis);
-        //权限检查
-        AppUsageUtil.checkUsageStateAccessPermission(this);
-        //数据库刷新
-        AppUsageUtil.getAppUsageInfo(getApplicationContext());
-        //数据展示
         lvapp = (ListView) findViewById(R.id.lvapp);
         pdao = new AppUsageDao(this);//数据层
         plist = pdao.queryAppUsageList();
@@ -50,31 +44,17 @@ public class AppUsageAnalysisActivity extends BaseActivity implements View.OnCli
         adapter = new MyAdapter(AppUsageAnalysisActivity.this, R.layout.item_app_usage_info, plist);
         //设置适配器
         lvapp.setAdapter(adapter);
-
-//        startService(new Intent(this, AppUsageService.class));
     }
 
     @Override
     protected void onResume() {
-        //权限检查
-        AppUsageUtil.checkUsageStateAccessPermission(this);
-        //数据库刷新
-        AppUsageUtil.getAppUsageInfo(getApplicationContext());
-        //数据展示
-        lvapp = (ListView) findViewById(R.id.lvapp);
-        pdao = new AppUsageDao(this);//数据层
+        //刷洗listview
         plist = pdao.queryAppUsageList();
         //适配器
         adapter = new MyAdapter(AppUsageAnalysisActivity.this, R.layout.item_app_usage_info, plist);
         //设置适配器
         lvapp.setAdapter(adapter);
         super.onResume();
-    }
-
-    @Override
-    protected void onDestroy() {
-        stopService(new Intent(this, AppUsageService.class));
-        super.onDestroy();
     }
 
     @Override
