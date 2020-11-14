@@ -1,13 +1,16 @@
 package com.software.ustc.superspy.kits;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class AppTagsMap {
     private HashMap<String, String> appTagsMap = new HashMap<String, String>();
     private String[] appTag={"聊天社交","金融理财","旅行交通","时尚购物","影音视听",
             "游戏","短视频","学习教育","新闻资讯","其他"};
-    private String[] peopleTag={"交际达人","关注金融","永远在路上","购物达人","影音达人",
-            "电竞达人","短视频达人","热爱学习","关注时事","看不透啊"};
+    private String[] peopleTag={"交际达人","理财达人","旅游达人","购物达人","影音达人",
+            "电竞达人","短视频达人","学习达人","关注时事","看不透啊"};
     public AppTagsMap()
     {
         appTagsMap = new HashMap<String, String>();
@@ -81,6 +84,17 @@ public class AppTagsMap {
         appTagsMap.put("央视新闻", appTag[8]);
         appTagsMap.put("百度", appTag[8]);
         appTagsMap.put("澎湃新闻", appTag[8]);
+    }
+
+    public List<String> getAllAppsInThisTag(String tag)
+    {
+        List<String> rtnList=new ArrayList<String>();
+        // Iterating entries using a For Each loop
+        for (Map.Entry<String, String> entry : appTagsMap.entrySet()) {
+            if(entry.getValue().equals(tag))
+                rtnList.add(entry.getKey());
+        }
+        return rtnList;
     }
 
     public HashMap<String, String> getAppTagsMap() {

@@ -19,6 +19,7 @@ import com.software.ustc.superspy.R;
 import com.software.ustc.superspy.db.sqllite.AppInfoDao;
 import com.software.ustc.superspy.kits.ActivityCollector;
 import com.software.ustc.superspy.kits.AppInfo;
+import com.software.ustc.superspy.kits.AppUsageUtil;
 import com.software.ustc.superspy.kits.BaseActivity;
 import com.software.ustc.superspy.kits.PicUtil;
 import com.software.ustc.superspy.service.AppDbPrepareService;
@@ -31,6 +32,7 @@ import androidx.navigation.ui.NavigationUI;
 import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -54,7 +56,29 @@ public class MainActivity extends BaseActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(navView, navController);
+        initDbData();
     }
+    void initDbData()
+    {
+        //权限检查
+        AppUsageUtil.checkUsageStateAccessPermission(this);
+        Calendar beginCal = Calendar.getInstance();
+        beginCal.add(Calendar.HOUR_OF_DAY, -1);
+        Calendar endCal = Calendar.getInstance();
+        long start_time = beginCal.getTimeInMillis();
+        long end_time = endCal.getTimeInMillis();
+        //数据库刷新
+        AppUsageUtil.getAppUsageInfo(getApplicationContext(),start_time,end_time);
+
+        pdao = new AppInfoDao(this);
+        pdao.deleteAppInfo("appInfoTable");
+        try {
+            getAppInfos();
+        } catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
 
     public void getAppInfos() throws PackageManager.NameNotFoundException {
         //数据库相关

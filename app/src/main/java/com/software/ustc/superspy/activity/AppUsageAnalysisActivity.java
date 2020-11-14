@@ -21,6 +21,7 @@ import com.software.ustc.superspy.kits.AppUsageInfo;
 import com.software.ustc.superspy.kits.AppUsageUtil;
 import com.software.ustc.superspy.kits.BaseActivity;
 
+import java.util.Calendar;
 import java.util.List;
 
 public class AppUsageAnalysisActivity extends BaseActivity implements View.OnClickListener{
@@ -37,6 +38,7 @@ public class AppUsageAnalysisActivity extends BaseActivity implements View.OnCli
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_app_usage_analysis);
+
         lvapp = (ListView) findViewById(R.id.lvapp);
         pdao = new AppUsageDao(this);//数据层
         plist = pdao.queryAppUsageList();

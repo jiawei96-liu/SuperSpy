@@ -15,14 +15,10 @@ import java.util.List;
 import java.util.Set;
 
 public class AppUsageDao {
-    //定义DbHelper帮助类
-    private DbHelper helper;
+    //定义AppUsageDbHelper帮助类
+    private AppUsageDbHelper helper;
     public AppUsageDao(Context context) {
-        helper = new DbHelper(context, "AppUsage.db", null, 1);
-    }
-
-    public AppUsageDao(Context context,String dbName) {
-        helper = new DbHelper(context, dbName, null, 1);
+        helper = new AppUsageDbHelper(context, "AppUsage.db", null, 1);
     }
 
     public List<AppUsageInfo> queryAppUsageList() {
@@ -82,7 +78,7 @@ public class AppUsageDao {
        return sum;
     }
 
-    public AppUsageInfo querySignalAppUsage(String apkName) {
+    public AppUsageInfo querySignalAppUsage(String appName) {
         //创建数据库操作对象
         SQLiteDatabase db = null;
         AppUsageInfo appUsageInfo = null;
@@ -92,7 +88,7 @@ public class AppUsageDao {
             //创建数据库操作对象
             db = helper.getReadableDatabase();
 
-            Cursor cursor = db.rawQuery("select * from usageInfoTable where apk_name = \""+ apkName+ "\"",null );
+            Cursor cursor = db.rawQuery("select * from usageInfoTable where app_name = \""+ appName+ "\"",null );
             while (cursor.moveToNext()) {
                 String apk_name = cursor.getString(cursor.getColumnIndex("apk_name"));
                 String app_name = cursor.getString(cursor.getColumnIndex("app_name"));
