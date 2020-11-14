@@ -31,7 +31,7 @@ import org.litepal.tablemanager.Connector;
 
 import java.util.List;
 
-public class LoginActivity2 extends Activity implements View.OnClickListener {
+public class LoginActivity extends Activity implements View.OnClickListener {
 
     private TextView mBtnLogin;
 
@@ -54,7 +54,7 @@ public class LoginActivity2 extends Activity implements View.OnClickListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
-        setContentView(R.layout.activity_login2);
+        setContentView(R.layout.activity_login);
 
 
         initView();
@@ -99,7 +99,7 @@ public class LoginActivity2 extends Activity implements View.OnClickListener {
         roll.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(LoginActivity2.this,RollActivity.class);
+                Intent intent = new Intent(LoginActivity.this,RollActivity.class);
                 startActivity(intent);
 
             }
@@ -122,7 +122,7 @@ public class LoginActivity2 extends Activity implements View.OnClickListener {
             }
         }
 
-        Toast toast = Toast.makeText(LoginActivity2.this,null,Toast.LENGTH_SHORT);
+        Toast toast = Toast.makeText(LoginActivity.this,null,Toast.LENGTH_SHORT);
         if(account.equals("") && password.equals(""))
             flag=0;
         if (flag == 1) {
@@ -222,7 +222,7 @@ public class LoginActivity2 extends Activity implements View.OnClickListener {
                     public void run() {
                         try{
                             sleep(WELCONE_DISPLAY_LENGHT);
-                            Intent intent1 = new Intent(LoginActivity2.this, MainActivity.class);
+                            Intent intent1 = new Intent(LoginActivity.this, MainActivity.class);
                             startActivity(intent1);
                             finish();
                         }catch (Exception e){

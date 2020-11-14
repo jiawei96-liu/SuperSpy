@@ -58,7 +58,7 @@ public class RollActivity extends BaseActivity {
                     login.setUsername(account1);
                     login.setPassward(passward);
                     login.save();
-                    Intent intent = new Intent(RollActivity.this, LoginActivity2.class);
+                    Intent intent = new Intent(RollActivity.this, LoginActivity.class);
                     startActivity(intent);
                     finish();
                 }

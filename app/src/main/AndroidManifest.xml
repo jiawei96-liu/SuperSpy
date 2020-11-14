@@ -36,7 +36,7 @@
         <activity android:name=".activity.AppUsageShowActivity" />
         <activity android:name=".activity.AppInfoShowActivity" />
         <activity android:name=".activity.RollActivity" />
-        <activity android:name=".activity.LoginActivity2">
+        <activity android:name=".activity.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
