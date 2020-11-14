@@ -2,6 +2,7 @@ package com.software.ustc.superspy.activity;
 
 import android.graphics.Color;
 import android.os.Bundle;
+import android.widget.TextView;
 
 import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.charts.RadarChart;
@@ -22,6 +23,7 @@ import com.github.mikephil.charting.utils.ViewPortHandler;
 import com.software.ustc.superspy.R;
 import com.software.ustc.superspy.db.sqllite.AppUsageDao;
 import com.software.ustc.superspy.kits.AppTagsMap;
+import com.software.ustc.superspy.kits.AppUsageInfo;
 import com.software.ustc.superspy.kits.AppUsageUtil;
 import com.software.ustc.superspy.kits.BaseActivity;
 
@@ -44,6 +46,8 @@ public class AppsRecomendActivity extends BaseActivity {
     private List<BarEntry> barEntryList = new ArrayList<BarEntry>();
     private final List<String>barX=new ArrayList<String>();
     private final List<String>barY=new ArrayList<String>();
+
+    private TextView tv_app_tag,tv_man_tag,tv_app_recomend;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -288,6 +292,55 @@ public class AppsRecomendActivity extends BaseActivity {
 
     void showTextView()
     {
+        tv_app_tag = findViewById(R.id.tv_app_tag);
+        tv_man_tag = findViewById(R.id.tv_man_tag);
+        tv_app_recomend = findViewById(R.id.tv_app_recomend);
+        tv_app_tag.setText("/t过去一年您使用频率 最高(最低) 的是 [ "+barX.get(0)+"("+barX.get(9)+")"+
+                " ] 类App,使用时长为 [ "+barY.get(0)+"("+barY.get(9)+")"+" ] 小时\n" +
+                "/t具体的各类App的使用频率如下:");
+        tv_man_tag.setText("\t您是一个:" +
+                "\n\t狂热的 [ "+chartX.get(0)+" ], [ "+ chartX.get(1)+" ] "+
+                "\n\t优秀的 [ "+chartX.get(2)+" ] , [ "+ chartX.get(3)+" ] , [ "+chartX.get(4)+"]\n");
+        //共推荐三个,Tag1推荐2个,Tag2推荐1个
+        String Tag1;
+        String Tag2;
+        if(!barX.get(0).equals("其他"))
+        {
+            Tag1=barX.get(0);
+            if(!barX.get(1).equals("其他"))
+            {
+                Tag2=barX.get(1);
+            }
+            else
+            {
+                Tag2=barX.get(2);
+            }
+        }
+        else
+        {
+            Tag1=barX.get(1);
+            Tag2=barX.get(2);
+        }
 
+        List<String> rstRecomend=new ArrayList<String>();
+        List<String> appNames = appTagsMap.getAllAppsInThisTag(Tag1);
+        int i = 0;
+        for(String appName : appNames)
+        {
+            if(null == pdao.querySignalAppUsage(appName))
+                rstRecomend.add(appName);
+            if(i++>2)
+                break;
+        }
+        appNames = appTagsMap.getAllAppsInThisTag(Tag2);
+        for(String appName : appNames)
+        {
+            if(null == pdao.querySignalAppUsage(appName)) {
+                rstRecomend.add(appName);
+                break;
+            }
+        }
+        tv_app_recomend.setText("\n根据您的人物画像,我们向您推荐使用以下App:\n"+
+                " [ "+rstRecomend.get(0)+" ] , [ "+ rstRecomend.get(1)+" ] , [ "+rstRecomend.get(2)+"]\n");
     }
 }

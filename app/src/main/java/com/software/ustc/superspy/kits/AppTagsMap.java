@@ -1,6 +1,9 @@
 package com.software.ustc.superspy.kits;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class AppTagsMap {
     private HashMap<String, String> appTagsMap = new HashMap<String, String>();
@@ -81,6 +84,17 @@ public class AppTagsMap {
         appTagsMap.put("央视新闻", appTag[8]);
         appTagsMap.put("百度", appTag[8]);
         appTagsMap.put("澎湃新闻", appTag[8]);
+    }
+
+    public List<String> getAllAppsInThisTag(String tag)
+    {
+        List<String> rtnList=new ArrayList<String>();
+        // Iterating entries using a For Each loop
+        for (Map.Entry<String, String> entry : appTagsMap.entrySet()) {
+            if(entry.getValue().equals(tag))
+                rtnList.add(entry.getKey());
+        }
+        return rtnList;
     }
 
     public HashMap<String, String> getAppTagsMap() {
