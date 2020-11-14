@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+import android.content.pm.ProviderInfo;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.net.Uri;
@@ -43,6 +44,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Random;
 
 public class AppUsageShowActivity extends BaseActivity {
     private AppInfo appInfo;
@@ -76,8 +78,7 @@ public class AppUsageShowActivity extends BaseActivity {
         showLineData();
     }
 
-    void prepareData()
-    {
+    void prepareData() {
         appIconIV = (ImageView) findViewById(R.id.iv_icon_single);
         appNameTV = (TextView) findViewById(R.id.txt_app_name_single);
         appVersionTV = (TextView) findViewById(R.id.txt_app_version_single);
@@ -150,7 +151,7 @@ public class AppUsageShowActivity extends BaseActivity {
         });
 
     }
-
+    private List<Float> LastWeekRunTimef=new ArrayList<Float>();
     private void appUsageInfoShow() {
 
         //权限检查
@@ -164,10 +165,19 @@ public class AppUsageShowActivity extends BaseActivity {
 //        AppUsageUtil.getAppUsageInfo(this,start_time,end_time);
         pdao = new AppUsageDao(this);//数据层
         appUsageInfo = pdao.querySignalAppUsage(appInfo.getAppName());
-//        appTimeUsageTV.setText("过去一周使用信息统计: \n启动次数:"+appUsageInfo.getRun_times()+
+        Random r = new Random(1);
+        for (int i = 0; i < 7; i++) {
+            LastWeekRunTimef.add(new Float(r.nextInt(110)));
+        }
+        Float sum =new Float(0);
+        for (int i = 0; i < 7; i++) {
+            sum+=(LastWeekRunTimef.get(i));
+        }
+        //        appTimeUsageTV.setText("过去一周使用信息统计: \n启动次数:"+appUsageInfo.getRun_times()+
 //                "\n最后一次使用时间:"+appUsageInfo.getLast_start_time()+"\nApp总运行时间:"+appUsageInfo.getForeground_time()+
 //                "\nTAG:"+appUsageInfo.getApp_tag());
-        appTimeUsageTV.setText("过去一周使用信息统计: \n启动次数:20次,最后一次使用时间:"+appUsageInfo.getLast_start_time()+"\nApp总运行时间:313min\nTAG:"+appUsageInfo.getApp_tag());
+        appTimeUsageTV.setText("过去一周使用信息统计: \n启动次数:"+String.valueOf(r.nextInt(100))+"次,最后一次使用时间:" + appUsageInfo.getLast_start_time() +
+                "\nApp总运行时间:"+sum.toString()+"min\nTAG:" + appUsageInfo.getApp_tag());
     }
 
     private void appBasicInfoShow() {
@@ -187,8 +197,7 @@ public class AppUsageShowActivity extends BaseActivity {
         appSizeTV.setText("大小: " + appSiseMB + "M / " + Long.toString(appInfo.getAppSize()) + "B");
     }
 
-    void showLineData()
-    {
+    void showLineData() {
 //        List<String> LastWeekRunTime=new ArrayList<String>;
 //        for(int i=0;i<=7;++i)
 //        {
@@ -206,11 +215,9 @@ public class AppUsageShowActivity extends BaseActivity {
 //        }
         // 1. 获取一或多组Entry对象集合的数据
         // 模拟数据1
-        float[] test={63,49,34,75,36,35,21};
         List<Entry> yVals = new ArrayList<>();
         for (int i = 0; i < 7; i++) {
-//            yVals.add(new Entry(i,Float.parseFloat(LastWeekRunTime.get(i))));
-            yVals.add(new Entry(i,test[i]));
+            yVals.add(new Entry(i, LastWeekRunTimef.get(i).floatValue()));
         }
         // 2. 分别通过每一组Entry对象集合的数据创建折线数据集
         LineDataSet lineDataSet = new LineDataSet(yVals, "使用时长/min");
@@ -222,10 +229,10 @@ public class AppUsageShowActivity extends BaseActivity {
         lc.getAxisRight().setEnabled(false); //不启用
         lc.getXAxis().setDrawGridLines(false);  //是否绘制X轴上的网格线（背景里面的竖线）
 
-        XAxis xAxis=lc.getXAxis();
+        XAxis xAxis = lc.getXAxis();
         xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);        //X轴所在位置,默认为上面
         //Y轴
-        YAxis AxisLeft=lc.getAxisLeft();
+        YAxis AxisLeft = lc.getAxisLeft();
         //是否隐藏右边的Y轴（不设置的话有两条Y轴 同理可以隐藏左边的Y轴）
         lc.getAxisRight().setEnabled(false);
         lc.getDescription().setEnabled(false);
