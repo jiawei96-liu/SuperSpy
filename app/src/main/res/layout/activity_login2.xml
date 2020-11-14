@@ -34,9 +34,11 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="SHOW YOUR IDEAS"
+            android:text="请先登录"
             android:textColor="#ffffff"
             android:textSize="16sp" />
+<!--            android:text="SHOW YOUR IDEAS"-->
+
     </LinearLayout>
 
     <RelativeLayout
@@ -84,7 +86,7 @@
             android:paddingLeft="15dip"
             android:paddingRight="15dip"
             android:paddingTop="2dip"
-            android:text="Login"
+            android:text="  登录 "
             android:textColor="#ffffff"
             android:textSize="20sp" />
     </RelativeLayout>

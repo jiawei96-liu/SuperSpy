@@ -22,7 +22,7 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/icon_user"
+                android:src="@drawable/username6"
                  />
 
             <EditText
@@ -53,7 +53,7 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/icon_password" />
+                android:src="@drawable/password6" />
 
             <EditText
                 android:layout_width="match_parent"

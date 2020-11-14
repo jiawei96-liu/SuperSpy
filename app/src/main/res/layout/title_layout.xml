@@ -17,7 +17,7 @@
         android:layout_alignParentRight="true"
         android:layout_centerVertical="true"
         android:textSize="20sp"
-        android:text="Sign up"
+        android:text="注 册"
         android:id="@+id/cbLogin"
         />
 </RelativeLayout>

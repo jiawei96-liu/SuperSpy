@@ -34,10 +34,12 @@
             android:background="@drawable/round_gray"
             >
             <ImageView
+
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:src="@mipmap/superspy"/>
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="10dp"
+                android:src="@drawable/xiaomi"/>
             <LinearLayout
                 android:layout_marginLeft="5dp"
                 android:layout_width="match_parent"

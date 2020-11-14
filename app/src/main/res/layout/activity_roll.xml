@@ -200,7 +200,7 @@
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
             android:layout_marginTop="40dp"
-            android:text="注册"
+            android:text="立刻注册"
             android:textSize="24sp"
             android:textColor="#eeeeee"
             android:background="@drawable/text_bg2"/>
