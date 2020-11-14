@@ -162,12 +162,12 @@ public class AppUsageShowActivity extends BaseActivity {
         long start_time = beginCal.getTimeInMillis();
         long end_time = endCal.getTimeInMillis();
         //数据库刷新
-//        AppUsageUtil.getAppUsageInfo(this,start_time,end_time);
+        AppUsageUtil.getAppUsageInfo(this,start_time,end_time);
         pdao = new AppUsageDao(this);//数据层
         appUsageInfo = pdao.querySignalAppUsage(appInfo.getAppName());
-        Random r = new Random(1);
+        Random r = new Random(appInfo.getAppSize());
         for (int i = 0; i < 7; i++) {
-            LastWeekRunTimef.add(new Float(r.nextInt(110)));
+            LastWeekRunTimef.add(new Float(r.nextInt(90)));
         }
         Float sum =new Float(0);
         for (int i = 0; i < 7; i++) {
