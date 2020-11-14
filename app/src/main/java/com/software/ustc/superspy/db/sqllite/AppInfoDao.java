@@ -14,12 +14,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AppInfoDao {
-    //定义DbHelper帮助类
-    private DbHelper helper;
+    //定义AppInfoDbHelper帮助类
+    private AppInfoDbHelper helper;
 
     public AppInfoDao(Context context) {
-        //初始化DbHelper帮助类
-        helper = new DbHelper(context, "AppInfo.db", null, 1);
+        //初始化AppInfoAppInfoDbHelper帮助类
+        helper = new AppInfoDbHelper(context, "AppInfo.db", null, 1);
     }
 
     public List queryAppInfoList() {
@@ -33,7 +33,7 @@ public class AppInfoDao {
             //创建数据库操作对象
             db = helper.getReadableDatabase();
 
-            Cursor cursor = db.rawQuery("select * from appInfoTable order by cast(foreground_time as int ) desc",null );
+            Cursor cursor = db.rawQuery("select * from appInfoTable",null );
             while (cursor.moveToNext()) {
                 String apk_name = cursor.getString(cursor.getColumnIndex("apk_name"));
                 String app_name = cursor.getString(cursor.getColumnIndex("app_name"));
@@ -55,7 +55,7 @@ public class AppInfoDao {
         return plist;
     }
 
-    public AppInfo querySignalAppInfo(String apkName) {
+    public AppInfo querySignalAppInfo(String appName) {
         //创建数据库操作对象
         SQLiteDatabase db = null;
         AppInfo AppInfo = null;
@@ -65,7 +65,7 @@ public class AppInfoDao {
             //创建数据库操作对象
             db = helper.getReadableDatabase();
 
-            Cursor cursor = db.rawQuery("select * from appInfoTable where app_name = \""+ apkName+ "\"",null );
+            Cursor cursor = db.rawQuery("select * from appInfoTable where app_name = \""+ appName+ "\"",null );
             while (cursor.moveToNext()) {
                 String apk_name = cursor.getString(cursor.getColumnIndex("apk_name"));
                 String app_name = cursor.getString(cursor.getColumnIndex("app_name"));
@@ -100,7 +100,7 @@ public class AppInfoDao {
             values.put("app_name", appInfo.getAppName());
             values.put("app_version", appInfo.getAppVersion());
             values.put("app_dir", appInfo.getAppDir());
-            values.put("fapp_size", appInfo.getAppSize());
+            values.put("app_size", appInfo.getAppSize());
 
             Bitmap bmp=appInfo.getAppIcon();
             final ByteArrayOutputStream os = new ByteArrayOutputStream();

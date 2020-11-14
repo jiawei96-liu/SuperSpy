@@ -39,17 +39,9 @@ public class AppDbPrepareService extends Service {
         //权限检查
         AppUsageUtil.checkUsageStateAccessPermission(this);
 
-//        pdao = new AppInfoDao(this);
-//        pdao.deleteAppInfo("appInfoTable");
-//        try {
-//            getAppInfos();
-//        } catch (PackageManager.NameNotFoundException e) {
-//            e.printStackTrace();
-//        }
-//        List<AppInfo> list=pdao.queryAppInfoList();
-
         Calendar beginCal = Calendar.getInstance();
-        beginCal.add(Calendar.HOUR_OF_DAY, -30);
+        //准备过去一天的应用数据
+        beginCal.add(Calendar.HOUR_OF_DAY, -1);
         Calendar endCal = Calendar.getInstance();
         long start_time = beginCal.getTimeInMillis();
         long end_time = endCal.getTimeInMillis();

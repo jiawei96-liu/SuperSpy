@@ -15,15 +15,15 @@ import java.util.List;
 import java.util.Set;
 
 public class AppUsageDao {
-    //定义DbHelper帮助类
-    private DbHelper helper;
+    //定义AppUsageDbHelper帮助类
+    private AppUsageDbHelper helper;
     public AppUsageDao(Context context) {
-        helper = new DbHelper(context, "AppUsage.db", null, 1);
+        helper = new AppUsageDbHelper(context, "AppUsage.db", null, 1);
     }
 
-    public AppUsageDao(Context context,String dbName) {
-        helper = new DbHelper(context, dbName, null, 1);
-    }
+//    public AppUsageDao(Context context,String dbName) {
+//        helper = new AppUsageDbHelper(context, dbName, null, 1);
+//    }
 
     public List<AppUsageInfo> queryAppUsageList() {
         //返回值

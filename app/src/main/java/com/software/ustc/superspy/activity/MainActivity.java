@@ -54,6 +54,14 @@ public class MainActivity extends BaseActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(navView, navController);
+        pdao = new AppInfoDao(this);
+        pdao.deleteAppInfo("appInfoTable");
+        try {
+            getAppInfos();
+        } catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
+        }
+        AppInfo appInfo=pdao.querySignalAppInfo("SuperSpy");
     }
 
     public void getAppInfos() throws PackageManager.NameNotFoundException {

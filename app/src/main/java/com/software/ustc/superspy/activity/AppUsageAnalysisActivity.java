@@ -21,6 +21,7 @@ import com.software.ustc.superspy.kits.AppUsageInfo;
 import com.software.ustc.superspy.kits.AppUsageUtil;
 import com.software.ustc.superspy.kits.BaseActivity;
 
+import java.util.Calendar;
 import java.util.List;
 
 public class AppUsageAnalysisActivity extends BaseActivity implements View.OnClickListener{
@@ -37,6 +38,15 @@ public class AppUsageAnalysisActivity extends BaseActivity implements View.OnCli
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_app_usage_analysis);
+        //权限检查
+        AppUsageUtil.checkUsageStateAccessPermission(this);
+        Calendar beginCal = Calendar.getInstance();
+        beginCal.add(Calendar.HOUR_OF_DAY, -7);
+        Calendar endCal = Calendar.getInstance();
+        long start_time = beginCal.getTimeInMillis();
+        long end_time = endCal.getTimeInMillis();
+        //数据库刷新
+        AppUsageUtil.getAppUsageInfo(getApplicationContext(),start_time,end_time);
         lvapp = (ListView) findViewById(R.id.lvapp);
         pdao = new AppUsageDao(this);//数据层
         plist = pdao.queryAppUsageList();
