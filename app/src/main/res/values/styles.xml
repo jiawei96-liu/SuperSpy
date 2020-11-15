@@ -964,4 +964,52 @@
         <item name="android:layout_marginRight">100dip</item>
 
     </style>
+    <style name="topbar_bg_green" parent="topbar_bg">
+        <item name="android:background">@color/green</item>
+    </style>
+    <style name="topbar_bg">
+        <item name="android:background">@color/topbar_bg</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">@dimen/topbar_height</item>
+    </style>
+
+    <!-- <item name="android:drawableLeft">@drawable/back2</item> -->
+    <style name="topbar_return_tv" parent="topbar_left_btn">
+        <item name="android:text">返回</item>
+    </style>
+
+    <style name="topbar_return_img" parent="topbar_left_btn">
+        <item name="android:src">@drawable/back2</item>
+    </style>
+
+    <style name="topbar_title">
+        <item name="android:id">@id/tvBaseTitle</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:layout_centerHorizontal">true</item>
+    </style>
+
+    <!-- topbar menu <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< -->
+    <style name="topbar_left_btn" parent="topbar_btn">
+        <item name="android:layout_alignParentLeft">true</item>
+        <item name="android:gravity">center</item>
+        <item name="android:paddingLeft">10dp</item>
+        <item name="android:paddingRight">10dp</item>
+        <item name="android:text"></item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:onClick">onReturnClick</item>
+    </style>
+    <style name="topbar_btn">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">@dimen/topbar_height</item>
+        <item name="android:minWidth">@dimen/topbar_btn_min_width</item>
+        <item name="android:background">@drawable/to_alpha</item>
+    </style>
 </resources>

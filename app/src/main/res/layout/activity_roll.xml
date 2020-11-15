@@ -61,89 +61,7 @@
 <!--        android:layout_height="wrap_content"-->
 <!--        android:padding="5sp"-->
 <!--        android:text="A方法: " />-->
-    <LinearLayout
-        android:layout_marginTop="30dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:orientation="vertical">
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp">
-            <Spinner
-                android:id="@+id/mySpinnerA"
-                android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:background="#fff"
-                android:popupBackground="#7adfb8"
-                android:spinnerMode="dropdown" />
 
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/arraw"/>
-        </LinearLayout>
-        <EditText
-            android:layout_marginTop="5dp"
-            android:id="@+id/vertify1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:paddingTop="2dp"
-            android:paddingBottom="2dp"
-            android:paddingLeft="6dp"
-            android:singleLine="true"
-            android:maxLength="15"
-            android:background="#ffffff"
-            android:textSize="18sp" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_marginTop="20dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:orientation="vertical">
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp">
-            <Spinner
-                android:id="@+id/mySpinnerA2"
-                android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:background="#fff"
-                android:popupBackground="#7adfb8"
-                android:spinnerMode="dropdown" />
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/arraw"/>
-        </LinearLayout>
-        <EditText
-            android:layout_marginTop="5dp"
-            android:id="@+id/vertify2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:paddingTop="2dp"
-            android:paddingBottom="2dp"
-            android:paddingLeft="6dp"
-            android:singleLine="true"
-            android:maxLength="15"
-            android:background="#ffffff"
-            android:textSize="18sp" />
-    </LinearLayout>
 
 <!--    <LinearLayout-->
 <!--        android:layout_width="wrap_content"-->
@@ -238,6 +156,88 @@
                 android:maxLength="15"
                 android:background="#ffffff"
                 android:id="@+id/eConfirm"
+                android:textSize="18sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginTop="30dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp">
+                <Spinner
+                    android:id="@+id/mySpinnerA"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:background="#fff"
+                    android:popupBackground="#7adfb8"
+                    android:spinnerMode="dropdown" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/arraw"/>
+            </LinearLayout>
+            <EditText
+                android:layout_marginTop="5dp"
+                android:id="@+id/vertify1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:paddingTop="2dp"
+                android:paddingBottom="2dp"
+                android:paddingLeft="6dp"
+                android:singleLine="true"
+                android:maxLength="15"
+                android:background="#ffffff"
+                android:textSize="18sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginTop="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp">
+                <Spinner
+                    android:id="@+id/mySpinnerA2"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:background="#fff"
+                    android:popupBackground="#7adfb8"
+                    android:spinnerMode="dropdown" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/arraw"/>
+            </LinearLayout>
+            <EditText
+                android:layout_marginTop="5dp"
+                android:id="@+id/vertify2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:paddingTop="2dp"
+                android:paddingBottom="2dp"
+                android:paddingLeft="6dp"
+                android:singleLine="true"
+                android:maxLength="15"
+                android:background="#ffffff"
                 android:textSize="18sp" />
         </LinearLayout>
 

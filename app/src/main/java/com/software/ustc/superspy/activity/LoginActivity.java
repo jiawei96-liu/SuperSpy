@@ -18,9 +18,12 @@ import android.view.animation.Interpolator;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.core.content.ContextCompat;
 
 import com.software.ustc.superspy.R;
 import com.software.ustc.superspy.db.litepal.LoginData;
@@ -50,6 +53,8 @@ public class LoginActivity extends Activity implements View.OnClickListener {
     private  EditText passwordEdit;
     private TextView roll;
     private TextView getpass;
+    private ImageView disply1;
+    int isvisiable=0;
 
     private final int WELCONE_DISPLAY_LENGHT = 1000;
 
@@ -61,6 +66,10 @@ public class LoginActivity extends Activity implements View.OnClickListener {
         //权限检查
         AppUsageUtil.checkUsageStateAccessPermission(this);
         initView();
+
+
+
+
     }
 
     private void initView() {
@@ -70,8 +79,10 @@ public class LoginActivity extends Activity implements View.OnClickListener {
         mName = (LinearLayout) findViewById(R.id.input_layout_name);
         mPsw = (LinearLayout) findViewById(R.id.input_layout_psw);
         getpass = findViewById(R.id.getpass);
+
         /////////////////////////////
         LitePal.initialize(this);
+
         Connector.getDatabase();
         roll=findViewById(R.id.cbLogin);
         accountEdit=findViewById(R.id.cUsername);
@@ -122,6 +133,23 @@ public class LoginActivity extends Activity implements View.OnClickListener {
                 Intent intent = new Intent(LoginActivity.this,PasswordGetActivity.class);
                 startActivity(intent);
                 finish();
+            }
+        });
+
+        disply1=findViewById(R.id.displypass);
+        disply1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(isvisiable==0) {
+                    disply1.setImageResource(R.drawable.xianshi);
+                    isvisiable=1;
+                }
+                else {
+                    disply1.setImageResource(R.drawable.yincang);
+                    isvisiable=0;
+
+                }
+
             }
         });
     }
@@ -259,6 +287,7 @@ public class LoginActivity extends Activity implements View.OnClickListener {
 
             }
         });
+
 
     }
 

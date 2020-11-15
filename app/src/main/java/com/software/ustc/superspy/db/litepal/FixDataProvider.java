@@ -10,9 +10,9 @@ public class FixDataProvider {
 //        list.add("请选择");
         list.add("父亲的姓名");
         list.add("母亲的姓名");
-        list.add("住址");
-        list.add("学校");
-        list.add("身份证");
+        list.add("最喜欢的食物");
+        list.add("最喜欢的动物");
+        list.add("高中的名称");
         return list;
     }
 }

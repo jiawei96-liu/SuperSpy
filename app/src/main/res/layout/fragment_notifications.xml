@@ -36,6 +36,7 @@
                         style="@style/content_item_white">
 
                         <TextView
+                            android:id="@+id/tllAboutUpdate"
                             style="@style/content_item_lf_tv"
                             android:layout_weight="1"
                             android:text="更新日志" />
@@ -52,6 +53,7 @@
                         style="@style/content_item_white">
 
                         <TextView
+                            android:id="@+id/tllAboutShare"
                             style="@style/content_item_lf_tv"
                             android:layout_weight="1"
                             android:text="分享" />
@@ -62,10 +64,11 @@
                     </LinearLayout>
                     <View style="@style/divider_horizontal_1px" />
                     <LinearLayout
-                        android:id="@+id/llAboutDonateUs"
+                        android:id="@+id/llAboutComment"
                         style="@style/content_item_white">
 
                         <TextView
+                            android:id="@+id/tllAboutComment"
                             style="@style/content_item_lf_tv"
                             android:layout_weight="1"
                             android:text="项目捐赠" />
@@ -86,6 +89,7 @@
                         style="@style/content_item_white">
 
                         <TextView
+                            android:id="@+id/rllAboutDeveloper"
                             style="@style/content_item_lf_tv"
                             android:layout_weight="1"
                             android:text="开发者" />
@@ -102,6 +106,7 @@
                         style="@style/content_item_white">
 
                         <TextView
+                            android:id="@+id/tllAboutWeibo"
                             style="@style/content_item_lf_tv"
                             android:layout_weight="1"
                             android:text="Git仓库" />
@@ -118,6 +123,7 @@
                         style="@style/content_item_white">
 
                         <TextView
+                            android:id="@+id/tllAboutContactUs"
                             style="@style/content_item_lf_tv"
                             android:layout_weight="1"
                             android:text="联系我们" />
