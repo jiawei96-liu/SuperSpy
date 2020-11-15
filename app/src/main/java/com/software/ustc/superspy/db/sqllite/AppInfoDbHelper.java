@@ -13,8 +13,8 @@ public class AppInfoDbHelper extends SQLiteOpenHelper {
     //数据库第一次被创建时调用，创建表
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String sql =  "create table appInfoTable( id integer primary key autoincrement," +
-                "apk_name varchar(100)," +
+        String sql =  "create table appInfoTable(" +
+                "apk_name varchar(100) primary key,"+
                 "app_name varchar(50)," +
                 "app_version varchar(50)," +
                 "app_dir varchar(50)," +
