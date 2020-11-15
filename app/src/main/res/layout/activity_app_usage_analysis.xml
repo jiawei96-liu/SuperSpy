@@ -20,51 +20,14 @@
         android:background="@color/orange" />
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="40dp"
         android:baselineAligned="false"
         android:orientation="vertical"
         android:textAlignment="center">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:orientation="horizontal">
-            <TextView
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="match_parent"
-                android:background="@drawable/textview_border_white"
-                android:gravity="center"
-                android:text="统计起始时间" />
-
-            <TextView
-                android:id="@+id/txt_first_timestamp_all"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="match_parent"
-                android:background="@drawable/textview_border_white"
-                android:gravity="center" />
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="match_parent"
-                android:background="@drawable/textview_border_white"
-                android:gravity="center"
-                android:text="统计终止时间" />
-
-            <TextView
-                android:id="@+id/txt_last_timestamp_all"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="match_parent"
-                android:background="@drawable/textview_border_white"
-                android:gravity="center" />
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
+            android:layout_height="match_parent"
             android:layout_weight="1"
             android:orientation="horizontal">
             <TextView

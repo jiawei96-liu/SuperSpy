@@ -60,6 +60,7 @@ public class AppTagsMap {
         appTagsMap.put("三国杀", appTag[5]);
         appTagsMap.put("部落冲突", appTag[5]);
         appTagsMap.put("荒野乱斗", appTag[5]);
+        appTagsMap.put("原神", appTag[5]);
 
         appTagsMap.put("快手", appTag[6]);
         appTagsMap.put("快手极速版", appTag[6]);

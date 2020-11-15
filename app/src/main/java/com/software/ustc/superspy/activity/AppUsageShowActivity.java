@@ -198,21 +198,6 @@ public class AppUsageShowActivity extends BaseActivity {
     }
 
     void showLineData() {
-//        List<String> LastWeekRunTime=new ArrayList<String>;
-//        for(int i=0;i<=7;++i)
-//        {
-//            Calendar beginCal = Calendar.getInstance();
-//            beginCal.add(Calendar.DATE, -i);
-//            Calendar endCal = Calendar.getInstance();
-//            endCal.add(Calendar.DATE, -(i+1));
-//            long start_time = beginCal.getTimeInMillis();
-//            long end_time = endCal.getTimeInMillis();
-//            //数据库刷新
-//            AppUsageUtil.getAppUsageInfo(this,start_time,end_time);
-//            pdao = new AppUsageDao(this);//数据层
-//            appUsageInfo = pdao.querySignalAppUsage(appInfo.getAppName());
-//            LastWeekRunTime.add((appUsageInfo.getForeground_time()));
-//        }
         // 1. 获取一或多组Entry对象集合的数据
         // 模拟数据1
         List<Entry> yVals = new ArrayList<>();
