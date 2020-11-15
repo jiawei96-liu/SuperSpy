@@ -5,10 +5,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import com.software.ustc.superspy.activity.AccountMangementActivity;
+
 import com.software.ustc.superspy.activity.AppInfoShowActivity;
 import com.software.ustc.superspy.activity.AppUsageAnalysisActivity;
 import com.software.ustc.superspy.R;
@@ -17,6 +18,8 @@ import com.software.ustc.superspy.activity.DevInfoActivity;
 import com.software.ustc.superspy.activity.PasswordChangeActivity;
 
 public class DashboardFragment extends Fragment implements View.OnClickListener {
+
+
 
     private static final String TAG = "DashboardFragment";
 
@@ -42,6 +45,10 @@ public class DashboardFragment extends Fragment implements View.OnClickListener 
         btnAuth.setOnClickListener(this);
         Button btnAppRecomend = (Button) getActivity().findViewById(R.id.btn_app_recommend_list);
         btnAppRecomend.setOnClickListener(this);
+
+
+
+
     }
 
     @Override
@@ -67,8 +74,13 @@ public class DashboardFragment extends Fragment implements View.OnClickListener 
             case R.id.btn_app_recommend_list:
                 startActivity(new Intent(getActivity(), AppsRecomendActivity.class));
                 break;
+
             default:
                 break;
         }
     }
+
+
+
+
 }
