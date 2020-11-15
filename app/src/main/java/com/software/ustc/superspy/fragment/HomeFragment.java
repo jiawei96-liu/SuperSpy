@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -43,6 +44,7 @@ public class HomeFragment extends Fragment {
     Float[] pieValue = new Float[MAX_CNT];
     String[] pieLable = new String[MAX_CNT];
     private PieChart chart;
+    private TextView tv;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -55,8 +57,10 @@ public class HomeFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
         repareData();
         showPie();
+        showTv();
 
     }
+
 
     void repareData() {
         //权限检查
@@ -184,5 +188,19 @@ public class HomeFragment extends Fragment {
                 (RelativeLayout.LayoutParams) chart.getLayoutParams();
         rlParams.setMargins(0, 0, 0, -offset);
         chart.setLayoutParams(rlParams);
+    }
+
+    private void showTv()
+    {
+        tv = getActivity().findViewById(R.id.tv);
+        java.text.DecimalFormat myformat = new java.text.DecimalFormat("0.00");
+        tv.setText("今天,您使用最频繁的App有:\n"+
+                pieLable[0] +"\t [ "+myformat.format(pieValue[0])+" ] 分钟\n"+
+                pieLable[1] +"\t [ "+myformat.format(pieValue[1])+" ] 分钟\n"+
+                pieLable[2] +"\t [ "+myformat.format(pieValue[2])+" ] 分钟\n"+
+                pieLable[3] +"\t [ "+myformat.format(pieValue[3])+" ] 分钟\n"+
+                pieLable[4] +"\t [ "+myformat.format(pieValue[4])+" ] 分钟\n"
+
+        );
     }
 }
