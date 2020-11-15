@@ -11,12 +11,28 @@
             <ScrollView style="@style/match_match">
 
                 <LinearLayout style="@style/ll_vertical_match_match">
+                    <LinearLayout
 
-                    <ImageView
-                        android:layout_width="60dp"
-                        android:layout_height="60dp"
-                        android:layout_margin="15dp"
-                        android:src="@mipmap/superspy" />
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <com.software.ustc.superspy.kits.ImageViewPlus
+                            android:layout_gravity="center"
+                            android:id="@+id/ph"
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
+                            android:layout_margin="15dp"
+                            android:src="@mipmap/superspy" />
+                        <TextView
+                            android:id="@+id/photo"
+                            android:layout_gravity="center|top"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="3sp"
+                            android:textColor="#0000FF"
+                            android:text="修改头像"/>
+
+                    </LinearLayout>
 
                     <TextView
                         android:id="@+id/tvAboutAppInfo"
@@ -36,6 +52,7 @@
                         style="@style/content_item_white">
 
                         <TextView
+                            android:id="@+id/tllAboutUpdate"
                             style="@style/content_item_lf_tv"
                             android:layout_weight="1"
                             android:text="更新日志" />
@@ -52,6 +69,7 @@
                         style="@style/content_item_white">
 
                         <TextView
+                            android:id="@+id/tllAboutShare"
                             style="@style/content_item_lf_tv"
                             android:layout_weight="1"
                             android:text="分享" />
@@ -62,10 +80,11 @@
                     </LinearLayout>
                     <View style="@style/divider_horizontal_1px" />
                     <LinearLayout
-                        android:id="@+id/llAboutDonateUs"
+                        android:id="@+id/llAboutComment"
                         style="@style/content_item_white">
 
                         <TextView
+                            android:id="@+id/tllAboutComment"
                             style="@style/content_item_lf_tv"
                             android:layout_weight="1"
                             android:text="项目捐赠" />
@@ -86,6 +105,7 @@
                         style="@style/content_item_white">
 
                         <TextView
+                            android:id="@+id/rllAboutDeveloper"
                             style="@style/content_item_lf_tv"
                             android:layout_weight="1"
                             android:text="开发者" />
@@ -102,6 +122,7 @@
                         style="@style/content_item_white">
 
                         <TextView
+                            android:id="@+id/tllAboutWeibo"
                             style="@style/content_item_lf_tv"
                             android:layout_weight="1"
                             android:text="Git仓库" />
@@ -118,6 +139,7 @@
                         style="@style/content_item_white">
 
                         <TextView
+                            android:id="@+id/tllAboutContactUs"
                             style="@style/content_item_lf_tv"
                             android:layout_weight="1"
                             android:text="联系我们" />

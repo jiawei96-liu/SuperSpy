@@ -5,17 +5,21 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import com.software.ustc.superspy.activity.AccountMangementActivity;
+
 import com.software.ustc.superspy.activity.AppInfoShowActivity;
 import com.software.ustc.superspy.activity.AppUsageAnalysisActivity;
 import com.software.ustc.superspy.R;
 import com.software.ustc.superspy.activity.AppsRecomendActivity;
 import com.software.ustc.superspy.activity.DevInfoActivity;
+import com.software.ustc.superspy.activity.PasswordChangeActivity;
 
 public class DashboardFragment extends Fragment implements View.OnClickListener {
+
+
 
     private static final String TAG = "DashboardFragment";
 
@@ -24,6 +28,7 @@ public class DashboardFragment extends Fragment implements View.OnClickListener 
         View root = inflater.inflate(R.layout.fragment_dashboard, container, false);
         return root;
     }
+
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
@@ -40,6 +45,10 @@ public class DashboardFragment extends Fragment implements View.OnClickListener 
         btnAuth.setOnClickListener(this);
         Button btnAppRecomend = (Button) getActivity().findViewById(R.id.btn_app_recommend_list);
         btnAppRecomend.setOnClickListener(this);
+
+
+
+
     }
 
     @Override
@@ -55,7 +64,7 @@ public class DashboardFragment extends Fragment implements View.OnClickListener 
                 startActivity(new Intent(getActivity(), AppUsageAnalysisActivity.class));
                 break;
             case R.id.btn_account:
-                startActivity(new Intent(getActivity(), AccountMangementActivity.class));
+                startActivity(new Intent(getActivity(), PasswordChangeActivity.class));
                 break;
             case R.id.btn_authority:
                 Intent intent = new Intent(android.provider.Settings.ACTION_USAGE_ACCESS_SETTINGS);
@@ -65,8 +74,13 @@ public class DashboardFragment extends Fragment implements View.OnClickListener 
             case R.id.btn_app_recommend_list:
                 startActivity(new Intent(getActivity(), AppsRecomendActivity.class));
                 break;
+
             default:
                 break;
         }
     }
+
+
+
+
 }

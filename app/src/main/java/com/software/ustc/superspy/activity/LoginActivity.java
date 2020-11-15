@@ -9,6 +9,8 @@ import android.animation.ValueAnimator;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.method.HideReturnsTransformationMethod;
+import android.text.method.PasswordTransformationMethod;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
@@ -18,9 +20,12 @@ import android.view.animation.Interpolator;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.core.content.ContextCompat;
 
 import com.software.ustc.superspy.R;
 import com.software.ustc.superspy.db.litepal.LoginData;
@@ -49,6 +54,10 @@ public class LoginActivity extends Activity implements View.OnClickListener {
     private EditText accountEdit;
     private  EditText passwordEdit;
     private TextView roll;
+    private TextView getpass;
+    private ImageView disply1;
+    private int isvisiable=0;
+    private ImageView delete;
 
     private final int WELCONE_DISPLAY_LENGHT = 1000;
 
@@ -60,6 +69,10 @@ public class LoginActivity extends Activity implements View.OnClickListener {
         //权限检查
         AppUsageUtil.checkUsageStateAccessPermission(this);
         initView();
+
+
+
+
     }
 
     private void initView() {
@@ -68,9 +81,11 @@ public class LoginActivity extends Activity implements View.OnClickListener {
         mInputLayout = findViewById(R.id.input_layout);
         mName = (LinearLayout) findViewById(R.id.input_layout_name);
         mPsw = (LinearLayout) findViewById(R.id.input_layout_psw);
+        getpass = findViewById(R.id.getpass);
 
         /////////////////////////////
         LitePal.initialize(this);
+
         Connector.getDatabase();
         roll=findViewById(R.id.cbLogin);
         accountEdit=findViewById(R.id.cUsername);
@@ -86,13 +101,21 @@ public class LoginActivity extends Activity implements View.OnClickListener {
             LoginData login1 = new LoginData();
             login1.setUsername("");
             login1.setPassward("");
+            login1.setVertify1("");
+            login1.setVertifyid1("");
+            login1.setVertify2("");
+            login1.setVertifyid2("");
             login1.setId(1);
             login1.save();
-            LoginData login2 = new LoginData();
-            login2.setUsername("");
-            login2.setPassward("");
-            login2.setId(2);
-            login2.save();
+//            LoginData login2 = new LoginData();
+//            login2.setUsername("");
+//            login2.setPassward("");
+//            login2.setVertify1("");
+//            login2.setVertifyid1("");
+            login1.setId(2);
+            login1.save();
+            login1.setId(3);
+            login1.save();
         }
 
         //////////////////////////
@@ -103,7 +126,42 @@ public class LoginActivity extends Activity implements View.OnClickListener {
             public void onClick(View v) {
                 Intent intent = new Intent(LoginActivity.this,RollActivity.class);
                 startActivity(intent);
+                finish();
 
+            }
+        });
+        getpass.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(LoginActivity.this,PasswordGetActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
+        disply1=findViewById(R.id.displypass);
+        disply1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(isvisiable==0) {
+                    disply1.setImageResource(R.drawable.xianshi);
+                    passwordEdit.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+                    isvisiable=1;
+                }
+                else {
+                    disply1.setImageResource(R.drawable.yincang);
+                    passwordEdit.setTransformationMethod(PasswordTransformationMethod.getInstance());
+                    isvisiable=0;
+
+                }
+
+            }
+        });
+        delete=findViewById(R.id.delete1);
+        delete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                accountEdit.setText("");
             }
         });
     }
@@ -241,6 +299,7 @@ public class LoginActivity extends Activity implements View.OnClickListener {
 
             }
         });
+
 
     }
 

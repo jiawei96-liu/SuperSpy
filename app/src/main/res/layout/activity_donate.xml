@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.DonateActivity"
+    android:orientation="vertical">
+    <RelativeLayout style="@style/topbar_bg" >
+
+        <ImageButton
+            android:id="@+id/imageView1"
+            style="@style/topbar_return_img" />
+
+        <TextView
+            style="@style/topbar_title"
+            android:layout_centerHorizontal="true"
+            android:ellipsize="none"
+            android:padding="0dp"
+            android:layout_marginLeft="@dimen/topbar_title_padding"
+            android:layout_marginRight="@dimen/topbar_title_padding"
+            android:singleLine="true"
+            android:text="项目捐赠" />
+    </RelativeLayout>
+    <LinearLayout
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <ImageView
+            android:layout_gravity="center_horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/erweima"
+            />
+    </LinearLayout>
+<!--    <TextView-->
+<!--        android:layout_marginTop="30dp"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="扫一扫二维码 下载Superspy"-->
+<!--        android:layout_gravity="center"-->
+<!--        android:textSize="20sp"-->
+<!--        />-->
+</LinearLayout>

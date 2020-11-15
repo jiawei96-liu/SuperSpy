@@ -26,7 +26,8 @@
                  />
 
             <EditText
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
+                android:layout_weight="13"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dip"
                 android:background="#00000000"
@@ -34,6 +35,14 @@
                 android:padding="5dip"
                 android:id="@+id/cUsername"
                 android:textSize="16sp" />
+            <ImageView
+                android:clickable="true"
+                android:focusable="true"
+                android:id="@+id/delete1"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:src="@drawable/chahao5"/>
         </LinearLayout>
 
         <View
@@ -42,6 +51,7 @@
             android:layout_marginBottom="5dip"
             android:layout_marginTop="5dip"
             android:background="#eeeeee" />
+
 
         <LinearLayout
             android:id="@+id/input_layout_psw"
@@ -56,7 +66,8 @@
                 android:src="@drawable/password6" />
 
             <EditText
-                android:layout_width="match_parent"
+                android:layout_weight="18"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dip"
                 android:background="#00000000"
@@ -64,7 +75,23 @@
                 android:inputType="textPassword"
                 android:padding="5dip"
                 android:textSize="16sp"
-                android:id="@+id/cPassward"/>
+                android:id="@+id/cPassward"
+                />
+            <LinearLayout
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:focusable="true">
+                <ImageView
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:id="@+id/displypass"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/yincang"/>
+            </LinearLayout>
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>

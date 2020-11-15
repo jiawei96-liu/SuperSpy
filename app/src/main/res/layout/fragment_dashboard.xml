@@ -41,7 +41,7 @@
                 android:layout_gravity="center_horizontal"
                 android:background="@drawable/textview_border"
                 android:drawableTop="@mipmap/app_icon_account"
-                android:text="账号管理" />
+                android:text="修改密码" />
         </LinearLayout>
     </LinearLayout>
 
