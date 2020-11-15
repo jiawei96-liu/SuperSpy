@@ -79,7 +79,7 @@ public class HomeFragment extends Fragment {
     private void showPie() {
         getActivity().getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        chart = getActivity().findViewById(R.id.chart1);
+        chart = getActivity().findViewById(R.id.chart);
         chart.setBackgroundColor(Color.WHITE);
 
         moveOffScreen();

@@ -4,8 +4,18 @@
     android:layout_height="match_parent">
 
     <com.github.mikephil.charting.charts.PieChart
-        android:id="@+id/chart1"
+        android:id="@+id/chart"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
+    <TextView
+        android:id="@+id/tv"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/chart"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="40dp"
+        android:layout_marginRight="10dp"
+        android:gravity="right"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
 
 </RelativeLayout>
