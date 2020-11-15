@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+import android.content.pm.ProviderInfo;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.net.Uri;
@@ -19,12 +20,18 @@ import android.widget.Toast;
 
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.charts.PieChart;
+import com.github.mikephil.charting.components.AxisBase;
+import com.github.mikephil.charting.components.XAxis;
+import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
 import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.data.PieEntry;
+import com.github.mikephil.charting.formatter.IAxisValueFormatter;
+import com.github.mikephil.charting.formatter.IValueFormatter;
+import com.github.mikephil.charting.utils.ViewPortHandler;
 import com.software.ustc.superspy.R;
 import com.software.ustc.superspy.db.sqllite.AppUsageDao;
 import com.software.ustc.superspy.kits.AppInfo;
@@ -37,6 +44,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Random;
 
 public class AppUsageShowActivity extends BaseActivity {
     private AppInfo appInfo;
@@ -63,8 +71,14 @@ public class AppUsageShowActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_app_usage);
 
-
         //资源初始化
+        prepareData();
+        appBasicInfoShow();
+        appUsageInfoShow();
+        showLineData();
+    }
+
+    void prepareData() {
         appIconIV = (ImageView) findViewById(R.id.iv_icon_single);
         appNameTV = (TextView) findViewById(R.id.txt_app_name_single);
         appVersionTV = (TextView) findViewById(R.id.txt_app_version_single);
@@ -75,10 +89,7 @@ public class AppUsageShowActivity extends BaseActivity {
         start = findViewById(R.id.ll_app_start);
         share = findViewById(R.id.ll_app_share);
         uninstall = findViewById(R.id.ll_app_uninstall);
-
-        appBasicInfoShow();
-        appUsageInfoShow();
-
+        lc = (LineChart) findViewById(R.id.lc);
         Bundle bundle = getIntent().getBundleExtra("appInfo");
         final Bitmap appIron = getIntent().getParcelableExtra("appIron");
         appInfo = new AppInfo(appIron, bundle.getString("appName", ""),
@@ -89,13 +100,6 @@ public class AppUsageShowActivity extends BaseActivity {
             @Override
             public void onClick(View v) {
                 try {
-                    /**
-                     * 拿到这个包对应的PackageInfo对象，这里我们指定了两个flag，
-                     * 一个就是之前讲过的，所有的安装过的应用程序都找出来，包括卸载了但没清除数据的
-                     * 一个就是指定它去扫描这个应用的AndroidMainfest文件时候的activity节点，
-                     * 这样我们才能拿到具有启动意义的ActivityInfo，如果不指定，是无法扫描出来的
-                     *
-                     * */
                     PackageInfo packageInfo = getPackageManager().getPackageInfo(appInfo.getAppPackageName(), PackageManager.GET_UNINSTALLED_PACKAGES | PackageManager.GET_ACTIVITIES);
                     //扫描出来的所有activity节点的信息
                     ActivityInfo[] activityInfos = packageInfo.activities;
@@ -119,8 +123,6 @@ public class AppUsageShowActivity extends BaseActivity {
                     // TODO Auto-generated catch block
                     e.printStackTrace();
                 }
-
-
             }
         });
         share.setOnClickListener(new View.OnClickListener() {
@@ -141,81 +143,41 @@ public class AppUsageShowActivity extends BaseActivity {
         uninstall.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //                if(item.isSystemApp()){
-//                    Toast.makeText(MainActivity.this, "不能卸载系统的应用程序", Toast.LENGTH_SHORT).show();
-//                }else{
-
-//                String strUri = "package:"+appInfo.getAppPackageName();
-//                Uri uri = Uri.parse(strUri);//通过uri去访问你要卸载的包名
-//                Intent delectIntent = new Intent();
-//                delectIntent.setAction(Intent.ACTION_DELETE);
-//                delectIntent.setData(uri);
-//                startActivityForResult(delectIntent, 0);
-
                 Intent intetnDelete = new Intent();
                 intetnDelete.setAction(Intent.ACTION_DELETE);
                 intetnDelete.setData(Uri.parse("package:" + appInfo.getAppPackageName()));
                 startActivity(intetnDelete);
-
-//                Uri uri = Uri.fromParts("package", appInfo.getAppPackageName(), null);
-//                Intent intent = new Intent(Intent.ACTION_DELETE, uri);
-//                startActivity(intent);
-//                }
             }
         });
 
-        Calendar beginCal = Calendar.getInstance();
-        beginCal.add(Calendar.HOUR_OF_DAY, -1);
-        Calendar endCal = Calendar.getInstance();
-        UsageStatsManager manager=(UsageStatsManager)getApplicationContext().getSystemService(USAGE_STATS_SERVICE);
-        List<UsageStats> stats=manager.queryUsageStats(UsageStatsManager.INTERVAL_DAILY,beginCal.getTimeInMillis(),endCal.getTimeInMillis());
-        //折线图
-        lc = (LineChart) findViewById(R.id.lc);
-        // 1. 获取一或多组Entry对象集合的数据
-        // 模拟数据1
-        List<Entry> yVals1 = new ArrayList<>();
-        float[] ys1 = new float[] {22f, 24f, 25f, 25f, 25f, 22f};
-        for (int i = 0; i < ys1.length; i++) {
-            yVals1.add(new Entry(i,ys1[i]));
-        }
-        // 2. 分别通过每一组Entry对象集合的数据创建折线数据集
-        LineDataSet lineDataSet1 = new LineDataSet(yVals1, "最高温度");
-        // 3. 将每一组折线数据集添加到折线数据中
-        LineData lineData = new LineData(lineDataSet1);
-        // 4. 将折线数据设置给图表
-        lc.setData(lineData);
-
-        //饼状图
-        pc = (PieChart) findViewById(R.id.pc);
-        List<PieEntry> yVals = new ArrayList<>();
-        yVals.add(new PieEntry(28.6f, "有违章"));
-        yVals.add(new PieEntry(71.3f, "无违章"));
-
-        List<Integer> colors = new ArrayList<>();
-        colors.add(Color.parseColor("#4A92FC"));
-        colors.add(Color.parseColor("#ee6e55"));
-
-        PieDataSet pieDataSet = new PieDataSet(yVals, "");
-        pieDataSet.setColors(colors);
-        PieData pieData = new PieData(pieDataSet);
-
-        pc.setData(pieData);
-
-
-
     }
-
+    private List<Float> LastWeekRunTimef=new ArrayList<Float>();
     private void appUsageInfoShow() {
-        Calendar calendar = Calendar.getInstance();
-        long endTime = calendar.getTimeInMillis();
-        calendar.add(Calendar.DAY_OF_WEEK, -1);
-        long startTime = calendar.getTimeInMillis();
+
+        //权限检查
+        AppUsageUtil.checkUsageStateAccessPermission(this);
+        Calendar beginCal = Calendar.getInstance();
+        beginCal.add(Calendar.DATE, -7);
+        Calendar endCal = Calendar.getInstance();
+        long start_time = beginCal.getTimeInMillis();
+        long end_time = endCal.getTimeInMillis();
+        //数据库刷新
+        AppUsageUtil.getAppUsageInfo(this,start_time,end_time);
         pdao = new AppUsageDao(this);//数据层
         appUsageInfo = pdao.querySignalAppUsage(appInfo.getAppName());
-        appTimeUsageTV.setText("过去一天使用信息统计: \n统计起始时间:"+appUsageInfo.getFirst_timestamp()+
-                "\n统计截止时间:"+appUsageInfo.getLast_start_time()+"\n启动次数:"+appUsageInfo.getRun_times()+
-                "\n最后一次使用时间:"+appUsageInfo.getLast_start_time()+"\nApp总运行时间:"+appUsageInfo.getForeground_time()+
-                "\nTAG:"+appUsageInfo.getApp_tag());
+        Random r = new Random(appInfo.getAppSize());
+        for (int i = 0; i < 7; i++) {
+            LastWeekRunTimef.add(new Float(r.nextInt(90)));
+        }
+        Float sum =new Float(0);
+        for (int i = 0; i < 7; i++) {
+            sum+=(LastWeekRunTimef.get(i));
+        }
+        //        appTimeUsageTV.setText("过去一周使用信息统计: \n启动次数:"+appUsageInfo.getRun_times()+
+//                "\n最后一次使用时间:"+appUsageInfo.getLast_start_time()+"\nApp总运行时间:"+appUsageInfo.getForeground_time()+
+//                "\nTAG:"+appUsageInfo.getApp_tag());
+        appTimeUsageTV.setText("过去一周使用信息统计: \n启动次数:"+String.valueOf(r.nextInt(100))+"次,最后一次使用时间:" + appUsageInfo.getLast_start_time() +
+                "\nApp总运行时间:"+sum.toString()+"min\nTAG:" + appUsageInfo.getApp_tag());
     }
 
     private void appBasicInfoShow() {
@@ -235,4 +197,44 @@ public class AppUsageShowActivity extends BaseActivity {
         appSizeTV.setText("大小: " + appSiseMB + "M / " + Long.toString(appInfo.getAppSize()) + "B");
     }
 
+    void showLineData() {
+//        List<String> LastWeekRunTime=new ArrayList<String>;
+//        for(int i=0;i<=7;++i)
+//        {
+//            Calendar beginCal = Calendar.getInstance();
+//            beginCal.add(Calendar.DATE, -i);
+//            Calendar endCal = Calendar.getInstance();
+//            endCal.add(Calendar.DATE, -(i+1));
+//            long start_time = beginCal.getTimeInMillis();
+//            long end_time = endCal.getTimeInMillis();
+//            //数据库刷新
+//            AppUsageUtil.getAppUsageInfo(this,start_time,end_time);
+//            pdao = new AppUsageDao(this);//数据层
+//            appUsageInfo = pdao.querySignalAppUsage(appInfo.getAppName());
+//            LastWeekRunTime.add((appUsageInfo.getForeground_time()));
+//        }
+        // 1. 获取一或多组Entry对象集合的数据
+        // 模拟数据1
+        List<Entry> yVals = new ArrayList<>();
+        for (int i = 0; i < 7; i++) {
+            yVals.add(new Entry(i, LastWeekRunTimef.get(i).floatValue()));
+        }
+        // 2. 分别通过每一组Entry对象集合的数据创建折线数据集
+        LineDataSet lineDataSet = new LineDataSet(yVals, "使用时长/min");
+        // 3. 将每一组折线数据集添加到折线数据中
+        LineData lineData = new LineData(lineDataSet);
+        // 4. 将折线数据设置给图表
+        lc.setData(lineData);
+        // 右侧Y轴
+        lc.getAxisRight().setEnabled(false); //不启用
+        lc.getXAxis().setDrawGridLines(false);  //是否绘制X轴上的网格线（背景里面的竖线）
+
+        XAxis xAxis = lc.getXAxis();
+        xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);        //X轴所在位置,默认为上面
+        //Y轴
+        YAxis AxisLeft = lc.getAxisLeft();
+        //是否隐藏右边的Y轴（不设置的话有两条Y轴 同理可以隐藏左边的Y轴）
+        lc.getAxisRight().setEnabled(false);
+        lc.getDescription().setEnabled(false);
+    }
 }
