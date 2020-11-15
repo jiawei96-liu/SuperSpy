@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -23,6 +24,7 @@ public class PasswordGetActivity extends BaseActivity {
     private String str;
     private EditText usr;
     private TextView ret;
+    private ImageView delete;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,6 +32,7 @@ public class PasswordGetActivity extends BaseActivity {
         confirm=findViewById(R.id.confirm);
         usr=findViewById(R.id.usr);
         ret=findViewById(R.id.return1);
+        delete=findView(R.id.delete2);
         confirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -69,6 +72,12 @@ public class PasswordGetActivity extends BaseActivity {
                 startActivity(intent);
                 finish();
 
+            }
+        });
+        delete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                usr.setText("");
             }
         });
     }

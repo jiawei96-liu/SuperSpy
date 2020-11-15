@@ -4,9 +4,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.method.HideReturnsTransformationMethod;
+import android.text.method.PasswordTransformationMethod;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.software.ustc.superspy.R;
@@ -19,10 +22,11 @@ import java.util.List;
 
 public class PasswordChangeActivity extends BaseActivity {
 
-    EditText oldpassword;
-    EditText newpassword;
-    EditText newpassword2;
-    Button confirm;
+    private EditText oldpassword,newpassword,newpassword2;
+    private Button confirm;
+    private ImageView delete,disply1,disply2;
+    private int isvisiable1=0;
+    private int isvisiable2=0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,6 +34,9 @@ public class PasswordChangeActivity extends BaseActivity {
         oldpassword=findViewById(R.id.oldpassword);
         newpassword=findViewById(R.id.newpassword);
         newpassword2=findViewById(R.id.newpassword2);
+        delete=findViewById(R.id.delete6);
+        disply1=findViewById(R.id.disply1);
+        disply2=findViewById(R.id.disply2);
         confirm=findViewById(R.id.affirm);
         confirm.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -65,6 +72,46 @@ public class PasswordChangeActivity extends BaseActivity {
                     Toast toast = Toast.makeText(PasswordChangeActivity.this,null,Toast.LENGTH_SHORT);
                     toast.setText("密码不正确");
                 }
+            }
+        });
+        delete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                oldpassword.setText("");
+            }
+        });
+        disply1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                    if(isvisiable1==0) {
+                        disply1.setImageResource(R.drawable.xianshi);
+                        newpassword.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+                        isvisiable1 = 1;
+
+                    }else {
+                        disply1.setImageResource(R.drawable.yincang);
+                        newpassword.setTransformationMethod(PasswordTransformationMethod.getInstance());
+                        isvisiable1=0;
+
+                    }
+
+            }
+        });
+        disply2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(isvisiable2==0) {
+                    disply2.setImageResource(R.drawable.xianshi);
+                    newpassword2.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+                    isvisiable2=1;
+                    }
+
+                    else {
+                        disply2.setImageResource(R.drawable.yincang);
+                        newpassword2.setTransformationMethod(PasswordTransformationMethod.getInstance());
+                        isvisiable2=0;
+                    }
+
             }
         });
     }

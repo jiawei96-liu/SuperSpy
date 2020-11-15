@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -20,6 +21,7 @@ public class PasswordInfoActivity extends BaseActivity {
     private EditText insurance2;
     private TextView confirm;
     private TextView ret;
+    private ImageView delete1,delete2;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,6 +29,8 @@ public class PasswordInfoActivity extends BaseActivity {
         ret=findViewById(R.id.return2);
         insurance1=findViewById(R.id.insurance1);
         insurance2=findViewById(R.id.insurance2);
+        delete1=findViewById(R.id.delete3);
+        delete2=findViewById(R.id.delete4);
         confirm=findViewById(R.id.confirm);
         final LoginData login1 = LitePal.find(LoginData.class, 3);
         insurance1.setHint(login1.getVertifyid1());
@@ -59,5 +63,18 @@ public class PasswordInfoActivity extends BaseActivity {
 
             }
         });
+        delete1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                insurance1.setText("");
+            }
+        });
+        delete2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                insurance2.setText("");
+            }
+        });
     }
+
 }

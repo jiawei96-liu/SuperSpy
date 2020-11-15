@@ -9,6 +9,8 @@ import android.animation.ValueAnimator;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.method.HideReturnsTransformationMethod;
+import android.text.method.PasswordTransformationMethod;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
@@ -54,7 +56,8 @@ public class LoginActivity extends Activity implements View.OnClickListener {
     private TextView roll;
     private TextView getpass;
     private ImageView disply1;
-    int isvisiable=0;
+    private int isvisiable=0;
+    private ImageView delete;
 
     private final int WELCONE_DISPLAY_LENGHT = 1000;
 
@@ -142,14 +145,23 @@ public class LoginActivity extends Activity implements View.OnClickListener {
             public void onClick(View v) {
                 if(isvisiable==0) {
                     disply1.setImageResource(R.drawable.xianshi);
+                    passwordEdit.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
                     isvisiable=1;
                 }
                 else {
                     disply1.setImageResource(R.drawable.yincang);
+                    passwordEdit.setTransformationMethod(PasswordTransformationMethod.getInstance());
                     isvisiable=0;
 
                 }
 
+            }
+        });
+        delete=findViewById(R.id.delete1);
+        delete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                accountEdit.setText("");
             }
         });
     }
