@@ -40,7 +40,7 @@ public class HomeFragment extends Fragment {
 
     private AppUsageDao pdao;
     List<AppUsageInfo> appUsageInfoList;
-    private final int MAX_CNT = 30;
+    private final int MAX_CNT = 50;
     Float[] pieValue = new Float[MAX_CNT];
     String[] pieLable = new String[MAX_CNT];
     private PieChart chart;
@@ -194,13 +194,13 @@ public class HomeFragment extends Fragment {
     {
         tv = getActivity().findViewById(R.id.tv);
         java.text.DecimalFormat myformat = new java.text.DecimalFormat("0.00");
-        tv.setText("今天,您使用最频繁的App有:\n"+
+        tv.setText("今天,您共使用手机: [ "+myformat.format(pieValue[0]+pieValue[1]+pieValue[2]+pieValue[3]+pieValue[4]+pieValue[5])+" ]分钟\n\n"+
+                "使用最频繁的App为:\n\n"+
                 pieLable[0] +"\t [ "+myformat.format(pieValue[0])+" ] 分钟\n"+
                 pieLable[1] +"\t [ "+myformat.format(pieValue[1])+" ] 分钟\n"+
                 pieLable[2] +"\t [ "+myformat.format(pieValue[2])+" ] 分钟\n"+
                 pieLable[3] +"\t [ "+myformat.format(pieValue[3])+" ] 分钟\n"+
                 pieLable[4] +"\t [ "+myformat.format(pieValue[4])+" ] 分钟\n"
-
         );
     }
 }
