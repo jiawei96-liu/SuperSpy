@@ -52,18 +52,6 @@ public class WebViewActivity extends BaseActivity {
     private WebView webView;
     private ProgressBar progressBar;
 
-    /**获取启动这个Activity的Intent
-     * @param title
-     * @param url
-     */
-//    public static Intent createIntent(Context context, String title, String url) {
-//        return new Intent(context, WebViewActivity.class).
-//                putExtra("更新日志", title).
-//                putExtra(WebViewActivity.INTENT_URL, url);
-//
-//    }
-
-    //启动方法<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 
 

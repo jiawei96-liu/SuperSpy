@@ -45,13 +45,7 @@ public class NotificationsFragment extends Fragment implements View.OnClickListe
     private TextView btnPhotos;//相册
     private Bitmap head;//头像Bitmap
     private static String path = "/sdcard/DemoHead/";//sd路径
-    //启动方法<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
-
-    /**启动这个Activity的Intent
-     * @param context
-     * @return
-     */
     public static Intent createIntent(Context context) {
         return new Intent(context, NotificationsFragment.class);
     }
@@ -63,14 +57,6 @@ public class NotificationsFragment extends Fragment implements View.OnClickListe
         return root;
     }
 
-//    public View onCreateView(@NonNull LayoutInflater inflater,
-//                             ViewGroup container, Bundle savedInstanceState) {
-//        View root = inflater.inflate(R.layout.fragment_notifications, container, false);
-//        return root;
-////        initView();
-////        initData();
-////        initEvent();
-//    }
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
