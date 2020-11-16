@@ -176,8 +176,8 @@ public class AppUsageShowActivity extends BaseActivity {
         //        appTimeUsageTV.setText("过去一周使用信息统计: \n启动次数:"+appUsageInfo.getRun_times()+
 //                "\n最后一次使用时间:"+appUsageInfo.getLast_start_time()+"\nApp总运行时间:"+appUsageInfo.getForeground_time()+
 //                "\nTAG:"+appUsageInfo.getApp_tag());
-        appTimeUsageTV.setText("过去一周使用信息统计: \n启动次数:"+String.valueOf(r.nextInt(100))+"次,最后一次使用时间:" + appUsageInfo.getLast_start_time() +
-                "\nApp总运行时间:"+sum.toString()+"min\nTAG:" + appUsageInfo.getApp_tag());
+        appTimeUsageTV.setText("\n  过去一周使用信息统计: \n  启动次数:"+String.valueOf(r.nextInt(100))+"次,最后一次使用时间:" + appUsageInfo.getLast_start_time() +
+                "\n  App总运行时间:"+sum.toString()+"min\n  TAG:" + appUsageInfo.getApp_tag()+"\n");
     }
 
     private void appBasicInfoShow() {
@@ -188,13 +188,13 @@ public class AppUsageShowActivity extends BaseActivity {
                 bundle.getString("appPkgName", ""), bundle.getString("appVersion", ""),
                 bundle.getString("appDir", ""), bundle.getLong("appSize", 0));
         appIconIV.setImageDrawable(PicUtil.BitmapToDrawable(PicUtil.CreateReflectionImageWithOrigin(appInfo.getAppIcon())));
-        appNameTV.setText(appInfo.getAppName());
-        appVersionTV.setText("版本号: " + appInfo.getAppVersion());
-        appPackageNameTV.setText("包名: " + appInfo.getAppPackageName());
-        appDirTV.setText("路径: " + appInfo.getAppDir());
+        appNameTV.setText("  "+appInfo.getAppName());
+        appVersionTV.setText("  版本号: " + appInfo.getAppVersion());
+        appPackageNameTV.setText("  包名: " + appInfo.getAppPackageName());
+        appDirTV.setText("\n  安装路径: \n" + appInfo.getAppDir()+"\n");
         java.text.DecimalFormat myformat = new java.text.DecimalFormat("0.00");
         String appSiseMB = myformat.format(appInfo.getAppSize() / 1024.0 / 1024.0);
-        appSizeTV.setText("大小: " + appSiseMB + "M / " + Long.toString(appInfo.getAppSize()) + "B");
+        appSizeTV.setText("  大小: " + appSiseMB + "M / " + Long.toString(appInfo.getAppSize()) + "B");
     }
 
     void showLineData() {
