@@ -125,6 +125,8 @@ public class LoginActivity extends Activity implements View.OnClickListener {
             login3.setVertifyid2("");
             login3.setId(3);
             login3.save();
+
+
         }
 
         //////////////////////////
@@ -185,15 +187,10 @@ public class LoginActivity extends Activity implements View.OnClickListener {
         List<LoginData> logins = LitePal.findAll(LoginData.class);
         int flag=0;
         for (LoginData data1 : logins) {
-            if (account.equals(data1.getUsername()) ) {
-                flag = 2;
-                if(password.equals(data1.getPassward())){
-                    flag = 1;
-                    break;
-                }
-
+            if (account.equals(data1.getUsername()) && password.equals(data1.getPassward())) {
+                flag = 1;
+                break;
             }
-
         }
 
         Toast toast = Toast.makeText(LoginActivity.this,null,Toast.LENGTH_SHORT);
@@ -226,11 +223,7 @@ public class LoginActivity extends Activity implements View.OnClickListener {
 
             inputAnimator(mInputLayout, mWidth, mHeight);
 
-        }else if(flag==2) {
-            toast.setText("无效的用户名");
-        }
-
-        else {
+        } else {
             toast.setText("用户名或密码错误");
         }
         toast.show();
