@@ -56,6 +56,41 @@ public class AppUsageDao {
         return plist;
     }
 
+    public List<AppUsageInfo> queryAppUsageListByTag(String tag) {
+        //返回值
+        List<AppUsageInfo> plist = new ArrayList();
+        //创建数据库操作对象
+        SQLiteDatabase db = null;
+
+        try {
+
+            //创建数据库操作对象
+            db = helper.getReadableDatabase();
+            Cursor cursor = db.rawQuery("select * from usageInfoTable where app_tag = \""+
+                    tag+ "\"" +"order by cast(foreground_time as int ) desc",null );
+            while (cursor.moveToNext()) {
+                String apk_name = cursor.getString(cursor.getColumnIndex("apk_name"));
+                String app_name = cursor.getString(cursor.getColumnIndex("app_name"));
+                String first_timestamp = cursor.getString(cursor.getColumnIndex("first_timestamp"));
+                String last_timestamp = cursor.getString(cursor.getColumnIndex("last_timestamp"));
+                String foreground_time = cursor.getString(cursor.getColumnIndex("foreground_time"));
+                String last_start_time = cursor.getString(cursor.getColumnIndex("last_start_time"));
+                String run_times = cursor.getString(cursor.getColumnIndex("run_times"));
+                String app_tag = cursor.getString(cursor.getColumnIndex("app_tag"));
+                //封装到个人对象中
+                AppUsageInfo appUsageInfo = new AppUsageInfo(apk_name,app_name,first_timestamp,last_timestamp,foreground_time,last_start_time,run_times,app_tag);
+                plist.add(appUsageInfo);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (db != null) {
+                db.close();//关闭数据库
+            }
+        }
+        return plist;
+    }
+
     public long queryAppTagUsage(String tag) {
         //创建数据库操作对象
         SQLiteDatabase db = null;

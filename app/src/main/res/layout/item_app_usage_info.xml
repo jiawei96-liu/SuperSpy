@@ -33,13 +33,13 @@
             android:background="@drawable/textview_border_white"
             android:gravity="center" />
 
-        <TextView
-            android:id="@+id/txt_run_times_usage_item"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@drawable/textview_border_white"
-            android:gravity="center" />
+<!--        <TextView-->
+<!--            android:id="@+id/txt_run_times_usage_item"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:layout_weight="1"-->
+<!--            android:background="@drawable/textview_border_white"-->
+<!--            android:gravity="center" />-->
 
         <TextView
             android:id="@+id/txt_foreground_time_usage_item"

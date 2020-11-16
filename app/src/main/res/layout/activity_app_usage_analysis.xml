@@ -30,15 +30,14 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:orientation="horizontal">
-            <TextView
+            <Spinner
+                android:id="@+id/span_app_tag"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="match_parent"
-                android:background="@drawable/textview_border_white"
-                android:gravity="center"
-                android:text="应用类别" />
+                android:background="@drawable/textview_border_white"/>
             <Spinner
-                android:id="@+id/span_app_tag"
+                android:id="@+id/span_app_time"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="match_parent"
@@ -107,13 +106,13 @@
             android:gravity="center"
             android:text="末次启动时间" />
 
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@drawable/textview_border_white"
-            android:gravity="center"
-            android:text="启动次数" />
+<!--        <TextView-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:layout_weight="1"-->
+<!--            android:background="@drawable/textview_border_white"-->
+<!--            android:gravity="center"-->
+<!--            android:text="启动次数" />-->
 
         <TextView
             android:layout_width="0dp"
