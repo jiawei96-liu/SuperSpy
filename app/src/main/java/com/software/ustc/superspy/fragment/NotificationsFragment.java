@@ -93,7 +93,7 @@ public class NotificationsFragment extends Fragment implements View.OnClickListe
                 startActivity(new Intent(getActivity(), WebViewActivity.class));
                 break;
             case R.id.tllAboutShare:
-                CommonUtil.shareInfo(getActivity(), "我发现了一款很好用的Android快速开发框架，叫Superspy ，快去GitHub上看看吧" + "\n 点击链接直接下载Superspy\n" + "https://github.com/jiawei96-liu/SuperSpy/raw/main/app/release/app-release.apk");
+                CommonUtil.shareInfo(getActivity(), "我发现了一款很好用的Android应用，叫Superspy ，快去GitHub上看看吧" + "\n 点击链接直接下载Superspy\n" + "https://github.com/jiawei96-liu/SuperSpy/raw/main/app/release/app-release.apk");
                 break;
             case R.id.tllAboutComment:
                 startActivity(new Intent(getActivity(), DonateActivity.class));
