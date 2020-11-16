@@ -184,10 +184,14 @@ public class AppsRecomendActivity extends BaseActivity {
         //Y轴
         YAxis AxisLeft=bar.getAxisLeft();
         AxisLeft.setDrawGridLines(false);  //是否绘制Y轴上的网格线（背景里面的横线）
+        int maxY= (int)(Float.parseFloat(barY.get(0))+1);
+        maxY/=100;
+        maxY+=2;
+        final int finalMaxY = maxY;
         AxisLeft.setValueFormatter(new IAxisValueFormatter() {  //Y轴自定义坐标
             @Override
             public String getFormattedValue(float v, AxisBase axisBase) {
-                for (int a=0;a<8;a++){     //用个for循环方便
+                for (int a = 0; a< finalMaxY; a++){     //用个for循环方便
                     if (a==v){
                         return a*100+"h";
                     }
@@ -196,7 +200,7 @@ public class AppsRecomendActivity extends BaseActivity {
                 return "";
             }
         });
-        AxisLeft.setAxisMaximum(8);   //Y轴最大数值
+        AxisLeft.setAxisMaximum(finalMaxY);   //Y轴最大数值
         AxisLeft.setAxisMinimum(0);   //Y轴最小数值
         //是否隐藏右边的Y轴（不设置的话有两条Y轴 同理可以隐藏左边的Y轴）
         bar.getAxisRight().setEnabled(false);
