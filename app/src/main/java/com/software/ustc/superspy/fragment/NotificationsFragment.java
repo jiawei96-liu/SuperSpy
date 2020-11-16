@@ -8,10 +8,12 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -19,6 +21,7 @@ import androidx.fragment.app.Fragment;
 
 import com.software.ustc.superspy.R;
 import com.software.ustc.superspy.activity.DonateActivity;
+import com.software.ustc.superspy.activity.LoginActivity;
 import com.software.ustc.superspy.activity.WebViewActivity;
 import com.software.ustc.superspy.activity.WebViewActivity2;
 import com.software.ustc.superspy.activity.WebViewActivity3;
@@ -99,7 +102,13 @@ public class NotificationsFragment extends Fragment implements View.OnClickListe
                 startActivity(new Intent(getActivity(), DonateActivity.class));
                 break;
             case R.id.rllAboutDeveloper:
-                startActivity(new Intent(getActivity(), WebViewActivity2.class));
+                Toast toast = Toast.makeText(getActivity(), "SA20225308刘猛锐，SA20225303刘佳维", Toast.LENGTH_SHORT);
+                toast.setGravity(Gravity.CENTER, 0, 0);
+                toast.show();
+//                Toast toast = Toast.makeText(midlet.getApplicationContext(),null,Toast.LENGTH_SHORT);
+//                toast.setText("SA20225308刘猛锐，SA20225303刘佳维");
+//                toast.show();
+//                startActivity(new Intent(getActivity(), WebViewActivity2.class));
                 break;
             case R.id.tllAboutWeibo:
                 startActivity(new Intent(getActivity(), WebViewActivity3.class));

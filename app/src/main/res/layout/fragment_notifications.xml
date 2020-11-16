@@ -108,9 +108,7 @@
                             android:id="@+id/rllAboutDeveloper"
                             style="@style/content_item_lf_tv"
                             android:layout_weight="1"
-                            android:text="开发者
-
-                                      刘佳维、刘猛锐" />
+                            android:text="开发者" />
 
                         <ImageView
                             style="@style/content_item_rt_img"
