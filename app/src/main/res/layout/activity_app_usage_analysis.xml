@@ -120,7 +120,7 @@
             android:layout_weight="1"
             android:background="@drawable/textview_border_white"
             android:gravity="center"
-            android:text="运行总时长/s" />
+            android:text="运行总时长/min" />
 
     </LinearLayout>
 

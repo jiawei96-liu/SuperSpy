@@ -236,7 +236,11 @@ public class AppUsageAnalysisActivity extends BaseActivity implements View.OnCli
                 icon_usage_item.setImageDrawable(PicUtil.BitmapToDrawable(appInfo.getAppIcon()));
             else
                 icon_usage_item.setImageDrawable(getResources().getDrawable((R.mipmap.app_icon_none)));
-            txt_foreground_time.setText(appUsageInfo.getForeground_time());
+
+            java.text.DecimalFormat myformat = new java.text.DecimalFormat("0.00");
+            Float minuts=Float.parseFloat(appUsageInfo.getForeground_time());
+            String time = myformat.format(minuts/60.0);
+            txt_foreground_time.setText(time);
             return app_itemView;
         }
     }
