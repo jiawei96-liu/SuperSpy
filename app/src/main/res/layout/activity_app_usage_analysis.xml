@@ -44,13 +44,31 @@
                 android:layout_height="match_parent"
                 android:background="@drawable/textview_border_white"/>
 
+            <TextView
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="@color/orange" />
             <Button
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="match_parent"
-                android:background="@drawable/selector_green"
+                android:background="@drawable/selector_blue"
                 android:gravity="center"
-                android:text="确定刷新" />
+                android:text="确定刷新"
+                android:id="@+id/refresh"/>
+            <TextView
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="@color/orange" />
+            <Button
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:background="@drawable/selector_blue"
+                android:drawableRight="@mipmap/arrowright"
+                android:text="应用推荐"
+                android:id="@+id/goto_recomend"/>
         </LinearLayout>
     </LinearLayout>
 
