@@ -12,6 +12,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -19,12 +20,14 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 
 import com.software.ustc.superspy.R;
+import com.software.ustc.superspy.db.sqllite.AppInfoDao;
 import com.software.ustc.superspy.db.sqllite.AppUsageDao;
 import com.software.ustc.superspy.kits.AppInfo;
 import com.software.ustc.superspy.kits.AppTagsMap;
 import com.software.ustc.superspy.kits.AppUsageInfo;
 import com.software.ustc.superspy.kits.AppUsageUtil;
 import com.software.ustc.superspy.kits.BaseActivity;
+import com.software.ustc.superspy.kits.PicUtil;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -216,6 +219,7 @@ public class AppUsageAnalysisActivity extends BaseActivity implements View.OnCli
             }
 
             //获取数据项视图
+            ImageView icon_usage_item = (ImageView)app_itemView.findViewById(R.id.iv_icon_usage_item);
             TextView txt_app_name = (TextView) app_itemView.findViewById(R.id.txt_app_name_usage_item);
             TextView txt_last_start_time = (TextView) app_itemView.findViewById(R.id.txt_last_start_time_usage_item);
 //            TextView txt_run_times = (TextView) app_itemView.findViewById(R.id.txt_run_times_usage_item);
@@ -226,6 +230,12 @@ public class AppUsageAnalysisActivity extends BaseActivity implements View.OnCli
             txt_app_name.setText(appUsageInfo.getApp_name());
             txt_last_start_time.setText(appUsageInfo.getLast_start_time());
 //            txt_run_times.setText(appUsageInfo.getRun_times());
+            AppInfoDao pdao = new AppInfoDao(getApplicationContext());
+            AppInfo appInfo=pdao.querySignalAppInfo(appUsageInfo.getApp_name());
+            if(appInfo!=null)
+                icon_usage_item.setImageDrawable(PicUtil.BitmapToDrawable(appInfo.getAppIcon()));
+            else
+                icon_usage_item.setImageDrawable(getResources().getDrawable((R.mipmap.app_icon_none)));
             txt_foreground_time.setText(appUsageInfo.getForeground_time());
             return app_itemView;
         }
