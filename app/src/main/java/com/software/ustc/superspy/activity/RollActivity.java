@@ -114,46 +114,7 @@ public class RollActivity extends BaseActivity {
                     toast.setText("两次验证问题不能相同");
                 }
                 else {
-                    ////////////////////////////////
-//                    Spinner spinner = (Spinner) findViewById(R.id.spinner1);
-//                    // 建立数据源
-//                    String[] mItems = getResources().getStringArray(R.array.languages);
-//                    // 建立Adapter并且绑定数据源
-//                    ArrayAdapter<String> adapter=new ArrayAdapter<String>(RollActivity.this,android.R.layout.simple_spinner_item, mItems);
-//                    adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-//                    //绑定 Adapter到控件
-//                    spinner .setAdapter(adapter);
-//                    spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-//                        @Override
-//                        public void onItemSelected(AdapterView<?> parent, View view,
-//                                                   int pos, long id) {
-//
-//                            String[] languages = getResources().getStringArray(R.array.languages);
-//                            Toast.makeText(RollActivity.this, "你点击的是:"+languages[pos], 2000).show();
-//                        }
-//                        @Override
-//                        public void onNothingSelected(AdapterView<?> parent) {
-//                            // Another interface callback
-//                        }
-//                    });
-                    /////////////////////////
-//                    Spinner spinner = (Spinner) findViewById(R.id.spinner1);
-//                    spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-//                        @Override
-//                        public void onItemSelected(AdapterView<?> parent, View view,
-//                                                   int pos, long id) {
-//
-//                            String[] languages = getResources().getStringArray(R.array.languages);
-//                            Toast.makeText(RollActivity.this, "你点击的是:"+languages[pos], 2000).show();
-//
-//                        }
-//                        @Override
-//                        public void onNothingSelected(AdapterView<?> parent) {
-//                            // Another interface callback
-//                        }
-//                    });
-                    //////////////////////////////////////
-
+                    
                     toast.setText("注册成功");
                     LoginData login = new LoginData();
                     login.setUsername(account1);

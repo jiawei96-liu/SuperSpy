@@ -102,13 +102,6 @@ public class DevInfoActivity extends BaseActivity {
         memInfo mem=new memInfo();
         ArrayList<String> temp_storge = new ArrayList<String>();
         temp_storge = SystemUtils.queryStorage();
-
-
-//        temp.add(temp_storge.get(0));
-//        temp.add(temp_storge.get(1));
-//        temp.add( String.valueOf((int)SystemUtils.getBatteryTotal( mParam1 )) + "mAh"  );
-//        temp.add( SystemUtils.getBatteryCurrent( mParam1 ) + "%" );
-
         String c=getCpuName();
         setEditText(R.id.type,c);
         setEditText(R.id.tolstorge,temp_storge.get(0));
@@ -122,122 +115,6 @@ public class DevInfoActivity extends BaseActivity {
         setEditText(R.id.width,display.getWidth()+"×"+display.getHeight());
         setEditText(R.id.release, "Android  "+Build.VERSION.RELEASE);
 
-//        try {
-//            Class localClass = Class.forName("android.os.SystemProperties");
-//            Object localObject1 = localClass.newInstance();
-//            Object localObject2 = localClass.getMethod("get", new Class[]{String.class, String.class}).invoke(localObject1, new Object[]{"gsm.version.baseband", "no message"});
-//            Object localObject3 = localClass.getMethod("get", new Class[]{String.class, String.class}).invoke(localObject1, new Object[]{"ro.build.display.id", ""});
-//
-//
-////            setEditText(R.id.get, localObject2 + "");
-//
-////            setEditText(R.id.osVersion, localObject3 + "");
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
-
-
-        //获取网络连接管理者
-//        ConnectivityManager connectionManager = (ConnectivityManager)
-//                getSystemService(CONNECTIVITY_SERVICE);
-        //获取网络的状态信息，有下面三种方式
-        //NetworkInfo networkInfo = connectionManager.getActiveNetworkInfo();
-
-//        setEditText(R.id.lianwang, networkInfo.getType() + "");
-//        setEditText(R.id.lianwangname, networkInfo.getTypeName());
-//        setEditText(R.id.imei, phone.getDeviceId());
-//        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.READ_PHONE_STATE) != PackageManager.PERMISSION_GRANTED) {
-//            // TODO: Consider calling
-//            //    ActivityCompat#requestPermissions
-//            // here to request the missing permissions, and then overriding
-//            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-//            //                                          int[] grantResults)
-//            // to handle the case where the user grants the permission. See the documentation
-//            // for ActivityCompat#requestPermissions for more details.
-//            return;
-//        }
-//        setEditText(R.id.deviceversion, phone.getDeviceSoftwareVersion());
-//        setEditText(R.id.imsi, phone.getSubscriberId());
-//        setEditText(R.id.number, phone.getLine1Number());
-//        setEditText(R.id.simserial, phone.getSimSerialNumber());
-//        setEditText(R.id.simoperator,phone.getSimOperator());
-//        setEditText(R.id.simoperatorname, phone.getSimOperatorName());
-//        setEditText(R.id.simcountryiso, phone.getSimCountryIso());
-//        setEditText(R.id.workType,phone.getNetworkType()+"");
-//        setEditText(R.id.netcountryiso,phone.getNetworkCountryIso());
-//        setEditText(R.id.netoperator,phone.getNetworkOperator());
-//        setEditText(R.id.netoperatorname,phone.getNetworkOperatorName());
-
-
-
-//        setEditText(R.id.wifimac, wifi.getConnectionInfo().getMacAddress());
-//        setEditText(R.id.getssid,wifi.getConnectionInfo().getSSID());
-//        setEditText(R.id.getbssid,wifi.getConnectionInfo().getBSSID());
-//        setEditText(R.id.ip,wifi.getConnectionInfo().getIpAddress()+"");
-//        setEditText(R.id.bluemac, BluetoothAdapter.getDefaultAdapter()
-//                .getAddress());
-//        setEditText(R.id.bluname, BluetoothAdapter.getDefaultAdapter().getName()
-//        );
-
-//        double usd=((double)mem.getmem_UNUSED(DevInfoActivity.this))/(1024*1024);
-//        double tol=((double)mem.getmem_TOLAL())/(1024*1024);
-//        double l=usd/tol;
-//        im=findViewById(R.id.im);
-//        ViewGroup.LayoutParams lp1;
-//        lp1=  im.getLayoutParams();
-//        lp1=im.getHeight();
-//        lp1.height=(int)(lp1.height*l);
-//        im.setLayoutParams(lp1);
-
-//        ViewGroup.LayoutParams params =  im.getLayoutParams();
-//        params.height=200;
-//        params.width =100;
-//        im.setLayoutParams(params);
-
-//        setEditText(R.id.andrlid_id,
-//                Settings.Secure.getString(getContentResolver(), Settings.Secure.ANDROID_ID));
-//        setEditText(R.id.serial,android.os.Build.SERIAL);
-//        setEditText(R.id.brand,android.os.Build.BRAND);
-//        setEditText(R.id.tags, android.os.Build.TAGS);
-//        setEditText(R.id.fingerprint,android.os.Build.FINGERPRINT);
-//        setEditText(R.id.bootloader, Build.BOOTLOADER);
-
-//        setEditText(R.id.sdk,Build.VERSION.SDK);
-//        setEditText(R.id.sdk_INT,Build.VERSION.SDK_INT+"");
-//        setEditText(R.id.codename,Build.VERSION.CODENAME);
-//        setEditText(R.id.incremental,Build.VERSION.INCREMENTAL);
-//        setEditText(R.id.cpuabi, android.os.Build.CPU_ABI);
-//        setEditText(R.id.cpuabi2, android.os.Build.CPU_ABI2);
-//        setEditText(R.id.board, android.os.Build.BOARD);
-//        setEditText(R.id.product, android.os.Build.PRODUCT);
-//        setEditText(R.id.user, android.os.Build.USER);
-//        setEditText(R.id.hardware, android.os.Build.HARDWARE);
-//        setEditText(R.id.host, android.os.Build.HOST);
-//        setEditText(R.id.changshang, android.os.Build.MANUFACTURER);
-//        setEditText(R.id.phonetype,phone.getPhoneType()+"");
-//        setEditText(R.id.simstate,phone.getSimState()+"");
-//        setEditText(R.id.b_id, Build.ID);
-//        setEditText(R.id.gjtime,android.os.Build.TIME+"");
-
-//        setEditText(R.id.height,display.getHeight()+"");
-//        setEditText(R.id.dpi,book.densityDpi+"");
-//        setEditText(R.id.density,book.density+"");
-//        setEditText(R.id.xdpi,book.xdpi+"");
-//        setEditText(R.id.ydpi,book.ydpi+"");
-//        setEditText(R.id.scaledDensity,book.scaledDensity+"");
-
-
-//
-//        //setEditText(R.id.wl,getNetworkState(this)+"");
-//        // 方法2
-//        DisplayMetrics dm = new DisplayMetrics();
-//        getWindowManager().getDefaultDisplay().getMetrics(dm);
-//        int width=dm.widthPixels;
-//        int  height=dm.heightPixels;
-//
-//        setEditText(R.id.xwidth,width+"");
-//        setEditText(R.id.xheight,height+"");
-//
       }
 
     private void setEditText(int id, String s) {

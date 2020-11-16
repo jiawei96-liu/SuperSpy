@@ -107,15 +107,24 @@ public class LoginActivity extends Activity implements View.OnClickListener {
             login1.setVertifyid2("");
             login1.setId(1);
             login1.save();
-//            LoginData login2 = new LoginData();
-//            login2.setUsername("");
-//            login2.setPassward("");
-//            login2.setVertify1("");
-//            login2.setVertifyid1("");
-            login1.setId(2);
-            login1.save();
-            login1.setId(3);
-            login1.save();
+            LoginData login2 = new LoginData();
+            login2.setUsername("");
+            login2.setPassward("");
+            login2.setVertify1("");
+            login2.setVertifyid1("");
+            login2.setVertify2("");
+            login2.setVertifyid2("");
+            login2.setId(2);
+            login2.save();
+            LoginData login3 = new LoginData();
+            login3.setUsername("");
+            login3.setPassward("");
+            login3.setVertify1("");
+            login3.setVertifyid1("");
+            login3.setVertify2("");
+            login3.setVertifyid2("");
+            login3.setId(3);
+            login3.save();
         }
 
         //////////////////////////
@@ -176,10 +185,15 @@ public class LoginActivity extends Activity implements View.OnClickListener {
         List<LoginData> logins = LitePal.findAll(LoginData.class);
         int flag=0;
         for (LoginData data1 : logins) {
-            if (account.equals(data1.getUsername()) && password.equals(data1.getPassward())) {
-                flag = 1;
-                break;
+            if (account.equals(data1.getUsername()) ) {
+                flag = 2;
+                if(password.equals(data1.getPassward())){
+                    flag = 1;
+                    break;
+                }
+
             }
+
         }
 
         Toast toast = Toast.makeText(LoginActivity.this,null,Toast.LENGTH_SHORT);
@@ -212,7 +226,11 @@ public class LoginActivity extends Activity implements View.OnClickListener {
 
             inputAnimator(mInputLayout, mWidth, mHeight);
 
-        } else {
+        }else if(flag==2) {
+            toast.setText("无效的用户名");
+        }
+
+        else {
             toast.setText("用户名或密码错误");
         }
         toast.show();

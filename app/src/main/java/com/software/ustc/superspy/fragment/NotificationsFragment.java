@@ -11,8 +11,6 @@ import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -25,7 +23,6 @@ import com.software.ustc.superspy.activity.WebViewActivity;
 import com.software.ustc.superspy.activity.WebViewActivity2;
 import com.software.ustc.superspy.activity.WebViewActivity3;
 import com.software.ustc.superspy.kits.CommonUtil;
-import com.software.ustc.superspy.kits.Constant;
 import com.software.ustc.superspy.kits.ImageViewPlus;
 
 import java.io.File;
@@ -110,7 +107,7 @@ public class NotificationsFragment extends Fragment implements View.OnClickListe
                 startActivity(new Intent(getActivity(), WebViewActivity.class));
                 break;
             case R.id.tllAboutShare:
-                CommonUtil.shareInfo(getActivity(), "我发现了一款很好用的Android快速开发框架，叫Superspy ，快去GitHub上看看吧" + "\n 点击链接直接下载Superspy\n" + Constant.APP_DOWNLOAD_WEBSITE);
+                CommonUtil.shareInfo(getActivity(), "我发现了一款很好用的Android快速开发框架，叫Superspy ，快去GitHub上看看吧" + "\n 点击链接直接下载Superspy\n" + "https://github.com/jiawei96-liu/SuperSpy/raw/main/app/release/app-release.apk");
                 break;
             case R.id.tllAboutComment:
                 startActivity(new Intent(getActivity(), DonateActivity.class));
@@ -122,7 +119,7 @@ public class NotificationsFragment extends Fragment implements View.OnClickListe
                 startActivity(new Intent(getActivity(), WebViewActivity3.class));
                 break;
             case R.id.tllAboutContactUs:
-                CommonUtil.sendEmail(getActivity(), Constant.APP_OFFICIAL_EMAIL);
+                CommonUtil.sendEmail(getActivity(), "1318681240@qq.com");
                 break;
             case R.id.photo://从相册里面取照片
                 Intent intent1 = new Intent(Intent.ACTION_PICK, null);//返回被选中项的URI
