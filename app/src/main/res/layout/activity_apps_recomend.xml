@@ -11,6 +11,7 @@
         android:layout_height="0dp"
         android:layout_weight="1"
         android:singleLine="false"
+        android:background="@drawable/textview_border"
         android:id="@+id/tv_app_tag"/>
     <com.github.mikephil.charting.charts.BarChart
         android:id="@+id/bar"
@@ -23,6 +24,7 @@
         android:layout_height="0dp"
         android:layout_weight="1"
         android:singleLine="false"
+        android:background="@drawable/textview_border"
         android:id="@+id/tv_man_tag"/>
     <com.github.mikephil.charting.charts.RadarChart
         android:id="@+id/chart"
@@ -34,6 +36,7 @@
         android:layout_height="0dp"
         android:layout_weight="1"
         android:singleLine="false"
+        android:background="@drawable/textview_border"
         android:id="@+id/tv_app_recomend"/>
 
 </LinearLayout>
